@@ -4,8 +4,9 @@
  * "New lead for conference" with the visitor's details. No backend.
  */
 (function(){
-  const SUPPORT = 'info.ab@supplychaincanada.com';
-  const SPONSOR_BOOK = 'mailto:thoang@supplychaincanada.com?subject=Conference%202026%20%E2%80%94%20I%27d%20like%20to%20book%20a%20call';
+  const L = window.SCC_LINKS || {};
+  const SUPPORT = L.SUPPORT_EMAIL || 'info.ab@supplychaincanada.com';
+  const SPONSOR_BOOK = 'mailto:' + (L.SPONSOR_EMAIL || 'thoang@supplychaincanada.com') + '?subject=Conference%202026%20%E2%80%94%20I%27d%20like%20to%20book%20a%20call';
 
   const css = `
   .scc-lead{background:#fff;border:1px solid var(--line);border-radius:18px;padding:36px 32px;box-shadow:0 14px 40px rgba(10,11,12,.06)}

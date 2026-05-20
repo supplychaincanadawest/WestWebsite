@@ -151,20 +151,49 @@ window.SCCWest = (function(){
 
     const nav = document.getElementById('siteNav');
     const sb = document.getElementById('__sb');
+
+    // ── Dynamic topbar height tracking ──────────────────────────────────
+    // The topbar wraps on narrow screens; we measure it and update the CSS
+    // var so the nav sits flush against it with zero gap.
+    function syncTopbarHeight(){
+      const tb = document.querySelector('.topbar');
+      const h = tb ? tb.offsetHeight : 38;
+      document.documentElement.style.setProperty('--topbar-h', h + 'px');
+      if (nav) nav.style.top = h + 'px';
+    }
+    syncTopbarHeight();
+    if (window.ResizeObserver){
+      const ro = new ResizeObserver(syncTopbarHeight);
+      const tb = document.querySelector('.topbar');
+      if (tb) ro.observe(tb);
+    } else {
+      window.addEventListener('resize', syncTopbarHeight);
+    }
+    // ────────────────────────────────────────────────────────────────────
+
     addEventListener('scroll', ()=>{
       const h = document.documentElement.scrollHeight - innerHeight;
       sb.style.width = (scrollY/h*100)+'%';
       nav.classList.toggle('scrolled', scrollY > 40);
-    });
+    }, {passive:true});
 
     // mobile drawer
     const burger = document.getElementById('navBurger');
     const drawer = document.getElementById('mobileDrawer');
     const closeD = document.getElementById('drawerClose');
     if (burger && drawer){
-      burger.addEventListener('click', ()=>drawer.classList.add('open'));
-      closeD.addEventListener('click', ()=>drawer.classList.remove('open'));
-      drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>drawer.classList.remove('open')));
+      burger.addEventListener('click', ()=>{
+        drawer.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+      function closeDrawer(){
+        drawer.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+      closeD.addEventListener('click', closeDrawer);
+      drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeDrawer));
+      // close on Escape
+      document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeDrawer(); });
     }
 
     // mobile bottom-bar countdown (Early Bird May 31, 2026)
@@ -181,7 +210,7 @@ window.SCCWest = (function(){
     }
     tick(); setInterval(tick, 60000);
 
-    // Theme toggle
+    // Theme toggle — apply saved preference before paint to avoid flash
     const tt = document.getElementById('themeToggle');
     const saved = localStorage.getItem('scc-theme');
     if (saved === 'dark') document.documentElement.classList.add('dark');
@@ -193,10 +222,13 @@ window.SCCWest = (function(){
     }
 
     // reveal-on-scroll
-    const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+    const io = new IntersectionObserver(
+      es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }}),
+      {threshold:.1, rootMargin:'0px 0px -40px 0px'}
+    );
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-    // smooth anchor
+    // smooth anchor scroll (accounts for fixed nav+topbar height)
     document.addEventListener('click', e=>{
       const a = e.target.closest('a[href^="#"]');
       if(!a) return;
@@ -205,7 +237,10 @@ window.SCCWest = (function(){
       const t = document.getElementById(id);
       if(!t) return;
       e.preventDefault();
-      window.scrollTo({top:t.offsetTop-110, behavior:'smooth'});
+      const tb = document.querySelector('.topbar');
+      const navH = nav ? nav.offsetHeight : 70;
+      const tbH = tb ? tb.offsetHeight : 38;
+      window.scrollTo({top: t.offsetTop - tbH - navH - 8, behavior:'smooth'});
     });
   }
 

@@ -7,10 +7,11 @@
   if (window.__sccBotMounted) return;
   window.__sccBotMounted = true;
 
-  const SUPPORT = 'info.ab@supplychaincanada.com';
-  const SPONSOR = 'thoang@supplychaincanada.com';
-  const REGISTER = 'https://abportal.supplychaincanada.com/mpower/event/loadevent.action?e=1710&request_locale=en#home';
-  const MEMBERSHIP = 'https://www.supplychaincanada.com/membership';
+  const L = window.SCC_LINKS || {};
+  const SUPPORT = L.SUPPORT_EMAIL || 'info.ab@supplychaincanada.com';
+  const SPONSOR = L.SPONSOR_EMAIL || 'thoang@supplychaincanada.com';
+  const REGISTER = L.REGISTER || 'https://abportal.supplychaincanada.com/mpower/event/loadevent.action?e=1710&request_locale=en#home';
+  const MEMBERSHIP = L.MEMBERSHIP || 'https://www.supplychaincanada.com/membership';
 
   // ---------- Knowledge base ----------
   const KB = [
@@ -107,6 +108,16 @@
     {
       keys:['group','team','bundle','discount','bulk'],
       reply:`Bringing **8 or more** from your team? You qualify for group bundle pricing. Email ${SPONSOR} with your team size and we'll send a tailored quote within 24 hours.`,
+      next:'register'
+    },
+    {
+      keys:['job','career','work','hire','hiring','employment','opportunity','opportunities','looking for work','find work','get hired','job search','resume','cv'],
+      reply:`Supply chain professionals are in high demand across Western Canada. The **West Futures Conference** is one of the fastest ways to accelerate your job search:\n\n• **450+ decision-makers** from energy, government, retail, logistics and tech — all in one room on October 2\n• The most senior procurement network west of Toronto\n• Past attendees have turned conference introductions into signed contracts and job offers within 90 days\n• **10 CPD credits** that strengthen your SCMP designation and CV\n\nConnections built in a day here can open doors that months of applications don't. Whether you're a new grad, a mid-career practitioner, or a senior leader in transition — this is the room to be in.\n\n[Grab your seat ↗](${REGISTER})`,
+      next:'register'
+    },
+    {
+      keys:['network','networking','connect','connections','meet people','meet professionals','relationship'],
+      reply:`The Futures Conference is Western Canada's premier supply chain networking event.\n\n• **450+ practitioners and executives** — procurement, logistics, operations, government and tech\n• Structured networking breakfast and a **full evening reception** at River Cree\n• 30+ sponsor organizations — solution providers, consultancies and logistics companies actively looking to meet practitioners\n• Curated peer-table format at lunch — seated by sector so every conversation counts\n\nThe room is small enough to meet everyone. Past attendees consistently report their best regional supply chain connections came from a single Futures Conference day.\n\n[Register before May 31 →](${REGISTER})`,
       next:'register'
     },
     {
@@ -271,7 +282,7 @@ PS — If you can share your boss's name or your latest job description / resume
       <textarea rows="1" placeholder="Ask me anything…" aria-label="Message"></textarea>
       <button class="sccbot-send">Send</button>
     </div>
-    <div class="sccbot-foot">Offline · instant answers · <a href="mailto:${SUPPORT}">${SUPPORT}</a></div>
+    <div class="sccbot-foot">Always available · no API · <a href="mailto:${SUPPORT}">${SUPPORT}</a></div>
   `;
   document.body.appendChild(fab);
   document.body.appendChild(panel);
