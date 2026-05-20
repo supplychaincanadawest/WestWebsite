@@ -14,6 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/site.css" />
+<script>try{if(localStorage.getItem('scc-theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}</script>
 <style>
   .hero{padding:50px 0 70px;background:var(--white);text-align:center}
   .crumb{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:24px;display:flex;gap:10px;align-items:center;justify-content:center}
@@ -50,11 +51,30 @@
   .soon-card h2{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(36px,4.5vw,64px);line-height:.95;margin:18px 0 20px;letter-spacing:-.005em;color:var(--ink)}
   .soon-card p{color:var(--muted);line-height:1.6;font-size:16px;max-width:600px;margin:0 auto 28px}
   .soon-list{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px;text-align:left}
-  .soon-list > div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px}
+  .soon-list > div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;transition:box-shadow .25s,transform .25s}
+  .soon-list > div:hover{box-shadow:0 8px 28px rgba(10,11,12,.06);transform:translateY(-2px)}
   .soon-list .ic{width:36px;height:36px;border-radius:8px;background:#FFF1F1;border:1px solid #FFD4D6;display:grid;place-items:center;color:var(--red);font-family:var(--display);font-weight:800;font-size:14px;margin-bottom:12px}
   .soon-list h4{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:15px;line-height:1.1;margin-bottom:6px;letter-spacing:.04em;color:var(--ink)}
   .soon-list p{font-size:12px;color:var(--muted);line-height:1.5;margin:0}
   @media (max-width:780px){.soon-list{grid-template-columns:1fr}}
+
+  /* ── TABLET ───────────────────────────────────────── */
+  @media (max-width:768px){
+    .flag,.soon{padding:80px 0}
+    .hero h1{font-size:clamp(44px,12vw,88px)}
+    .flag-card{grid-template-columns:1fr}
+    .flag-img{min-height:260px}
+    .flag-body{padding:28px 24px}
+  }
+  @media (max-width:520px){
+    .flag,.soon{padding:60px 0}
+    .flag-meta{grid-template-columns:1fr 1fr}
+    .soon-card{padding:36px 24px}
+  }
+
+  /* ── DARK MODE ───────────────────────────────────── */
+  html.dark .flag-body .flag-meta > div{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)}
+  html.dark .soon-list .ic{background:rgba(237,28,36,.15);border-color:rgba(237,28,36,.35)}
 </style>
     <!-- Vercel Web Analytics -->
     <script defer src="/_vercel/insights/script.js"></script>

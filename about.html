@@ -14,6 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/site.css" />
+<script>try{if(localStorage.getItem('scc-theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"AboutPage","name":"About Supply Chain Canada — West","url":"https://www.supplychainwest.ca/about.html","mainEntity":{"@type":"Organization","name":"Supply Chain Canada — West","parentOrganization":{"@type":"Organization","name":"Supply Chain Canada"}}}
 </script>
@@ -50,12 +51,26 @@
 
   .contact{background:var(--soft);padding:120px 0}
   .ctc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-  .ctc{background:#fff;border:1px solid var(--line);border-radius:16px;padding:36px}
+  .ctc{background:#fff;border:1px solid var(--line);border-radius:16px;padding:36px;transition:box-shadow .25s,transform .25s}
+  .ctc:hover{box-shadow:0 12px 40px rgba(10,11,12,.07);transform:translateY(-2px)}
   .ctc .lb{font-family:var(--mono);font-size:11px;color:var(--red);letter-spacing:.2em;text-transform:uppercase}
   .ctc h3{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:26px;margin:14px 0 18px;line-height:1.05;color:var(--ink)}
   .ctc p{color:var(--muted);line-height:1.6;font-size:14px;margin-bottom:14px}
   .ctc a.email{color:var(--ink);border-bottom:1px solid var(--red);font-weight:600}
   @media (max-width:880px){.ctc-grid{grid-template-columns:1fr}}
+
+  /* ── TABLET ──────────────────────────────────────── */
+  @media (max-width:768px){
+    .hero h1{font-size:clamp(44px,11vw,88px)}
+    .pillar-grid,.ld-grid{grid-template-columns:1fr}
+    .mandate,.leaders,.contact{padding:80px 0}
+    .section-head{flex-direction:column;align-items:flex-start;gap:16px}
+  }
+  @media (max-width:520px){
+    .ld-grid{grid-template-columns:1fr 1fr}
+    .hero p.sub{font-size:16px}
+    .mandate,.leaders,.contact{padding:60px 0}
+  }
 </style>
     <!-- Vercel Web Analytics -->
     <script defer src="/_vercel/insights/script.js"></script>

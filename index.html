@@ -19,6 +19,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/site.css" />
+<script>try{if(localStorage.getItem('scc-theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}</script>
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -125,6 +126,37 @@
   .final h2{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(48px,7vw,116px);line-height:.86;letter-spacing:-.018em;color:#fff}
   .final h2 .gold{color:#F0B429}
   .final p{font-size:19px;color:rgba(255,255,255,.9);max-width:580px;margin:24px auto 36px;line-height:1.5}
+
+  /* ── TABLET (768px – 980px) ─────────────────────────────────── */
+  @media (max-width:768px){
+    .hero{padding:40px 0 70px}
+    .hero h1{font-size:clamp(44px,12vw,80px)}
+    .hero-stats{grid-template-columns:repeat(2,1fr);margin-top:48px}
+    .hero-stats > div:nth-child(2){border-right:0}
+    .hero-stats > div:nth-child(1),.hero-stats > div:nth-child(2){border-bottom:1px solid rgba(255,255,255,.1)}
+    .spot-grid{grid-template-columns:1fr}
+    .spot-video{aspect-ratio:16/9;max-height:340px}
+    .about-grid{grid-template-columns:1fr}
+    .why-grid{grid-template-columns:1fr}
+    .t-grid{grid-template-columns:1fr}
+    .section-head{flex-direction:column;align-items:flex-start;gap:16px}
+    .spotlight,.about-section,.why,.testi{padding:80px 0}
+  }
+  @media (max-width:520px){
+    .hero-cta{flex-direction:column;align-items:stretch}
+    .hero-cta .pill-btn{justify-content:center;text-align:center}
+    .hero-sub2{font-size:15px}
+    .hero-stats .v{font-size:30px}
+    .spotlight,.about-section,.why,.testi{padding:60px 0}
+  }
+
+  /* ── DARK MODE: hero-stats stays dark ──────────────────────── */
+  html.dark .hero-stats > div:nth-child(1),
+  html.dark .hero-stats > div:nth-child(2){
+    border-bottom-color:rgba(255,255,255,.08)
+  }
+  /* spot-facts cards & why-cards already handled in site.css    */
+  /* .about-right gradient is hardcoded so it stays red/orange   */
 </style>
     <!-- Vercel Web Analytics -->
     <script defer src="/_vercel/insights/script.js"></script>
