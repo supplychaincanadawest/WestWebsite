@@ -12,7 +12,7 @@ window.SCCWest = (function(){
   const NAV = [
     {label:'About', href:'about.html', items:[
       {l:'Who We Are', d:'The Western Canada institute of Supply Chain Canada', h:'about.html'},
-      {l:'Leadership & Board', d:'Volunteer leaders serving AB, BC and the West', h:'about.html#leadership'},
+      {l:'Leadership & Board', d:'Board leaders serving AB, BC and the West', h:'about.html#leadership'},
       {l:'Membership', d:'AB Regular $440 · BC Regular $495 · Student $50', h:L.MEMBERSHIP, ext:true},
       {l:'Contact', d:'info.ab@supplychaincanada.com', h:'about.html#contact'},
     ]},
@@ -105,7 +105,7 @@ window.SCCWest = (function(){
               <span class="brand-mark"><img src="${p}assets/scc-logo.png" alt="" /></span>
               <span class="lock"><span class="l1">Supply Chain Canada</span><span class="l2">WEST · WESTERN CANADA INSTITUTE</span></span>
             </a>
-            <p style="font-size:13px;color:#a8a3a0;line-height:1.6;max-width:380px;margin-top:18px">Supply Chain Canada — West is the Western Canada institute of <a href="${L.NATIONAL}" target="_blank" rel="noopener" style="color:#fff;border-bottom:1px solid var(--red)">Supply Chain Canada</a>, the national association advancing the supply chain profession since 1919. Serving 2,500+ professionals across Alberta, British Columbia and the territories.</p>
+            <p style="font-size:13px;color:#a8a3a0;line-height:1.6;max-width:380px;margin-top:18px">Supply Chain Canada — West is the Western Canada institute of <a href="${L.NATIONAL}" target="_blank" rel="noopener" style="color:#fff;border-bottom:1px solid var(--red)">Supply Chain Canada</a>, the national association advancing the supply chain profession since 1919. Serving 2,500+ professionals across Alberta and British Columbia.</p>
           </div>
           <div>
             <h4>Conference</h4>
