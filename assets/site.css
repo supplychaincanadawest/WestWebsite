@@ -113,9 +113,9 @@ h3{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-sp
 .brand:hover{opacity:.88}
 .nav.on-dark .brand{color:#fff}
 .brand-mark{
-  width:48px;height:48px;border-radius:50%;
+  width:64px;height:64px;border-radius:50%;
   background:transparent;display:grid;place-items:center;
-  flex-shrink:0;padding:7px;
+  flex-shrink:0;padding:6px;
   box-shadow:0 4px 14px rgba(237,28,36,.35);
   transition:box-shadow .25s,transform .25s;
 }
