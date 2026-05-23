@@ -1,4 +1,5 @@
 {
+    "buildCommand": "node scripts/generate-manifest.js",
     "cleanUrls": true,
     "trailingSlash": false,
     "headers": [

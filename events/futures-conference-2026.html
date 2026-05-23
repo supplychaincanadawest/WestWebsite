@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>West Futures Conference 2026 · Supply Chain Conference Edmonton, Alberta — October 2</title>
-<meta name="description" content="West Futures Conference 2026 — the premier supply chain conference in Edmonton, Alberta. October 2, River Cree Resort. 450+ procurement, logistics and operations leaders. 15+ speakers, 10 CPD credits." />
+<meta name="description" content="West Futures Conference 2026 — the premier supply chain conference in Edmonton, Alberta. October 2, River Cree Resort. 300+ procurement, logistics and operations leaders. 15+ speakers, 10 CPD credits." />
 <meta name="keywords" content="supply chain conference Edmonton 2026, supply chain conference Alberta, supply chain conference Calgary, West Futures Conference 2026, supply chain Edmonton, procurement conference Alberta, logistics conference Edmonton, supply chain Canada West conference, SCMP CPD credits Alberta, supply chain leadership Western Canada, River Cree conference Edmonton, SCC West conference, supply chain professional development Alberta" />
 <meta name="robots" content="index, follow" />
 <meta name="author" content="Supply Chain Canada — West" />
@@ -16,12 +16,12 @@
 <meta property="og:type" content="event" />
 <meta property="og:url" content="https://www.supplychainprograms.ca/events/futures-conference-2026.html" />
 <meta property="og:title" content="West Futures Conference 2026 · Supply Chain Conference Edmonton — Oct 2, 2026" />
-<meta property="og:description" content="The premier supply chain conference in Alberta. One day. 450+ procurement, logistics and operations leaders. 15+ speakers across 6 focus areas. 10 CPD credits. River Cree Resort, Edmonton — October 2, 2026." />
+<meta property="og:description" content="The premier supply chain conference in Alberta. One day. 300+ procurement, logistics and operations leaders. 15+ speakers across 6 focus areas. 10 CPD credits. River Cree Resort, Edmonton — October 2, 2026." />
 <meta property="og:image" content="https://www.supplychainprograms.ca/assets/og-card.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="West Futures Conference 2026 · Supply Chain Conference Edmonton" />
-<meta name="twitter:description" content="Premier supply chain conference in Alberta. 450+ leaders. October 2, 2026 at River Cree Resort, Edmonton." />
-<link rel="icon" type="image/png" href="https://www.supplychainprograms.ca/assets/scc-logo.png" />
+<meta name="twitter:description" content="Premier supply chain conference in Alberta. 300+ practitioners and executives. October 2, 2026 at River Cree Resort, Edmonton." />
+<link rel="icon" type="image/png" href="../assets/scc-west-logo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -29,7 +29,7 @@
 <script>try{if(localStorage.getItem('scc-theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}</script>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Event","name":"West Futures Conference 2026","startDate":"2026-10-02T07:30:00-06:00","endDate":"2026-10-02T22:00:00-06:00","eventStatus":"https://schema.org/EventScheduled","eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","location":{"@type":"Place","name":"River Cree Resort & Casino","address":{"@type":"PostalAddress","streetAddress":"300 East Lapotac Blvd","addressLocality":"Enoch","addressRegion":"AB","addressCountry":"CA"}},"image":"https://www.supplychainprograms.ca/assets/og-card.png","description":"The flagship Western Canada conference of Supply Chain Canada — West. 450+ leaders, 15+ speakers, 10 CPD credits.","organizer":{"@type":"Organization","name":"Supply Chain Canada — West","url":"https://www.supplychainprograms.ca"},"offers":[{"@type":"Offer","name":"Member","price":"649","priceCurrency":"CAD"},{"@type":"Offer","name":"Non-Member","price":"799","priceCurrency":"CAD"},{"@type":"Offer","name":"Student","price":"399","priceCurrency":"CAD"}]}
+{"@context":"https://schema.org","@type":"Event","name":"West Futures Conference 2026","startDate":"2026-10-02T07:30:00-06:00","endDate":"2026-10-02T22:00:00-06:00","eventStatus":"https://schema.org/EventScheduled","eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","location":{"@type":"Place","name":"River Cree Resort & Casino","address":{"@type":"PostalAddress","streetAddress":"300 East Lapotac Blvd","addressLocality":"Enoch","addressRegion":"AB","addressCountry":"CA"}},"image":"https://www.supplychainprograms.ca/assets/og-card.png","description":"The flagship Western Canada conference of Supply Chain Canada — West. 300+ practitioners and executives, 15+ speakers, 10 CPD credits.","organizer":{"@type":"Organization","name":"Supply Chain Canada — West","url":"https://www.supplychainprograms.ca"},"offers":[{"@type":"Offer","name":"Member","price":"649","priceCurrency":"CAD"},{"@type":"Offer","name":"Non-Member","price":"799","priceCurrency":"CAD"},{"@type":"Offer","name":"Student","price":"399","priceCurrency":"CAD"}]}
 </script>
 
 <script type="application/ld+json">
@@ -179,6 +179,27 @@
   @media (max-width:980px){.speaker-grid{grid-template-columns:repeat(2,1fr)}}
   @media (max-width:560px){.speaker-grid{grid-template-columns:1fr 1fr}}
 
+  /* ── SPEAKER FLIP CARDS ──────────────────────────────────────── */
+  .speaker-flip{aspect-ratio:3/4;perspective:1200px;cursor:pointer;border-radius:16px}
+  .sf-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.4,0,.2,1);border-radius:16px}
+  .speaker-flip:hover .sf-inner,.speaker-flip.flipped .sf-inner{transform:rotateY(180deg)}
+  .sf-front,.sf-back{position:absolute;inset:0;backface-visibility:hidden;border-radius:16px;overflow:hidden}
+  .sf-front{background:#0B0B0E}
+  .sf-front img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+  .sf-front .tag{position:absolute;top:14px;left:14px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#fff;padding:4px 10px;border-radius:999px;background:var(--red);z-index:2}
+  .sf-front .flip-cue{position:absolute;bottom:80px;right:14px;font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65);background:rgba(0,0,0,.4);padding:4px 8px;border-radius:999px;white-space:nowrap;z-index:3}
+  .sf-front .info{position:absolute;left:0;right:0;bottom:0;padding:18px 20px;text-align:center;z-index:2;background:linear-gradient(180deg,transparent 0%,rgba(11,11,14,.92) 55%)}
+  .sf-front .name{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:17px;line-height:1.05;color:#fff}
+  .sf-front .role{margin-top:5px;font-family:var(--display);font-weight:600;font-size:11px;color:var(--red);letter-spacing:.06em;text-transform:uppercase}
+  .sf-front .org{margin-top:3px;font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.6);letter-spacing:.08em;text-transform:uppercase}
+  .sf-back{transform:rotateY(180deg);background:linear-gradient(160deg,#1A0507 0%,#0B0B0E 100%);border:1px solid rgba(237,28,36,.3);padding:22px 18px;display:flex;flex-direction:column;gap:6px}
+  .sf-back .name{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:15px;color:#fff;line-height:1.1}
+  .sf-back .role-org{color:var(--red);font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:10px;letter-spacing:.06em;margin-bottom:8px}
+  .sf-back .bio{color:rgba(255,255,255,.82);font-size:11.5px;line-height:1.6;flex:1;overflow-y:auto}
+  .sf-back .bio::-webkit-scrollbar{width:3px}
+  .sf-back .bio::-webkit-scrollbar-thumb{background:rgba(237,28,36,.4);border-radius:3px}
+  .sf-back .topic{font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:#F0B429;text-transform:uppercase;margin-top:auto;padding-top:8px;border-top:1px solid rgba(255,255,255,.12)}
+
   /* speaker modal */
   .modal-backdrop{position:fixed;inset:0;background:rgba(10,11,12,.7);backdrop-filter:blur(8px);z-index:100;display:none;align-items:center;justify-content:center;padding:24px}
   .modal-backdrop.open{display:flex;animation:fadeIn .25s ease}
@@ -199,7 +220,7 @@
   .agenda-section .lbl{font-family:var(--mono);color:var(--red);font-size:12px;letter-spacing:.2em;text-transform:uppercase}
   .agenda-section .sub{color:var(--muted);max-width:580px;margin:0 auto;line-height:1.6}
   .agenda-list{max-width:1100px;margin:0 auto;border-top:1px solid var(--line)}
-  .agenda-row{display:grid;grid-template-columns:120px 1fr 180px 130px;gap:24px;padding:22px 4px;border-bottom:1px solid var(--line);align-items:center;transition:background .2s}
+  .agenda-row{display:grid;grid-template-columns:120px 1fr 130px;gap:24px;padding:22px 4px;border-bottom:1px solid var(--line);align-items:center;transition:background .2s}
   .agenda-row:hover{background:var(--soft);padding-left:14px}
   .agenda-row .time{font-family:var(--display);font-weight:800;font-size:22px;color:var(--ink);letter-spacing:.005em}
   .agenda-row .ti h4{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:18px;line-height:1.1;color:var(--ink)}
@@ -242,7 +263,7 @@
   .venue-left p{color:var(--muted);font-size:16px;line-height:1.6}
   .venue-card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 16px 40px rgba(10,11,12,.05)}
   html.dark .venue-card{background:#15161A;border-color:rgba(255,255,255,.08)}
-  .venue-card .pic{aspect-ratio:16/9;background:url('https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1600&q=80') center/cover}
+  .venue-card .pic{aspect-ratio:16/9;background:url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1e/27/69/68/river-cree-resort-and.jpg?w=900&h=500&s=1') center/cover}
   .venue-card .body{padding:30px 28px}
   .venue-card .body h3{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:24px;line-height:1.05;color:var(--ink);margin-bottom:8px}
   .venue-card .body .addr{font-size:14px;color:var(--muted);line-height:1.5;margin-bottom:10px}
@@ -287,6 +308,8 @@
   .price-card li::before{content:"";width:14px;height:14px;background:var(--red);clip-path:polygon(28% 50%,40% 65%,72% 30%,80% 38%,40% 80%,20% 58%);flex-shrink:0;margin-top:3px}
   .price-card.featured li::before{background:#F0B429}
   .price-card .pill-btn{width:100%;justify-content:center}
+  body.prices-updated .price-card.featured::before{content:"Most Popular"}
+  body.prices-updated .price-card .strike{display:none}
 
   /* Group pricing strip */
   .group-strip{max-width:1180px;margin:24px auto 0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 28px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;box-shadow:0 10px 30px rgba(10,11,12,.04)}
@@ -395,7 +418,7 @@
     <div class="hero-main">
       <span class="hero-badge"><span class="d"></span>Early Bird · Save up to $200 · Through May 31</span>
       <h1>Where Western<br/>Canada's<br/><span class="grad">supply chain<br/>leaders</span><br/>converge.</h1>
-      <p class="hero-sub">Following the sold-out 2025 conference, the Futures Conference returns to Edmonton for a one-day convening of <strong style="color:var(--ink)">450+ practitioners, executives and solution providers</strong> shaping how Canada moves, sources, and delivers.</p>
+      <p class="hero-sub">Following the sold-out 2025 conference, the Futures Conference returns to Edmonton for a one-day convening of <strong style="color:var(--ink)">300+ practitioners, executives and solution providers</strong> shaping how Canada moves, sources, and delivers.</p>
       <div class="hero-meta-pills">
         <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Friday, October 2, 2026</span>
         <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>River Cree Resort · Edmonton, AB</span>
@@ -436,7 +459,7 @@
 <!-- TRUST STRIP -->
 <div class="trust-strip">
   <div class="trust-inner">
-    <div class="trust-cell"><div class="v" data-count="450">0<sup>+</sup></div><div class="l">Senior practitioners &amp; executives in attendance</div></div>
+    <div class="trust-cell"><div class="v" data-count="300">0<sup>+</sup></div><div class="l">Senior practitioners &amp; executives in attendance</div></div>
     <div class="trust-cell"><div class="v" data-count="30">0<sup>+</sup></div><div class="l">Sponsor organizations &amp; solution providers</div></div>
     <div class="trust-cell"><div class="v" data-count="10">0</div><div class="l">CPD credits earned in a single day</div></div>
     <div class="trust-cell"><div class="v">2<sup>nd</sup></div><div class="l">Annual flagship Western Canada gathering</div></div>
@@ -454,7 +477,7 @@
         <p>Hosted by Supply Chain Canada — West, the Futures Conference is Western Canada's premier professional forum for leaders in supply chain, procurement, logistics, and operations. At a time of unprecedented disruption, transformation, and opportunity, the event delivers the insight and practical intelligence professionals need to lead with confidence, credibility, and impact.</p>
       </div>
       <div class="about-stats">
-        <div><div class="n">450<sup>+</sup></div><div class="l">Senior practitioners and executives in attendance</div></div>
+        <div><div class="n">300<sup>+</sup></div><div class="l">Senior practitioners and executives in attendance</div></div>
         <div><div class="n">30<sup>+</sup></div><div class="l">Sponsor organizations &amp; solution providers</div></div>
         <div><div class="n">10</div><div class="l">CPD credits earned in a single day</div></div>
         <div><div class="n">2<sup>nd</sup></div><div class="l">Annual flagship Western Canada gathering</div></div>
@@ -467,7 +490,7 @@
 <section class="recap" id="recap">
   <div class="wrap">
     <span class="lbl">2025 Recap</span>
-    <h2>See what 450+ leaders experienced last year.</h2>
+    <h2>See what 300+ leaders experienced last year.</h2>
     <p>The strong engagement and full-capacity attendance reinforced the value this conference delivers to industry leaders, practitioners, and partners across Western Canada — and we're building on that momentum.</p>
     <div class="recap-frame" id="recapFrame">
       <video id="recapVideo2" autoplay muted loop playsinline preload="metadata">
@@ -481,7 +504,7 @@
     </div>
     <div class="recap-meta">
       <span>1 Day of high-impact programming</span>
-      <span>450+ senior practitioners</span>
+      <span>300+ senior practitioners</span>
       <span>6 forces shaping the profession</span>
     </div>
   </div>
@@ -553,6 +576,41 @@
   </div>
 </section>
 
+<!-- 2026 CONFIRMED SPONSORS -->
+<section style="background:var(--white);padding:80px 0">
+  <div class="wrap">
+    <div class="reveal" style="margin-bottom:48px;text-align:center">
+      <span style="font-family:var(--mono);color:var(--red);font-size:12px;letter-spacing:.2em;text-transform:uppercase">2026 Confirmed Sponsors</span>
+      <h2 style="font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(34px,4vw,54px);line-height:.95;color:var(--ink);margin:14px 0 0;letter-spacing:-.005em">Premier Sponsors</h2>
+    </div>
+    <div class="reveal" style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:820px;margin:0 auto">
+      <div style="background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:40px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px">
+        <div style="font-family:var(--mono);font-size:11px;color:var(--red);letter-spacing:.2em;text-transform:uppercase">Premier Sponsor</div>
+        <div style="font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:26px;color:var(--ink);letter-spacing:-.005em">AMCC</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.5">Alberta Motor Coach Company</div>
+      </div>
+      <div style="background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:40px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px">
+        <div style="font-family:var(--mono);font-size:11px;color:var(--red);letter-spacing:.2em;text-transform:uppercase">Premier Sponsor</div>
+        <div style="font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:26px;color:var(--ink);letter-spacing:-.005em">City of Edmonton</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.5">Economic Development</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAST CONFERENCE REPRESENTATION -->
+<section style="background:var(--soft);padding:80px 0;border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="reveal" style="margin-bottom:40px;text-align:center">
+      <span style="font-family:var(--mono);color:var(--red);font-size:12px;letter-spacing:.2em;text-transform:uppercase">Past Representation</span>
+      <h2 style="font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(30px,3.5vw,48px);line-height:.95;color:var(--ink);margin:14px 0 8px;letter-spacing:-.005em">Organizations That Have<br/>Sent Delegates</h2>
+      <p style="color:var(--muted);font-size:15px;max-width:540px;margin:0 auto">Companies and government bodies represented at past West Futures Conferences.</p>
+    </div>
+    <div id="confSponsorGrid" class="reveal" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:1100px;margin:0 auto"></div>
+    <p id="confSponsorEmpty" style="text-align:center;color:var(--muted);font-size:14px;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;display:none">Sponsor logos loading — check back soon.</p>
+  </div>
+</section>
+
 <!-- SPONSORS (DARK) -->
 <section class="sponsors-section" id="sponsors">
   <div class="wrap">
@@ -560,7 +618,7 @@
       <div>
         <span class="lbl">— Sponsorship</span>
         <h2>Partner with Western Canada's supply chain leadership.</h2>
-        <p>Reach 450+ senior practitioners, executives, and decision-makers across procurement, logistics, and operations, in a single high-trust day.</p>
+        <p>Reach 300+ senior practitioners, executives, and decision-makers across procurement, logistics, and operations, in a single high-trust day.</p>
         <ul>
           <li>Brand visibility in front of Canada's supply chain community</li>
           <li>Premium expo presence and curated networking</li>
@@ -572,16 +630,11 @@
           <a href="mailto:thoang@supplychaincanada.com?subject=Sponsorship%20Prospectus%20Request" class="pill-btn ghost-light">Request prospectus</a>
         </div>
       </div>
-      <div class="tier-stack">
-        <div class="tier-row"><span class="nm">Title &amp; Presenting</span><span class="ds">Highest visibility · main-stage moments · category exclusivity options</span></div>
-        <div class="tier-row"><span class="nm">Platinum &amp; Gold</span><span class="ds">Premium expo presence · panel/breakout opportunities · networking access</span></div>
-        <div class="tier-row"><span class="nm">Silver, Bronze &amp; À-la-Carte</span><span class="ds">Targeted brand placement · media partnerships · meals, lounges, lanyards, expo, more</span></div>
-      </div>
     </div>
 
     <div class="partner-logos">
       <div class="lo">Consulting</div><div class="lo">Logistics Co.</div><div class="lo">Procurement</div><div class="lo">3PL Network</div><div class="lo">Enterprise Tech</div><div class="lo">Freight Group</div><div class="lo">SaaS Platform</div><div class="lo">Advisory</div>
-      <div class="note">Trusted by 30+ sponsor organizations across Western Canada · Confirmed partner roster updates monthly</div>
+      <div class="note">Trusted by 30+ sponsor organizations across Western Canada</div>
     </div>
   </div>
 </section>
@@ -614,7 +667,7 @@
     </div>
 
     <div class="venue-extras reveal">
-      <div class="venue-extra"><span class="h">Preferred Hotel Rate</span><span class="d">Conference rate $189/night · Oct 1 &amp; 2</span></div>
+      <div class="venue-extra"><span class="h">Preferred Hotel Rate</span><span class="d">$189/night · Oct 1 &amp; 2 · Rooms are limited — book your conference rate first, first served.</span></div>
       <div class="venue-extra"><span class="h">Air Canada Partnership</span><span class="d">Promo code <strong>YQ6XKBC1</strong> · Save up to 15% on flights to YEG</span></div>
       <div class="venue-extra"><span class="h">Group Bundles</span><span class="d">Bringing 8 or more from your team? Concessions on group pricing.</span></div>
     </div>
@@ -627,7 +680,7 @@
     <div class="head-c reveal">
       <span class="lbl">— Registration</span>
       <h2>Save $150 with Early Bird.</h2>
-      <p class="sub">Early Bird pricing ends May 31, 2026, or when the first 100 spots are filled. Only 20 spots remaining at the time of writing.</p>
+      <p class="sub">Register before May 31 and save up to $200. Early Bird pricing ends May 31, 2026.</p>
     </div>
 
     <div class="pricing-grid reveal">
@@ -750,6 +803,31 @@
 <script>
 SCCWest.mountChrome({active:'Events'});
 
+/* ===== Past conference sponsors grid ===== */
+(function(){
+  const grid = document.getElementById('confSponsorGrid');
+  const empty = document.getElementById('confSponsorEmpty');
+  if(!grid) return;
+  fetch('../assets/sponsors/manifest.json?v=' + Date.now())
+    .then(r => r.json())
+    .then(data => {
+      const logos = (data.logos || []).filter(f => /\.(png|jpg|jpeg|webp|svg)$/i.test(f));
+      if(!logos.length){ empty && (empty.style.display = 'block'); return; }
+      logos.forEach(f => {
+        const wrap = document.createElement('div');
+        wrap.style.cssText = 'background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 24px;display:flex;align-items:center;justify-content:center;min-width:140px;max-width:200px;height:72px';
+        const img = document.createElement('img');
+        img.src = '../assets/sponsors/' + f;
+        img.alt = f.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
+        img.loading = 'lazy';
+        img.style.cssText = 'max-height:44px;max-width:160px;object-fit:contain;display:block';
+        wrap.appendChild(img);
+        grid.appendChild(wrap);
+      });
+    })
+    .catch(() => { empty && (empty.style.display = 'block'); });
+})();
+
 /* ===== Stars ===== */
 const starsEl = document.getElementById('stars');
 for(let i=0;i<10;i++){
@@ -817,9 +895,21 @@ document.querySelectorAll('[data-count]').forEach(c => ioCount.observe(c));
 
 /* ===== Speakers ===== */
 const speakers = [
-  {n:'Mark Parsons', initials:'MP', role:'Vice President and Chief Economist', org:'ATB Financial', tag:'Confirmed', live:true, bio:"Mark is ATB Financial's Chief Economist — the most-watched voice on the Alberta economy. He returns to West Futures to frame the macro outlook for procurement, capex and supply chain investment through 2027."},
-  {n:'Ian Gonzalez', initials:'IG', role:'Advisor', org:'SC&P Analytics', tag:'Confirmed', live:true, bio:"Ian leads supply chain analytics advisory at SC&P, helping organizations turn procurement data into measurable performance outcomes."},
-  {n:'Siobhan Chinnery', initials:'SC', role:'Principal', org:'Bee Grateful Management', tag:'Confirmed', live:true, bio:"Siobhan is a leadership and organizational-transformation consultant working with senior supply chain teams to rebuild culture for the AI era."},
+  {
+    n:'Mark Parsons', role:'VP & Chief Economist', org:'ATB Financial', topic:'Alberta Economic Outlook',
+    photo:'https://media.licdn.com/dms/image/v2/D5603AQHwS8GA2b-A5A/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1731294347629?e=1781136000&v=beta&t=LiabhqWr9ig-r5eamKyzOIACRpPA2tYnrK4a5VSf8mI',
+    bio:'Mark Parsons, CFA, serves as the VP and Chief Economist at ATB Financial, where he provides unparalleled strategic outlooks on the regional and national economy. With a rich background spanning the Department of Finance Canada and PwC, he brings over 20 years of expertise in macroeconomic forecasting, policy analysis, and strategic planning to the stage. Holding a Master\'s degree in Economics, Mark is a prominent industry voice who bridges the gap between global economic trends and their localized impact on the supply chain sector.'
+  },
+  {
+    n:'Ian Gonzalez', role:'Advisor & Educator', org:'Borouge International', topic:'AI & Data in Procurement',
+    photo:'https://media.licdn.com/dms/image/v2/D5603AQFrXMTNrU3x-g/profile-displayphoto-scale_400_400/B56Z2RcTS_GwAk-/0/1776261611242?e=1781136000&v=beta&t=OPSq6k4G4sKn7EQuqmMhdXTDtGPA8NVL0v7EGqBscmw',
+    bio:'Ian Gonzalez brings over 20 years of supply chain and analytics expertise to his role as an Advisor at Borouge International and a dedicated educator. A champion of data literacy and storytelling, he empowers supply chain professionals to translate complex data into actionable insights with clarity and a unique brand of humor. Holding an MBA and advanced credentials in business analytics, Ian is committed to advancing the analytical capabilities of the modern supply chain workforce.'
+  },
+  {
+    n:'Siobhan Chinnery', role:'Executive Coach & Speaker', org:'Bee Grateful Management', topic:'Leadership & Culture',
+    photo:'https://media.licdn.com/dms/image/v2/D5603AQFzwmU8Ox3Osg/profile-displayphoto-crop_800_800/B56Z0lwYzgKkAM-/0/1774454945357?e=1781136000&v=beta&t=scmEwbnabGOk9HedJO1ShzyOXoL-rJDRKS6yI4cQb_o',
+    bio:'Siobhan Chinnery is a Top 100 Most Influential Woman in Canadian Supply Chain, an Adjunct Instructor at SAIT, and the creator of the Bloom Through the Dirt™ leadership framework. With over 30 years of executive leadership — including her tenure as VP of Supply Chain at Finning Canada — she specialises in building adaptive, high-performing supply chains. Today, Siobhan is a sought-after speaker and executive coach dedicated to helping supply chain professionals transform industry pressures into purposeful, sustainable growth.'
+  },
   {placeholder:true, n:'More Speakers', sub:'Announcing Soon'},
   {placeholder:true, n:'Keynote Speaker', sub:'Announcing Soon'},
   {placeholder:true, n:'Executive Fireside', sub:'Announcing Soon'},
@@ -832,19 +922,16 @@ const ringsSVG = `<svg class="rings" viewBox="-50 -50 200 200" aria-hidden="true
 </svg>`;
 speakers.forEach(s => {
   const el = document.createElement('div');
-  el.className = 'speaker' + (s.submit ? ' submit' : '');
   if (s.submit){
+    el.className = 'speaker submit';
     el.innerHTML = `<div class="plus-big">+</div><h4>Speak at Futures 2026</h4><p>Have insight that should be on the main stage?</p><a href="mailto:thoang@supplychaincanada.com?subject=Speaking%20Proposal%20%E2%80%94%20Futures%202026">Submit a proposal</a>`;
   } else if (s.placeholder){
+    el.className = 'speaker';
     el.innerHTML = `${ringsSVG}<div class="plus">+</div><div class="tag tba">Coming Soon</div><div class="info"><div class="name">${s.n}</div><div class="role">${s.sub}</div></div>`;
   } else {
-    el.innerHTML = `${ringsSVG}<div class="initials">${s.initials}</div><div class="tag live"></div><div class="info"><div class="name">${s.n}</div><div class="role">${s.role}</div><div class="org">${s.org}</div></div>`;
-    el.addEventListener('click', () => {
-      document.getElementById('m-name').textContent = s.n;
-      document.getElementById('m-role').textContent = `${s.role} · ${s.org}`;
-      document.getElementById('m-bio').textContent = s.bio;
-      document.getElementById('modal').classList.add('open');
-    });
+    el.className = 'speaker-flip';
+    el.innerHTML = `<div class="sf-inner"><div class="sf-front"><img src="${s.photo}" alt="${s.n}" loading="lazy"/><div class="tag">Confirmed</div><div class="flip-cue">▸ Bio</div><div class="info"><div class="name">${s.n}</div><div class="role">${s.role}</div><div class="org">${s.org}</div></div></div><div class="sf-back"><div class="name">${s.n}</div><div class="role-org">${s.role} · ${s.org}</div><p class="bio">${s.bio}</p><div class="topic">↗ ${s.topic}</div></div></div>`;
+    el.addEventListener('click', () => el.classList.toggle('flipped'));
   }
   sg.appendChild(el);
 });
@@ -866,7 +953,7 @@ const at = document.getElementById('agendaTable');
 agenda.forEach(a => {
   const r = document.createElement('div');
   r.className = 'agenda-row' + (a.tba ? ' tba' : '');
-  r.innerHTML = `<div class="time">${a.time}</div><div class="ti"><h4>${a.title}</h4><p>${a.desc}</p></div><div class="speaker"><strong>${a.speaker.n}</strong>${a.speaker.d?'<span>'+a.speaker.d+'</span>':''}</div><div class="tag">${a.tag}</div>`;
+  r.innerHTML = `<div class="time">${a.time}</div><div class="ti"><h4>${a.title}</h4><p>${a.desc}</p></div><div class="tag">${a.tag}</div>`;
   at.appendChild(r);
 });
 
@@ -880,6 +967,8 @@ const faqs = [
   ['Can I sponsor or speak at the conference?', 'Yes. Email Thuy Hoang at thoang@supplychaincanada.com for sponsorship — three tiers, finite slots — or to submit a session proposal.'],
   ['Bringing a team of 8 or more?', 'Email Thuy directly at thoang@supplychaincanada.com for group bundle pricing on teams, chapters, and student cohorts.'],
   ['Is the venue accessible?', 'Yes. River Cree Resort is fully wheelchair accessible. Please note any accessibility, dietary, or accommodation needs during registration and our team will follow up directly.'],
+  ['Are exhibitor or display booth spaces available?', 'Yes — expo space is available as part of our sponsorship packages. Contact Thuy Hoang at thoang@supplychaincanada.com for the prospectus. Display space is limited and fills early; contact Thuy to confirm availability.'],
+  ['How do I submit a speaker proposal?', 'We welcome proposals from practitioners, researchers, and executives with a point of view on our six focus areas. Email a brief summary — session title, key insight, and your bio — to thoang@supplychaincanada.com. We review proposals on a rolling basis through summer 2026.'],
 ];
 const fl = document.getElementById('faqList');
 faqs.forEach(([q, a]) => {
@@ -893,6 +982,20 @@ fl.addEventListener('click', e => {
   if(!q) return;
   q.parentElement.classList.toggle('open');
 });
+
+/* ===== Auto-pricing: switch to regular rates after June 1 2026 ===== */
+(function(){
+  var cutoff = new Date('2026-06-01T00:00:00-06:00');
+  if(new Date() < cutoff) return;
+  document.body.classList.add('prices-updated');
+  var h2 = document.querySelector('.pricing-section h2');
+  if(h2) h2.textContent = 'Conference Pricing';
+  var sub = document.querySelector('.pricing-section .sub');
+  if(sub) sub.textContent = 'Secure your spot at the West Futures Conference 2026.';
+  var cards = document.querySelectorAll('.price-card');
+  if(cards[1]){var p=cards[1].querySelector('.price');if(p)p.innerHTML='$799<small> +tax</small>';}
+  if(cards[2]){var p=cards[2].querySelector('.price');if(p)p.innerHTML='$999<small> +tax</small>';}
+})();
 
 /* ===== Convince-my-boss button → open bot ===== */
 document.getElementById('convinceBtn').addEventListener('click', () => {

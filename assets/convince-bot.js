@@ -22,7 +22,7 @@
     },
     {
       keys:['register','registration','sign up','signup','book','buy ticket','purchase'],
-      reply:`You can register directly through the secure Supply Chain Canada portal — every tier links straight to it.\n\nPricing (+tax):\n• **Member** — $649 (reg. $799 after May 31)\n• **Non-Member** — $799 (reg. $999 after May 31)\n• **Student Affiliate** — $399\n\nEarly Bird closes May 31, 2026.\n\n[Register now ↗](${REGISTER})`,
+      reply:`You can register directly through the secure Supply Chain Canada portal — every tier links straight to it.\n\nPricing (+tax):\n• **Member** — $649 (reg. $799 after May 31)\n• **Non-Member** — $799 (reg. $999 after May 31)\n• **Student Affiliate** — $399\n\nEarly Bird closes May 31, 2026. Register before May 31 and save up to $200.\n\n[Register now ↗](${REGISTER})`,
       next:'date'
     },
     {
@@ -72,12 +72,12 @@
     },
     {
       keys:['attend','attendee','attendees','how many','people','crowd','room','audience','who attends'],
-      reply:`Expecting **450+ senior practitioners and executives** in attendance — procurement, logistics, operations, and supply chain leaders from across Western Canada's energy, government, retail, agri-food, education and tech sectors. The 2025 conference sold out two years running.`,
+      reply:`Expecting **300+ senior practitioners and executives** in attendance — procurement, logistics, operations, and supply chain leaders from across Western Canada's energy, government, retail, agri-food, education and tech sectors. The 2025 conference sold out two years running.`,
       next:'register'
     },
     {
       keys:['sponsor','sponsorship','partner','exhibit','booth','prospectus','tier'],
-      reply:`Three tiers — Title/Presenting, Platinum/Gold, and Silver/Bronze + à-la-carte. **AMCC** is confirmed as Premier Sponsor for 2026. 30+ sponsoring organizations in 2025.\n\nReach 450+ senior decision-makers with brand visibility, expo presence, thought-leadership platforms, and pre/post-event campaign integration.\n\nEmail **${SPONSOR}** for the prospectus.`,
+      reply:`**AMCC** is confirmed as Premier Sponsor for 2026. 30+ sponsoring organizations in 2025.\n\nReach 300+ senior practitioners and executives with brand visibility, expo presence, thought-leadership platforms, and pre/post-event campaign integration.\n\nEmail **${SPONSOR}** for the prospectus.`,
       next:'register'
     },
     {
@@ -92,7 +92,7 @@
     },
     {
       keys:['contact','email','phone','call','help','support','human','person'],
-      reply:`Talk to our team:\n• **General:** ${SUPPORT}\n• **Sponsorship & speaking:** ${SPONSOR}\n• **Phone:** 1-866-610-4089\n• **Office:** 115-17420 Stony Plain Rd NW, Edmonton, AB\n\nWe typically respond within one business day.`,
+      reply:`Talk to our team:\n• **General:** ${SUPPORT}\n• **Sponsorship & speaking:** ${SPONSOR}\n• **Phone:** 1-866-610-4089\n\nWe typically respond within one business day.`,
       next:'register'
     },
     {
@@ -112,17 +112,17 @@
     },
     {
       keys:['job','career','work','hire','hiring','employment','opportunity','opportunities','looking for work','find work','get hired','job search','resume','cv'],
-      reply:`Supply chain professionals are in high demand across Western Canada. The **West Futures Conference** is one of the fastest ways to accelerate your job search:\n\n• **450+ decision-makers** from energy, government, retail, logistics and tech — all in one room on October 2\n• The most senior procurement network west of Toronto\n• Past attendees have turned conference introductions into signed contracts and job offers within 90 days\n• **10 CPD credits** that strengthen your SCMP designation and CV\n\nConnections built in a day here can open doors that months of applications don't. Whether you're a new grad, a mid-career practitioner, or a senior leader in transition — this is the room to be in.\n\n[Grab your seat ↗](${REGISTER})`,
+      reply:`Supply chain professionals are in high demand across Western Canada. The **West Futures Conference** is one of the fastest ways to accelerate your job search:\n\n• **300+ senior practitioners and executives** from energy, government, retail, logistics and tech — all in one room on October 2\n• The most senior procurement network west of Toronto\n• Past attendees have turned conference introductions into signed contracts and job offers within 90 days\n• **10 CPD credits** that strengthen your SCMP designation and CV\n\nConnections built in a day here can open doors that months of applications don't. Whether you're a new grad, a mid-career practitioner, or a senior leader in transition — this is the room to be in.\n\n[Grab your seat ↗](${REGISTER})`,
       next:'register'
     },
     {
       keys:['network','networking','connect','connections','meet people','meet professionals','relationship'],
-      reply:`The Futures Conference is Western Canada's premier supply chain networking event.\n\n• **450+ practitioners and executives** — procurement, logistics, operations, government and tech\n• Structured networking breakfast and a **full evening reception** at River Cree\n• 30+ sponsor organizations — solution providers, consultancies and logistics companies actively looking to meet practitioners\n• Curated peer-table format at lunch — seated by sector so every conversation counts\n\nThe room is small enough to meet everyone. Past attendees consistently report their best regional supply chain connections came from a single Futures Conference day.\n\n[Register before May 31 →](${REGISTER})`,
+      reply:`The Futures Conference is Western Canada's premier supply chain networking event.\n\n• **300+ practitioners and executives** — procurement, logistics, operations, government and tech\n• Structured networking breakfast and a **full evening reception** at River Cree\n• 30+ sponsor organizations — solution providers, consultancies and logistics companies actively looking to meet practitioners\n• Curated peer-table format at lunch — seated by sector so every conversation counts\n\nThe room is small enough to meet everyone. Past attendees consistently report their best regional supply chain connections came from a single Futures Conference day.\n\n[Register before May 31 →](${REGISTER})`,
       next:'register'
     },
     {
       keys:['summar','summary','tldr','what is','tell me about','overview'],
-      reply:`**West Futures Conference 2026** — the flagship Western Canada conference of Supply Chain Canada — West.\n\n• **When:** Friday, October 2, 2026\n• **Where:** River Cree Resort, Edmonton (Enoch Cree Nation)\n• **Who:** 450+ procurement, logistics & operations leaders\n• **What:** 15+ speakers across 6 focus areas\n• **Credits:** 10 CPD credits per attendee\n• **From:** $399 Student · $649 Member · $799 Non-Member (Early Bird through May 31)`,
+      reply:`**West Futures Conference 2026** — the flagship Western Canada conference of Supply Chain Canada — West.\n\n• **When:** Friday, October 2, 2026\n• **Where:** River Cree Resort, Edmonton (Enoch Cree Nation)\n• **Who:** 300+ practitioners and executives\n• **What:** 15+ speakers across 6 focus areas\n• **Credits:** 10 CPD credits per attendee\n• **From:** $399 Student · $649 Member · $799 Non-Member (Early Bird through May 31)`,
       next:'register'
     },
   ];
@@ -156,7 +156,7 @@ I'd like approval to attend the **West Futures Conference 2026**, the flagship W
 Here's why I believe this is a high-ROI investment for the team:
 
 • **Direct intelligence** — 15+ speakers including Mark Parsons (ATB Chief Economist) on the Alberta economic outlook, plus sessions on AI in procurement, ESG/Tier-1 audit prep, and tariff response.
-• **The room** — 450+ senior procurement, logistics and operations leaders from across Western Canada in a single day. Peer benchmarking and supplier intros that typically take months to build.
+• **The room** — 300+ senior procurement, logistics and operations leaders from across Western Canada in a single day. Peer benchmarking and supplier intros that typically take months to build.
 • **10 CPD credits** — applicable to my SCMP designation logbook. Certificate within 5 business days post-event.
 • **Risk & resilience** — six focus areas covering tariff strategy, ESG/Scope-3 readiness, logistics corridors, and AI/automation — directly relevant to our 2026 procurement plan.
 • **Network ROI** — 30+ sponsor organizations and solution providers attending. I'll bring back a prioritised vendor shortlist for our open initiatives.
