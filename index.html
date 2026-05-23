@@ -135,8 +135,9 @@
   .lc-track-outer{overflow:hidden}
   .lc-track{display:flex;gap:48px;align-items:center;width:max-content;animation:lcScroll 40s linear infinite}
   .lc-track:hover{animation-play-state:paused}
-  .lc-track img{height:56px;max-width:160px;object-fit:contain;filter:grayscale(100%);opacity:.65;transition:filter .3s,opacity .3s;display:block}
-  .lc-track img:hover{filter:none;opacity:1}
+  .lc-logo{background:#fff;border-radius:10px;padding:10px 18px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line)}
+  .lc-track img{height:48px;max-width:140px;object-fit:contain;filter:grayscale(100%);opacity:.75;transition:filter .3s,opacity .3s;display:block}
+  .lc-logo:hover img{filter:none;opacity:1}
   @keyframes lcScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
   /* FINAL CTA */
@@ -411,11 +412,14 @@ SCCWest.mountChrome({active:'Home'});
       const logos = (data.logos || []).filter(f => /\.(png|jpg|jpeg|webp|svg)$/i.test(f));
       if(!logos.length){ section.style.display = 'none'; return; }
       const render = () => logos.forEach(f => {
+        const wrap = document.createElement('div');
+        wrap.className = 'lc-logo';
         const img = document.createElement('img');
         img.src = 'assets/sponsors/' + f;
         img.alt = f.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
         img.loading = 'lazy';
-        track.appendChild(img);
+        wrap.appendChild(img);
+        track.appendChild(wrap);
       });
       render(); render();
     })

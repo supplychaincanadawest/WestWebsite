@@ -179,6 +179,27 @@
   @media (max-width:980px){.speaker-grid{grid-template-columns:repeat(2,1fr)}}
   @media (max-width:560px){.speaker-grid{grid-template-columns:1fr 1fr}}
 
+  /* ── SPEAKER FLIP CARDS ──────────────────────────────────────── */
+  .speaker-flip{aspect-ratio:3/4;perspective:1200px;cursor:pointer;border-radius:16px}
+  .sf-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.4,0,.2,1);border-radius:16px}
+  .speaker-flip:hover .sf-inner,.speaker-flip.flipped .sf-inner{transform:rotateY(180deg)}
+  .sf-front,.sf-back{position:absolute;inset:0;backface-visibility:hidden;border-radius:16px;overflow:hidden}
+  .sf-front{background:#0B0B0E}
+  .sf-front img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+  .sf-front .tag{position:absolute;top:14px;left:14px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#fff;padding:4px 10px;border-radius:999px;background:var(--red);z-index:2}
+  .sf-front .flip-cue{position:absolute;bottom:80px;right:14px;font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65);background:rgba(0,0,0,.4);padding:4px 8px;border-radius:999px;white-space:nowrap;z-index:3}
+  .sf-front .info{position:absolute;left:0;right:0;bottom:0;padding:18px 20px;text-align:center;z-index:2;background:linear-gradient(180deg,transparent 0%,rgba(11,11,14,.92) 55%)}
+  .sf-front .name{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:17px;line-height:1.05;color:#fff}
+  .sf-front .role{margin-top:5px;font-family:var(--display);font-weight:600;font-size:11px;color:var(--red);letter-spacing:.06em;text-transform:uppercase}
+  .sf-front .org{margin-top:3px;font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.6);letter-spacing:.08em;text-transform:uppercase}
+  .sf-back{transform:rotateY(180deg);background:linear-gradient(160deg,#1A0507 0%,#0B0B0E 100%);border:1px solid rgba(237,28,36,.3);padding:22px 18px;display:flex;flex-direction:column;gap:6px}
+  .sf-back .name{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:15px;color:#fff;line-height:1.1}
+  .sf-back .role-org{color:var(--red);font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:10px;letter-spacing:.06em;margin-bottom:8px}
+  .sf-back .bio{color:rgba(255,255,255,.82);font-size:11.5px;line-height:1.6;flex:1;overflow-y:auto}
+  .sf-back .bio::-webkit-scrollbar{width:3px}
+  .sf-back .bio::-webkit-scrollbar-thumb{background:rgba(237,28,36,.4);border-radius:3px}
+  .sf-back .topic{font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:#F0B429;text-transform:uppercase;margin-top:auto;padding-top:8px;border-top:1px solid rgba(255,255,255,.12)}
+
   /* speaker modal */
   .modal-backdrop{position:fixed;inset:0;background:rgba(10,11,12,.7);backdrop-filter:blur(8px);z-index:100;display:none;align-items:center;justify-content:center;padding:24px}
   .modal-backdrop.open{display:flex;animation:fadeIn .25s ease}
@@ -199,7 +220,7 @@
   .agenda-section .lbl{font-family:var(--mono);color:var(--red);font-size:12px;letter-spacing:.2em;text-transform:uppercase}
   .agenda-section .sub{color:var(--muted);max-width:580px;margin:0 auto;line-height:1.6}
   .agenda-list{max-width:1100px;margin:0 auto;border-top:1px solid var(--line)}
-  .agenda-row{display:grid;grid-template-columns:120px 1fr 180px 130px;gap:24px;padding:22px 4px;border-bottom:1px solid var(--line);align-items:center;transition:background .2s}
+  .agenda-row{display:grid;grid-template-columns:120px 1fr 130px;gap:24px;padding:22px 4px;border-bottom:1px solid var(--line);align-items:center;transition:background .2s}
   .agenda-row:hover{background:var(--soft);padding-left:14px}
   .agenda-row .time{font-family:var(--display);font-weight:800;font-size:22px;color:var(--ink);letter-spacing:.005em}
   .agenda-row .ti h4{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:18px;line-height:1.1;color:var(--ink)}
@@ -242,7 +263,7 @@
   .venue-left p{color:var(--muted);font-size:16px;line-height:1.6}
   .venue-card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 16px 40px rgba(10,11,12,.05)}
   html.dark .venue-card{background:#15161A;border-color:rgba(255,255,255,.08)}
-  .venue-card .pic{aspect-ratio:16/9;background:url('https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1600&q=80') center/cover}
+  .venue-card .pic{aspect-ratio:16/9;background:url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1e/27/69/68/river-cree-resort-and.jpg?w=900&h=500&s=1') center/cover}
   .venue-card .body{padding:30px 28px}
   .venue-card .body h3{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:24px;line-height:1.05;color:var(--ink);margin-bottom:8px}
   .venue-card .body .addr{font-size:14px;color:var(--muted);line-height:1.5;margin-bottom:10px}
@@ -287,6 +308,8 @@
   .price-card li::before{content:"";width:14px;height:14px;background:var(--red);clip-path:polygon(28% 50%,40% 65%,72% 30%,80% 38%,40% 80%,20% 58%);flex-shrink:0;margin-top:3px}
   .price-card.featured li::before{background:#F0B429}
   .price-card .pill-btn{width:100%;justify-content:center}
+  body.prices-updated .price-card.featured::before{content:"Most Popular"}
+  body.prices-updated .price-card .strike{display:none}
 
   /* Group pricing strip */
   .group-strip{max-width:1180px;margin:24px auto 0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 28px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;box-shadow:0 10px 30px rgba(10,11,12,.04)}
@@ -872,9 +895,21 @@ document.querySelectorAll('[data-count]').forEach(c => ioCount.observe(c));
 
 /* ===== Speakers ===== */
 const speakers = [
-  {n:'Mark Parsons', initials:'MP', role:'Vice President and Chief Economist', org:'ATB Financial', tag:'Confirmed', live:true, bio:"Mark is ATB Financial's Chief Economist — the most-watched voice on the Alberta economy. He returns to West Futures to frame the macro outlook for procurement, capex and supply chain investment through 2027."},
-  {n:'Ian Gonzalez', initials:'IG', role:'Advisor', org:'SC&P Analytics', tag:'Confirmed', live:true, bio:"Ian leads supply chain analytics advisory at SC&P, helping organizations turn procurement data into measurable performance outcomes."},
-  {n:'Siobhan Chinnery', initials:'SC', role:'Principal', org:'Bee Grateful Management', tag:'Confirmed', live:true, bio:"Siobhan is a leadership and organizational-transformation consultant working with senior supply chain teams to rebuild culture for the AI era."},
+  {
+    n:'Mark Parsons', role:'VP & Chief Economist', org:'ATB Financial', topic:'Alberta Economic Outlook',
+    photo:'https://media.licdn.com/dms/image/v2/D5603AQHwS8GA2b-A5A/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1731294347629?e=1781136000&v=beta&t=LiabhqWr9ig-r5eamKyzOIACRpPA2tYnrK4a5VSf8mI',
+    bio:'Mark Parsons, CFA, serves as the VP and Chief Economist at ATB Financial, where he provides unparalleled strategic outlooks on the regional and national economy. With a rich background spanning the Department of Finance Canada and PwC, he brings over 20 years of expertise in macroeconomic forecasting, policy analysis, and strategic planning to the stage. Holding a Master\'s degree in Economics, Mark is a prominent industry voice who bridges the gap between global economic trends and their localized impact on the supply chain sector.'
+  },
+  {
+    n:'Ian Gonzalez', role:'Advisor & Educator', org:'Borouge International', topic:'AI & Data in Procurement',
+    photo:'https://media.licdn.com/dms/image/v2/D5603AQFrXMTNrU3x-g/profile-displayphoto-scale_400_400/B56Z2RcTS_GwAk-/0/1776261611242?e=1781136000&v=beta&t=OPSq6k4G4sKn7EQuqmMhdXTDtGPA8NVL0v7EGqBscmw',
+    bio:'Ian Gonzalez brings over 20 years of supply chain and analytics expertise to his role as an Advisor at Borouge International and a dedicated educator. A champion of data literacy and storytelling, he empowers supply chain professionals to translate complex data into actionable insights with clarity and a unique brand of humor. Holding an MBA and advanced credentials in business analytics, Ian is committed to advancing the analytical capabilities of the modern supply chain workforce.'
+  },
+  {
+    n:'Siobhan Chinnery', role:'Executive Coach & Speaker', org:'Bee Grateful Management', topic:'Leadership & Culture',
+    photo:'https://media.licdn.com/dms/image/v2/D5603AQFzwmU8Ox3Osg/profile-displayphoto-crop_800_800/B56Z0lwYzgKkAM-/0/1774454945357?e=1781136000&v=beta&t=scmEwbnabGOk9HedJO1ShzyOXoL-rJDRKS6yI4cQb_o',
+    bio:'Siobhan Chinnery is a Top 100 Most Influential Woman in Canadian Supply Chain, an Adjunct Instructor at SAIT, and the creator of the Bloom Through the Dirt™ leadership framework. With over 30 years of executive leadership — including her tenure as VP of Supply Chain at Finning Canada — she specialises in building adaptive, high-performing supply chains. Today, Siobhan is a sought-after speaker and executive coach dedicated to helping supply chain professionals transform industry pressures into purposeful, sustainable growth.'
+  },
   {placeholder:true, n:'More Speakers', sub:'Announcing Soon'},
   {placeholder:true, n:'Keynote Speaker', sub:'Announcing Soon'},
   {placeholder:true, n:'Executive Fireside', sub:'Announcing Soon'},
@@ -887,19 +922,16 @@ const ringsSVG = `<svg class="rings" viewBox="-50 -50 200 200" aria-hidden="true
 </svg>`;
 speakers.forEach(s => {
   const el = document.createElement('div');
-  el.className = 'speaker' + (s.submit ? ' submit' : '');
   if (s.submit){
+    el.className = 'speaker submit';
     el.innerHTML = `<div class="plus-big">+</div><h4>Speak at Futures 2026</h4><p>Have insight that should be on the main stage?</p><a href="mailto:thoang@supplychaincanada.com?subject=Speaking%20Proposal%20%E2%80%94%20Futures%202026">Submit a proposal</a>`;
   } else if (s.placeholder){
+    el.className = 'speaker';
     el.innerHTML = `${ringsSVG}<div class="plus">+</div><div class="tag tba">Coming Soon</div><div class="info"><div class="name">${s.n}</div><div class="role">${s.sub}</div></div>`;
   } else {
-    el.innerHTML = `${ringsSVG}<div class="initials">${s.initials}</div><div class="tag live"></div><div class="info"><div class="name">${s.n}</div><div class="role">${s.role}</div><div class="org">${s.org}</div></div>`;
-    el.addEventListener('click', () => {
-      document.getElementById('m-name').textContent = s.n;
-      document.getElementById('m-role').textContent = `${s.role} · ${s.org}`;
-      document.getElementById('m-bio').textContent = s.bio;
-      document.getElementById('modal').classList.add('open');
-    });
+    el.className = 'speaker-flip';
+    el.innerHTML = `<div class="sf-inner"><div class="sf-front"><img src="${s.photo}" alt="${s.n}" loading="lazy"/><div class="tag">Confirmed</div><div class="flip-cue">▸ Bio</div><div class="info"><div class="name">${s.n}</div><div class="role">${s.role}</div><div class="org">${s.org}</div></div></div><div class="sf-back"><div class="name">${s.n}</div><div class="role-org">${s.role} · ${s.org}</div><p class="bio">${s.bio}</p><div class="topic">↗ ${s.topic}</div></div></div>`;
+    el.addEventListener('click', () => el.classList.toggle('flipped'));
   }
   sg.appendChild(el);
 });
@@ -921,7 +953,7 @@ const at = document.getElementById('agendaTable');
 agenda.forEach(a => {
   const r = document.createElement('div');
   r.className = 'agenda-row' + (a.tba ? ' tba' : '');
-  r.innerHTML = `<div class="time">${a.time}</div><div class="ti"><h4>${a.title}</h4><p>${a.desc}</p></div><div class="speaker"><strong>${a.speaker.n}</strong>${a.speaker.d?'<span>'+a.speaker.d+'</span>':''}</div><div class="tag">${a.tag}</div>`;
+  r.innerHTML = `<div class="time">${a.time}</div><div class="ti"><h4>${a.title}</h4><p>${a.desc}</p></div><div class="tag">${a.tag}</div>`;
   at.appendChild(r);
 });
 
@@ -950,6 +982,20 @@ fl.addEventListener('click', e => {
   if(!q) return;
   q.parentElement.classList.toggle('open');
 });
+
+/* ===== Auto-pricing: switch to regular rates after June 1 2026 ===== */
+(function(){
+  var cutoff = new Date('2026-06-01T00:00:00-06:00');
+  if(new Date() < cutoff) return;
+  document.body.classList.add('prices-updated');
+  var h2 = document.querySelector('.pricing-section h2');
+  if(h2) h2.textContent = 'Conference Pricing';
+  var sub = document.querySelector('.pricing-section .sub');
+  if(sub) sub.textContent = 'Secure your spot at the West Futures Conference 2026.';
+  var cards = document.querySelectorAll('.price-card');
+  if(cards[1]){var p=cards[1].querySelector('.price');if(p)p.innerHTML='$799<small> +tax</small>';}
+  if(cards[2]){var p=cards[2].querySelector('.price');if(p)p.innerHTML='$999<small> +tax</small>';}
+})();
 
 /* ===== Convince-my-boss button → open bot ===== */
 document.getElementById('convinceBtn').addEventListener('click', () => {
