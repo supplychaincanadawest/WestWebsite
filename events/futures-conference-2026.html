@@ -575,6 +575,19 @@
   </div>
 </section>
 
+<!-- PAST CONFERENCE REPRESENTATION -->
+<section style="background:var(--soft);padding:80px 0;border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="reveal" style="margin-bottom:40px;text-align:center">
+      <span style="font-family:var(--mono);color:var(--red);font-size:12px;letter-spacing:.2em;text-transform:uppercase">Past Representation</span>
+      <h2 style="font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(30px,3.5vw,48px);line-height:.95;color:var(--ink);margin:14px 0 8px;letter-spacing:-.005em">Organizations That Have<br/>Sent Delegates</h2>
+      <p style="color:var(--muted);font-size:15px;max-width:540px;margin:0 auto">Companies and government bodies represented at past West Futures Conferences.</p>
+    </div>
+    <div id="confSponsorGrid" class="reveal" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:1100px;margin:0 auto"></div>
+    <p id="confSponsorEmpty" style="text-align:center;color:var(--muted);font-size:14px;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;display:none">Sponsor logos loading — check back soon.</p>
+  </div>
+</section>
+
 <!-- SPONSORS (DARK) -->
 <section class="sponsors-section" id="sponsors">
   <div class="wrap">
@@ -766,6 +779,31 @@
 <script src="../assets/lead-form.js?v=2" defer></script>
 <script>
 SCCWest.mountChrome({active:'Events'});
+
+/* ===== Past conference sponsors grid ===== */
+(function(){
+  const grid = document.getElementById('confSponsorGrid');
+  const empty = document.getElementById('confSponsorEmpty');
+  if(!grid) return;
+  fetch('../assets/sponsors/manifest.json?v=' + Date.now())
+    .then(r => r.json())
+    .then(data => {
+      const logos = (data.logos || []).filter(f => /\.(png|jpg|jpeg|webp|svg)$/i.test(f));
+      if(!logos.length){ empty && (empty.style.display = 'block'); return; }
+      logos.forEach(f => {
+        const wrap = document.createElement('div');
+        wrap.style.cssText = 'background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 24px;display:flex;align-items:center;justify-content:center;min-width:140px;max-width:200px;height:72px';
+        const img = document.createElement('img');
+        img.src = '../assets/sponsors/' + f;
+        img.alt = f.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
+        img.loading = 'lazy';
+        img.style.cssText = 'max-height:44px;max-width:160px;object-fit:contain;display:block';
+        wrap.appendChild(img);
+        grid.appendChild(wrap);
+      });
+    })
+    .catch(() => { empty && (empty.style.display = 'block'); });
+})();
 
 /* ===== Stars ===== */
 const starsEl = document.getElementById('stars');

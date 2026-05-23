@@ -92,7 +92,7 @@
     },
     {
       keys:['contact','email','phone','call','help','support','human','person'],
-      reply:`Talk to our team:\n• **General:** ${SUPPORT}\n• **Sponsorship & speaking:** ${SPONSOR}\n• **Phone:** 1-866-610-4089\n• **Office:** 115-17420 Stony Plain Rd NW, Edmonton, AB\n\nWe typically respond within one business day.`,
+      reply:`Talk to our team:\n• **General:** ${SUPPORT}\n• **Sponsorship & speaking:** ${SPONSOR}\n• **Phone:** 1-866-610-4089\n\nWe typically respond within one business day.`,
       next:'register'
     },
     {
