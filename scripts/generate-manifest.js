@@ -1,27 +1,20 @@
 #!/usr/bin/env node
 /**
- * Auto-generates assets/sponsors/manifest.json from all image files
- * in assets/sponsors/. Runs automatically on every Vercel build.
- * Just drop logo files into assets/sponsors/ and push — no other changes needed.
+ * Auto-generates manifest.json in both logo folders on every Vercel build.
+ * Drop files into assets/sponsors/ or assets/Company Representation/ and push.
  */
 const fs   = require('fs');
 const path = require('path');
 
-const sponsorDir = path.join(__dirname, '..', 'assets', 'sponsors');
-
-if (!fs.existsSync(sponsorDir)) {
-  fs.mkdirSync(sponsorDir, { recursive: true });
+function buildManifest(dir, label) {
+  if (!fs.existsSync(dir)) { fs.mkdirSync(dir, { recursive: true }); return; }
+  const logos = fs.readdirSync(dir)
+    .filter(f => /\.(png|jpg|jpeg|webp|svg)$/i.test(f))
+    .sort();
+  fs.writeFileSync(path.join(dir, 'manifest.json'), JSON.stringify({ logos }, null, 2) + '\n');
+  console.log(`✓ ${label} manifest: ${logos.length} logo(s)`);
+  if (logos.length) console.log(' ', logos.join(', '));
 }
 
-const logos = fs.readdirSync(sponsorDir)
-  .filter(f => /\.(png|jpg|jpeg|webp|svg)$/i.test(f))
-  .sort();
-
-const manifest = { logos };
-fs.writeFileSync(
-  path.join(sponsorDir, 'manifest.json'),
-  JSON.stringify(manifest, null, 2) + '\n'
-);
-
-console.log(`✓ Sponsor manifest generated: ${logos.length} logo(s)`);
-if (logos.length) console.log(' ', logos.join(', '));
+buildManifest(path.join(__dirname, '..', 'assets', 'sponsors'), 'Sponsors');
+buildManifest(path.join(__dirname, '..', 'assets', 'Company Representation'), 'Company Representation');
