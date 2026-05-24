@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="West Futures Conference 2026 · Supply Chain Conference Edmonton" />
 <meta name="twitter:description" content="Premier supply chain conference in Alberta. 300+ practitioners and executives. October 2, 2026 at River Cree Resort, Edmonton." />
-<link rel="icon" type="image/png" href="../assets/scc-west-logo.png" />
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" /><link rel="icon" type="image/png" href="../assets/scc-west-logo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -1053,15 +1053,31 @@ fl.addEventListener('click', e => {
   if(cards[2]){var p=cards[2].querySelector('.price');if(p)p.innerHTML='$999<small> +tax</small>';}
 })();
 
-/* ===== Convince-my-boss button → open bot ===== */
+/* ===== Convince-my-boss button → mailto with pre-composed email ===== */
 document.getElementById('convinceBtn').addEventListener('click', () => {
-  if (window.SCCBot){
-    window.SCCBot.open();
-    setTimeout(() => {
-      const chip = document.querySelector('.sccbot-chips button.primary');
-      if(chip) chip.click();
-    }, 350);
-  }
+  const subject = 'Approval Request — Attending the 2026 West Futures Conference (Oct 2, Edmonton)';
+  const body = [
+    'Hi [MANAGER’S NAME],',
+    '',
+    'I’d like approval to attend the West Futures Conference 2026 — the flagship Western Canada supply chain conference hosted by Supply Chain Canada — West on Friday, October 2, 2026 at River Cree Resort in Edmonton.',
+    '',
+    'Here’s why I believe this is a strong investment for our team:',
+    '',
+    '• Direct intelligence — 15+ speakers including Mark Parsons (ATB Chief Economist) on the Alberta economic outlook, plus sessions on AI in procurement, ESG/Tier-1 audit prep, and tariff response.',
+    '• The room — 300+ senior procurement, logistics and operations leaders from Western Canada in a single day. Peer benchmarking and supplier introductions that typically take months to build.',
+    '• 10 CPD credits — applicable to my SCMP designation logbook. Certificate issued within 5 business days post-event.',
+    '• Network ROI — 30+ sponsor organizations and solution providers actively looking to meet practitioners.',
+    '• Cost-controlled — Early Bird member price is $649 + tax through May 31 (regular $799). Conference hotel rate is $189/night. Air Canada offers 15% off flights to YEG.',
+    '',
+    'Total estimated cost: ~$1,100 (registration + 1 night + travel). Full agenda at sccwest.ca.',
+    '',
+    'Would you approve me registering before Early Bird closes on May 31?',
+    '',
+    'Thanks,',
+    '[YOUR NAME]',
+    '[YOUR TITLE]',
+  ].join('\n');
+  window.location.href = 'mailto:?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 });
 </script>
 </body>

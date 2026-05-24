@@ -206,9 +206,10 @@ window.SCCWest = (function(){
       const d = Math.floor(t/86400000);
       const h = Math.floor(t/3600000)%24;
       const m = Math.floor(t/60000)%60;
-      timerEl.innerHTML = `${d}<small>d</small> ${String(h).padStart(2,'0')}<small>h</small> ${String(m).padStart(2,'0')}<small>m</small>`;
+      const s = Math.floor(t/1000)%60;
+      timerEl.innerHTML = `${d}<small>d</small> ${String(h).padStart(2,'0')}<small>h</small> ${String(m).padStart(2,'0')}<small>m</small> ${String(s).padStart(2,'0')}<small>s</small>`;
     }
-    tick(); setInterval(tick, 60000);
+    tick(); setInterval(tick, 1000);
 
     // Theme toggle — apply saved preference before paint to avoid flash
     const tt = document.getElementById('themeToggle');

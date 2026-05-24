@@ -18,7 +18,7 @@
 <meta property="og:description" content="The Western Canada institute of Supply Chain Canada. Serving 2,500+ supply chain professionals across Alberta and BC." />
 <meta property="og:image" content="https://www.supplychainprograms.ca/assets/og-card.png" />
 <meta name="twitter:card" content="summary_large_image" />
-<link rel="icon" type="image/png" href="assets/scc-west-logo.png" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" /><link rel="icon" type="image/png" href="assets/scc-west-logo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -80,6 +80,11 @@
     .hero p.sub{font-size:16px}
     .mandate,.leaders,.contact{padding:60px 0}
   }
+  /* Board of Directors image */
+  .bod-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:40px;border-radius:16px}
+  .bod-wrap img{display:block;height:auto;border-radius:16px;box-shadow:0 8px 32px rgba(10,11,12,.1)}
+  @media (min-width:881px){.bod-wrap img{width:100%;max-width:1100px;margin:0 auto}}
+  @media (max-width:880px){.bod-wrap img{min-width:760px;width:760px}}
 </style>
     <!-- Vercel Web Analytics -->
     <script defer src="/_vercel/insights/script.js"></script>
@@ -123,15 +128,8 @@
       <div><span class="num">02 / Leadership</span><h2 class="section-title">A board<br/>of peers.</h2></div>
       <p class="lead">SCC West is governed by a board of supply chain leaders elected from across the region. A small executive team based in Edmonton supports day-to-day operations.</p>
     </div>
-    <div class="ld-grid reveal">
-      <div class="ld"><div class="av">PR</div><div><div class="nm">Board Chair</div><div class="rl">Senior procurement leader · Calgary</div></div><div class="ch">Two-year term</div></div>
-      <div class="ld"><div class="av">VC</div><div><div class="nm">Vice Chair</div><div class="rl">Director, Supply Chain · Vancouver</div></div><div class="ch">Two-year term</div></div>
-      <div class="ld"><div class="av">TR</div><div><div class="nm">Treasurer</div><div class="rl">CPA, finance lead · Edmonton</div></div><div class="ch">Two-year term</div></div>
-      <div class="ld"><div class="av">SC</div><div><div class="nm">Secretary</div><div class="rl">Operations director · Victoria</div></div><div class="ch">Two-year term</div></div>
-      <div class="ld"><div class="av">AB</div><div><div class="nm">Alberta Director</div><div class="rl">Chapter representative</div></div><div class="ch">AB Region</div></div>
-      <div class="ld"><div class="av">BC</div><div><div class="nm">BC Director</div><div class="rl">Chapter representative</div></div><div class="ch">BC Region</div></div>
-      <div class="ld"><div class="av">SA</div><div><div class="nm">Student Advisor</div><div class="rl">Academic chapter liaison</div></div><div class="ch">Universities</div></div>
-      <div class="ld"><div class="av">ED</div><div><div class="nm">Executive Director</div><div class="rl">Staff lead · Edmonton office</div></div><div class="ch">Operations</div></div>
+    <div class="bod-wrap reveal">
+      <img src="assets/Board of Directors - SCC West.png" alt="SCC West Board of Directors" loading="lazy" />
     </div>
   </div>
 </section>

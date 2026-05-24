@@ -125,6 +125,41 @@
       reply:`**West Futures Conference 2026** — the flagship Western Canada conference of Supply Chain Canada — West.\n\n• **When:** Friday, October 2, 2026\n• **Where:** River Cree Resort, Edmonton (Enoch Cree Nation)\n• **Who:** 300+ practitioners and executives\n• **What:** 15+ speakers across 6 focus areas\n• **Credits:** 10 CPD credits per attendee\n• **From:** $399 Student · $649 Member · $799 Non-Member (Early Bird through May 31)`,
       next:'register'
     },
+    {
+      keys:['tariff','tariffs','trade','trade war','us tariff','customs','duty','duties','import','export'],
+      reply:`Trade disruption and tariff strategy are among the hottest topics in Canadian supply chain right now.\n\nThe **West Futures Conference 2026** (Oct 2, Edmonton) features expert sessions on exactly this — including how Western Canada's energy, agri-food and logistics sectors are responding to shifting trade policy.\n\n300+ senior practitioners in one room = the fastest way to benchmark how peers are adapting.\n\n[Register before May 31 →](${REGISTER})`,
+      next:'register'
+    },
+    {
+      keys:['ai','artificial intelligence','automation','machine learning','data','analytics','digital','technology','tech'],
+      reply:`AI and data analytics are reshaping every part of supply chain — procurement, demand forecasting, logistics routing and supplier risk.\n\nIan Gonzalez (Advisor, SC&P Analytics) leads a dedicated session on **AI in Procurement** at West Futures 2026, Oct 2 in Edmonton. His sessions are known for translating technical capability into practical supply chain applications — no fluff.\n\n[Reserve your seat →](${REGISTER})`,
+      next:'agenda'
+    },
+    {
+      keys:['esg','sustainability','scope 3','greenhouse','carbon','climate','green','environment'],
+      reply:`ESG compliance and Scope-3 emissions reporting are now procurement responsibilities at most enterprise organizations.\n\nWest Futures 2026 includes a dedicated focus area on **Sustainability & Transparency** — covering Tier-1 audit readiness, supplier scorecards, and what Western Canada's energy sector is doing to meet investor and regulatory expectations.\n\n[Join 300+ supply chain leaders Oct 2 →](${REGISTER})`,
+      next:'register'
+    },
+    {
+      keys:['talent','workforce','hiring','staff','retention','culture','hr','people','leadership','professional development','upskill','training'],
+      reply:`Talent and the Future of the Profession is one of the six focus areas at **West Futures 2026**.\n\nSiobhan Chinnery — Top 100 Most Influential Woman in Canadian Supply Chain — leads the leadership and culture track. Her Bloom Through the Dirt™ framework has helped supply chain leaders at some of Canada's largest organizations build adaptive, high-performing teams.\n\nThe conference also awards **10 CPD credits** — directly applicable to your SCMP designation.\n\n[Register before May 31 →](${REGISTER})`,
+      next:'register'
+    },
+    {
+      keys:['procurement','purchasing','sourcing','category','strategic sourcing','p2p','procure-to-pay'],
+      reply:`Supply Chain Canada — West is the professional home for procurement practitioners in Alberta and BC.\n\nAt **West Futures 2026** (Oct 2, River Cree Resort, Edmonton):\n• Sessions on AI-assisted sourcing, tariff response, ESG/supplier compliance, and category management\n• 300+ procurement leaders from energy, government, retail, agri-food and logistics\n• 10 CPD credits for your SCMP logbook\n\n[Early Bird open until May 31 →](${REGISTER})`,
+      next:'register'
+    },
+    {
+      keys:['logistics','transportation','freight','shipping','warehouse','last mile','3pl','fourth party','corridor','rail','trucking'],
+      reply:`Transportation, Logistics & Infrastructure is a dedicated focus area at **West Futures 2026** (Oct 2, Edmonton).\n\nWith trade route disruptions, port congestion and the Western Canada corridor in flux, this track covers where freight is moving, what's slowing it down, and how leading operations leaders are building resilient last-mile networks.\n\n[Join the conversation Oct 2 →](${REGISTER})`,
+      next:'register'
+    },
+    {
+      keys:['western canada','alberta','bc','british columbia','edmonton','calgary','vancouver','prairie','west'],
+      reply:`Supply Chain Canada — West is the regional institute serving **Alberta and British Columbia** — 2,500+ supply chain professionals across the two provinces.\n\nThe **West Futures Conference** (Oct 2, Edmonton) is the flagship gathering of Western Canada's supply chain community — procurement, logistics, energy, government, and tech leaders under one roof.\n\nMembership is open to AB and BC professionals. [Learn more →](${MEMBERSHIP})`,
+      next:'register'
+    },
   ];
 
   const NEXT_STEPS = {
@@ -136,7 +171,7 @@
     support: `**Next step →** Email **${SUPPORT}** — we reply within one business day.`,
   };
 
-  const FALLBACK = `I couldn't find a precise match for that — try one of the quick actions below, or email **${SUPPORT}** and our team will help directly. You can also ask about the speakers, agenda, venue, pricing, CPD credits, or sponsorship.`;
+  const FALLBACK = `Good question. The topics supply chain professionals ask about most — AI, tariffs, ESG, logistics, talent, career growth — are all on the agenda at **West Futures Conference 2026** on October 2 in Edmonton.\n\n300+ Western Canada supply chain leaders will be in the room. Whether you're looking to upskill, find your next role, benchmark with peers, or stay ahead of the curve — this is where the conversation happens.\n\n[See what's on the agenda →](${REGISTER})\n\nOr email **${SUPPORT}** — we'll point you in the right direction.`;
 
   // ---------- Page-aware summary ----------
   function pageSummary(){
