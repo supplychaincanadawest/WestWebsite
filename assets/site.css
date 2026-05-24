@@ -67,7 +67,7 @@ h3{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-sp
 .pill-btn.ghost-light{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.45);backdrop-filter:blur(10px)}
 .pill-btn.ghost-light:hover{background:rgba(255,255,255,.22);border-color:#fff;transform:translateY(-2px)}
 
-.pill-btn.solid-light{background:#fff;color:var(--ink);border-color:#fff}
+.pill-btn.solid-light{background:#fff;color:#0A0B0C;border-color:#fff}
 .pill-btn.solid-light:hover{background:var(--gold);border-color:var(--gold);transform:translateY(-2px)}
 
 .btn-dark{background:var(--ink);color:#fff;border:1.5px solid var(--ink)}
@@ -113,9 +113,9 @@ h3{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-sp
 .brand:hover{opacity:.88}
 .nav.on-dark .brand{color:#fff}
 .brand-mark{
-  width:64px;height:64px;border-radius:50%;
+  width:72px;height:72px;border-radius:50%;overflow:hidden;
   background:transparent;display:grid;place-items:center;
-  flex-shrink:0;padding:6px;
+  flex-shrink:0;padding:0;
   box-shadow:0 4px 14px rgba(237,28,36,.35);
   transition:box-shadow .25s,transform .25s;
 }
@@ -194,10 +194,10 @@ html.dark .theme-toggle .sun{display:block}
   .nav-inner{padding:10px 16px;gap:12px}
   .brand .lock .l1{font-size:15px}
   .brand .lock .l2{font-size:9px;letter-spacing:.14em}
-  .brand-mark{width:44px;height:44px;padding:6px}
+  .brand-mark{width:48px;height:48px;padding:0}
 }
 @media (max-width:520px){
-  .brand-mark{width:40px;height:40px;padding:5px}
+  .brand-mark{width:42px;height:42px;padding:0}
   .brand .lock .l1{font-size:14px}
   .brand .lock .l2{display:none}
 }
