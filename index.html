@@ -136,6 +136,16 @@
   .lc-track img{height:48px;max-width:140px;object-fit:contain;filter:grayscale(100%);opacity:.75;transition:filter .3s,opacity .3s;display:block}
   .lc-logo:hover img{filter:none;opacity:1}
   @keyframes lcScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  /* Company Rep carousel — subdued, differentiated from paid sponsors */
+  .cr-carousel{background:var(--white);padding:36px 0;border-bottom:1px solid var(--line)}
+  .crc-head{text-align:center;margin-bottom:18px}
+  .crc-lbl{font-family:var(--mono);font-size:9.5px;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;opacity:.7}
+  .crc-outer{overflow:hidden}
+  .crc-track{display:flex;gap:20px;align-items:center;width:max-content;animation:lcScroll 110s linear infinite}
+  .crc-track:hover{animation-play-state:paused}
+  .crc-logo{background:var(--soft);border-radius:8px;padding:7px 13px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);height:44px;min-width:80px}
+  .crc-logo img{height:26px;max-width:96px;object-fit:contain;filter:grayscale(100%);opacity:.45;transition:filter .3s,opacity .3s;display:block}
+  .crc-logo:hover img{filter:grayscale(0%);opacity:.8}
 
   /* FINAL CTA */
   .final{position:relative;padding:140px 0;text-align:center;overflow:hidden;background:linear-gradient(135deg,#ED1C24 0%,#C41019 50%,#F47A20 100%);color:#fff}
@@ -353,6 +363,16 @@
   </div>
 </section>
 
+<!-- COMPANY REPRESENTATION CAROUSEL -->
+<section class="cr-carousel" id="crCarousel">
+  <div class="wrap crc-head">
+    <span class="crc-lbl">Organizations whose delegates have attended West Futures Conference</span>
+  </div>
+  <div class="crc-outer">
+    <div class="crc-track" id="crTrack"></div>
+  </div>
+</section>
+
 <!-- FINAL CTA -->
 <section class="final">
   <div class="wrap">
@@ -413,6 +433,31 @@ SCCWest.mountChrome({active:'Home'});
         wrap.className = 'lc-logo';
         const img = document.createElement('img');
         img.src = 'assets/sponsors/' + f;
+        img.alt = f.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
+        img.loading = 'lazy';
+        wrap.appendChild(img);
+        track.appendChild(wrap);
+      });
+      render(); render();
+    })
+    .catch(() => { section.style.display = 'none'; });
+})();
+
+/* ===== Company Representation carousel ===== */
+(function(){
+  const track = document.getElementById('crTrack');
+  const section = document.getElementById('crCarousel');
+  if(!track || !section) return;
+  fetch('assets/Company Representation/manifest.json?v=' + Date.now())
+    .then(r => r.json())
+    .then(data => {
+      const logos = (data.logos || []).filter(f => /\.(png|jpg|jpeg|webp|svg)$/i.test(f));
+      if(!logos.length){ section.style.display = 'none'; return; }
+      const render = () => logos.forEach(f => {
+        const wrap = document.createElement('div');
+        wrap.className = 'crc-logo';
+        const img = document.createElement('img');
+        img.src = 'assets/Company Representation/' + encodeURIComponent(f);
         img.alt = f.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
         img.loading = 'lazy';
         wrap.appendChild(img);
