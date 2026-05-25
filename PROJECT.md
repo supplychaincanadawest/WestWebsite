@@ -129,7 +129,7 @@ The primary domain is **supplychainprograms.ca**, registered with a domain regis
 supplychainprograms.ca          ← primary (Vercel CNAME)
 sccwest.ca                      ← redirects to supplychainprograms.ca
 supplychainwest.ca              ← redirects to supplychainprograms.ca
-[any other registered variants] ← redirects to supplychainprograms.ca
+supplychainalberta.ca           ← redirects to supplychainprograms.ca
 ```
 
 Domain forwarding is configured at the registrar level (HTTP 301 redirects), so visitors reaching any variant URL land on the canonical domain. This protects brand consistency and consolidates SEO authority to one domain.
