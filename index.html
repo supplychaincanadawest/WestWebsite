@@ -38,7 +38,7 @@
 
 <style>
   /* HERO (white) */
-  .hero{position:relative;padding:60px 0 100px;overflow:hidden;background:var(--white);text-align:center}
+  .hero{position:relative;padding:calc(var(--topbar-h,38px) + 110px) 0 100px;overflow:hidden;background:var(--white);text-align:center}
   .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;background:#FFF1F1;color:var(--red);border:1px solid #FFD4D6;padding:7px 14px;border-radius:999px;font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:.14em;margin-bottom:28px}
   .hero-eyebrow .d{width:6px;height:6px;border-radius:50%;background:var(--red);animation:pulse 2s infinite}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(237,28,36,.5)}70%{box-shadow:0 0 0 8px rgba(237,28,36,0)}}
@@ -129,16 +129,22 @@
   @media (max-width:520px){.t-card{flex:0 0 270px}}
 
   /* SPONSOR LOGO CAROUSEL */
-  .logo-carousel{background:var(--soft);padding:56px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .lc-head{text-align:center;margin-bottom:32px}
-  .lc-lbl{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.22em;text-transform:uppercase}
+  /* SPONSOR LOGO CAROUSEL — primary, full colour, prominent */
+  .logo-carousel{background:var(--soft);padding:64px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .lc-head{text-align:center;margin-bottom:40px}
+  .lc-lbl{font-family:var(--display);font-weight:700;font-size:16px;color:var(--ink);letter-spacing:.04em;text-transform:uppercase}
   .lc-track-outer{overflow:hidden}
   .lc-track{display:flex;gap:48px;align-items:center;width:max-content;animation:lcScroll 40s linear infinite}
   .lc-track:hover{animation-play-state:paused}
-  .lc-logo{background:#fff;border-radius:10px;padding:14px 24px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line)}
-  .lc-track img{height:72px;max-width:200px;object-fit:contain;filter:grayscale(100%);opacity:.75;transition:filter .3s,opacity .3s;display:block}
-  .lc-logo:hover img{filter:none;opacity:1}
+  .lc-logo{background:#fff;border-radius:12px;padding:18px 28px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);box-shadow:0 2px 8px rgba(10,11,12,.04)}
+  .lc-track img{height:88px;max-width:220px;object-fit:contain;display:block}
   @keyframes lcScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  /* PAST PARTNERS CAROUSEL — subdued, smaller, differentiated */
+  #pastPartnersCarousel{padding:44px 0}
+  #pastPartnersCarousel .lc-head{margin-bottom:24px}
+  #pastPartnersCarousel .lc-lbl{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.22em;font-weight:400}
+  #pastPartnersCarousel .lc-logo{padding:10px 18px;box-shadow:none}
+  #pastPartnersCarousel .lc-track img{height:52px;max-width:150px}
   /* Company Rep carousel — subdued, differentiated from paid sponsors */
   .cr-carousel{background:var(--white);padding:36px 0;border-bottom:1px solid var(--line)}
   .crc-head{text-align:center;margin-bottom:18px}
@@ -160,7 +166,7 @@
 
   /* ── TABLET (768px – 980px) ─────────────────────────────────── */
   @media (max-width:768px){
-    .hero{padding:40px 0 70px}
+    .hero{padding:calc(var(--topbar-h,38px) + 80px) 0 70px}
     .hero h1{font-size:clamp(44px,12vw,80px)}
     .hero-stats{grid-template-columns:repeat(2,1fr);margin-top:48px}
     .hero-stats > div:nth-child(2){border-right:0}
@@ -359,7 +365,8 @@
 <!-- SPONSOR LOGO CAROUSEL -->
 <section class="logo-carousel" id="sponsorCarousel">
   <div class="wrap lc-head reveal">
-    <span class="lc-lbl">Thank you to our West Futures 2026 Conference Sponsors</span>
+    <p style="font-family:var(--mono);font-size:11px;color:var(--red);letter-spacing:.22em;text-transform:uppercase;margin:0 0 10px">2026 Conference</p>
+    <span class="lc-lbl">Thank You to Our West Futures Sponsors</span>
   </div>
   <div class="lc-track-outer">
     <div class="lc-track" id="sponsorTrack"></div>
@@ -428,19 +435,28 @@ SCCWest.mountChrome({active:'Home'});
   const track = document.getElementById('sponsorTrack');
   const section = document.getElementById('sponsorCarousel');
   if(!track || !section) return;
-  fetch('assets/sponsors/manifest.json?v=' + Date.now())
-    .then(r => r.json())
-    .then(data => {
+  Promise.all([
+    fetch('assets/sponsors/manifest.json?v=' + Date.now()).then(r => r.json()),
+    fetch('assets/sponsors/links.json?v=' + Date.now()).then(r => r.json()).catch(() => ({}))
+  ]).then(([data, links]) => {
       const logos = (data.logos || []).filter(f => /\.(png|jpg|jpeg|webp|svg)$/i.test(f));
       if(!logos.length){ section.style.display = 'none'; return; }
       const render = () => logos.forEach(f => {
+        const href = links[f];
         const wrap = document.createElement('div');
         wrap.className = 'lc-logo';
         const img = document.createElement('img');
-        img.src = 'assets/sponsors/' + f;
+        img.src = 'assets/sponsors/' + encodeURIComponent(f);
         img.alt = f.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
         img.loading = 'lazy';
-        wrap.appendChild(img);
+        if(href && href !== '#'){
+          const a = document.createElement('a');
+          a.href = href; a.target = '_blank'; a.rel = 'noopener';
+          a.style.display = 'flex'; a.style.alignItems = 'center';
+          a.appendChild(img); wrap.appendChild(a);
+        } else {
+          wrap.appendChild(img);
+        }
         track.appendChild(wrap);
       });
       render(); render();
