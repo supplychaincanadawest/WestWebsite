@@ -377,7 +377,7 @@
 <section class="final">
   <div class="wrap">
     <h2>Be in the room.<br/><span class="gold">Western Canada,</span><br/>October 2.</h2>
-    <p>Register before May 31 and save up to $200.</p>
+    <p>October 2, 2026 · River Cree Resort · Edmonton</p>
     <div class="hero-cta" style="margin-top:0;justify-content:center">
       <a href="events/futures-conference-2026.html" class="pill-btn ghost-light">Conference Site</a>
       <a href="events/futures-conference-2026.html#recap" class="pill-btn ghost-light">▶ Watch the Recap</a>
@@ -445,21 +445,21 @@ SCCWest.mountChrome({active:'Home'});
     .catch(() => { section.style.display = 'none'; });
 })();
 
-/* ===== Company Representation carousel ===== */
+/* ===== Past Partners carousel ===== */
 (function(){
-  const track = document.getElementById('crTrack');
-  const section = document.getElementById('crCarousel');
+  const track = document.getElementById('pastPartnersTrack');
+  const section = document.getElementById('pastPartnersCarousel');
   if(!track || !section) return;
-  fetch('assets/Company Representation/manifest.json?v=' + Date.now())
+  fetch('assets/past-partners/manifest.json?v=' + Date.now())
     .then(r => r.json())
     .then(data => {
-      const logos = (data.logos || []).filter(f => /\.(png|jpg|jpeg|webp|svg)$/i.test(f));
+      const logos = (data.logos || []).filter(f => /\.(png|jpg|jpeg|webp|svg|jfif)$/i.test(f));
       if(!logos.length){ section.style.display = 'none'; return; }
       const render = () => logos.forEach(f => {
         const wrap = document.createElement('div');
-        wrap.className = 'crc-logo';
+        wrap.className = 'lc-logo';
         const img = document.createElement('img');
-        img.src = 'assets/Company Representation/' + encodeURIComponent(f);
+        img.src = 'assets/past-partners/' + encodeURIComponent(f);
         img.alt = f.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
         img.loading = 'lazy';
         wrap.appendChild(img);
