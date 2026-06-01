@@ -1,98 +1,129 @@
 {
-    "buildCommand": "node scripts/generate-manifest.js",
-        "outputDirectory": ".",
-    "cleanUrls": true,
-    "trailingSlash": false,
-    "headers": [
-          {
-                  "source": "/(.*)\\.html",
-                  "headers": [
-                            { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" },
-                            { "key": "X-Content-Type-Options", "value": "nosniff" },
-                            { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-                            { "key": "X-XSS-Protection", "value": "1; mode=block" },
-                            { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-                            { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" }
-                  ]
-          },
-          {
-                  "source": "/",
-                  "headers": [
-                            { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" },
-                            { "key": "X-Content-Type-Options", "value": "nosniff" },
-                            { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-                            { "key": "X-XSS-Protection", "value": "1; mode=block" },
-                            { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-                            { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" }
-                  ]
-          },
-          {
-                  "source": "/assets/(.*)\\.css",
-                  "headers": [
-                            { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-                  ]
-          },
-          {
-                  "source": "/assets/(.*)\\.js",
-                  "headers": [
-                            { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-                  ]
-          },
-          {
-                  "source": "/assets/(.*)\\.png",
-                  "headers": [
-                            { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-                  ]
-          },
-          {
-                  "source": "/assets/(.*)\\.jpg",
-                  "headers": [
-                            { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-                  ]
-          },
-          {
-                  "source": "/assets/(.*)\\.svg",
-                  "headers": [
-                            { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-                  ]
-          },
-          {
-                  "source": "/assets/(.*)\\.woff2",
-                  "headers": [
-                            { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-                  ]
-          },
-          {
-                  "source": "/uploads/(.*)",
-                  "headers": [
-                            { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=3600" }
-                  ]
-          },
-          {
-                  "source": "/events/(.*)",
-                  "headers": [
-                            { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=3600" }
-                  ]
-          },
-          {
-                  "source": "/sitemap.xml",
-                  "headers": [
-                            { "key": "Cache-Control", "value": "public, max-age=86400, must-revalidate" },
-                            { "key": "Content-Type", "value": "application/xml; charset=utf-8" }
-                  ]
-          },
-          {
-                  "source": "/robots.txt",
-                  "headers": [
-                            { "key": "Cache-Control", "value": "public, max-age=86400, must-revalidate" }
-                  ]
-          },
-          {
-                  "source": "/manifest.webmanifest",
-                  "headers": [
-                            { "key": "Cache-Control", "value": "public, max-age=86400, must-revalidate" },
-                            { "key": "Content-Type", "value": "application/manifest+json" }
-                  ]
-          }
-    ]
+        "buildCommand": "node scripts/generate-manifest.js",
+            "outputDirectory": ".",
+        "cleanUrls": true,
+        "trailingSlash": false,
+        "headers": [
+                    {
+                                    "source": "/(.*)\\.html",
+                                    "headers": [
+                                                        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" },
+                                                        { "key": "Pragma", "value": "no-cache" },
+                                                        { "key": "Expires", "value": "0" },
+                                                        { "key": "X-Content-Type-Options", "value": "nosniff" },
+                                                        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+                                                        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+                                                        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+                                                        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" }
+                                    ]
+                    },
+                    {
+                                    "source": "/",
+                                    "headers": [
+                                                        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" },
+                                                        { "key": "Pragma", "value": "no-cache" },
+                                                        { "key": "Expires", "value": "0" },
+                                                        { "key": "X-Content-Type-Options", "value": "nosniff" },
+                                                        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+                                                        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+                                                        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+                                                        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" }
+                                    ]
+                    },
+                    {
+                                    "source": "/assets/(.*)\\.css",
+                                    "headers": [
+                                                        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+                                    ]
+                    },
+                    {
+                                    "source": "/assets/(.*)\\.js",
+                                    "headers": [
+                                                        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+                                    ]
+                    },
+                    {
+                                    "source": "/assets/(.*)\\.png",
+                                    "headers": [
+                                                        { "key": "Cache-Control", "value": "no-cache, must-revalidate" },
+                                                        { "key": "Pragma", "value": "no-cache" }
+                                    ]
+                    },
+                    {
+                                    "source": "/assets/(.*)\\.jpg",
+                                    "headers": [
+                                                        { "key": "Cache-Control", "value": "no-cache, must-revalidate" },
+                                                        { "key": "Pragma", "value": "no-cache" }
+                                    ]
+                    },
+                    {
+                                    "source": "/assets/(.*)\\.jpeg",
+                                    "headers": [
+                                                        { "key": "Cache-Control", "value": "no-cache, must-revalidate" },
+                                                        { "key": "Pragma", "value": "no-cache" }
+                                    ]
+                    },
+                    {
+                                    "source": "/assets/(.*)\\.svg",
+                                    "headers": [
+                                                        { "key": "Cache-Control", "value": "no-cache, must-revalidate" },
+                                                        { "key": "Pragma", "value": "no-cache" }
+                                    ]
+                    },
+                    {
+                                    "source": "/assets/(.*)\\.webp",
+                                    "headers": [
+                                                        { "key": "Cache-Control", "value": "no-cache, must-revalidate" },
+                                                        { "key": "Pragma", "value": "no-cache" }
+                                    ]
+                    },
+                    {
+                                    "source": "/assets/(.*)\\.gif",
+                                    "headers": [
+                                                        { "key": "Cache-Control", "value": "no-cache, must-revalidate" },
+                                                        { "key": "Pragma", "value": "no-cache" }
+                                    ]
+                    },
+                    {
+                                    "source": "/assets/(.*)\\.woff2",
+                                    "headers": [
+                                                        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+                                    ]
+                    },
+                    {
+                                    "source": "/uploads/(.*)",
+                                    "headers": [
+                                                        { "key": "Cache-Control", "value": "no-cache, must-revalidate" },
+                                                        { "key": "Pragma", "value": "no-cache" }
+                                    ]
+                    },
+                    {
+                                    "source": "/events/(.*)",
+                                    "headers": [
+                                                        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" },
+                                                        { "key": "Pragma", "value": "no-cache" },
+                                                        { "key": "Expires", "value": "0" }
+                                    ]
+                    },
+                    {
+                                    "source": "/sitemap.xml",
+                                    "headers": [
+                                                        { "key": "Cache-Control", "value": "no-cache, must-revalidate" },
+                                                        { "key": "Content-Type", "value": "application/xml; charset=utf-8" }
+                                    ]
+                    },
+                    {
+                                    "source": "/robots.txt",
+                                    "headers": [
+                                                        { "key": "Cache-Control", "value": "public, max-age=86400, must-revalidate" }
+                                    ]
+                    },
+                    {
+                                    "source": "/manifest.webmanifest",
+                                    "headers": [
+                                                        { "key": "Cache-Control", "value": "no-cache, must-revalidate" },
+                                                        { "key": "Content-Type", "value": "application/manifest+json" }
+                                    ]
+                    }
+        ]
 }
