@@ -9,7 +9,7 @@ const path = require('path');
 function buildManifest(dir, label) {
   if (!fs.existsSync(dir)) { fs.mkdirSync(dir, { recursive: true }); return; }
   const logos = fs.readdirSync(dir)
-    .filter(f => /\.(png|jpg|jpeg|webp|svg)$/i.test(f))
+    .filter(f => /\.(png|jpg|jpeg|webp|svg|jfif)$/i.test(f))
     .sort();
   fs.writeFileSync(path.join(dir, 'manifest.json'), JSON.stringify({ logos }, null, 2) + '\n');
   console.log(`✓ ${label} manifest: ${logos.length} logo(s)`);
@@ -18,3 +18,5 @@ function buildManifest(dir, label) {
 
 buildManifest(path.join(__dirname, '..', 'assets', 'sponsors'), 'Sponsors');
 buildManifest(path.join(__dirname, '..', 'assets', 'Company Representation'), 'Company Representation');
+buildManifest(path.join(__dirname, '..', 'assets', 'past-partners'), 'Past Partners');
+buildManifest(path.join(__dirname, '..', 'assets', 'premier-sponsors'), 'Premier Sponsors');
