@@ -27,8 +27,8 @@ window.SCCWest = (function(){
 
   function topbarHtml(opts){
     if (opts && opts.topbar === false) return '';
-    const msg = (opts && opts.topbarMsg) || `<strong>Register</strong> for $649 (Member) by <strong>May 31</strong> · Save up to $200 with Early Bird`;
-    const link = (opts && opts.topbarLink) || L.REGISTER;
+    const msg = (opts && opts.topbarMsg) || `<strong>Not a member?</strong> Join SCC and save $200 on your West Futures Conference registration — <strong>Members pay $799 vs. $999</strong>`;
+    const link = (opts && opts.topbarLink) || 'https://www.supplychaincanada.com/membership';
     return `<div class="topbar"><a href="${link}" target="_blank" rel="noopener">${msg} →</a></div>`;
   }
 
@@ -87,7 +87,7 @@ window.SCCWest = (function(){
     return `
     <div class="mobile-cta-bar" id="mobileCtaBar">
       <div class="timer">
-        <div class="lbl">Early Bird Closes In</div>
+        <div class="lbl">Days to Conference</div>
         <div class="v" id="mcbTimer">— <small>d</small></div>
       </div>
       <a href="${L.REGISTER}" target="_blank" rel="noopener" class="pill-btn solid">Register →</a>
@@ -196,8 +196,8 @@ window.SCCWest = (function(){
       document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeDrawer(); });
     }
 
-    // mobile bottom-bar countdown (Early Bird May 31, 2026)
-    const target = new Date('2026-05-31T23:59:59-06:00').getTime();
+    // mobile bottom-bar countdown (Conference date Oct 2, 2026)
+    const target = new Date('2026-10-02T08:00:00-06:00').getTime();
     const timerEl = document.getElementById('mcbTimer');
     function tick(){
       if (!timerEl) return;
