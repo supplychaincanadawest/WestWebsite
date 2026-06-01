@@ -836,9 +836,10 @@ SCCWest.mountChrome({active:'Events'});
 (function(){
   const grid = document.getElementById('psGrid');
   if(!grid) return;
-  fetch('../assets/premier-sponsors/manifest.json?v=' + Date.now())
-    .then(r => r.json())
-    .then(data => {
+  Promise.all([
+    fetch('../assets/premier-sponsors/manifest.json?v=' + Date.now()).then(r => r.json()),
+    fetch('../assets/premier-sponsors/links.json?v=' + Date.now()).then(r => r.json()).catch(() => ({}))
+  ]).then(([data, links]) => {
       const logos = (data.logos || []).filter(f => /\.(png|jpg|jpeg|webp|svg)$/i.test(f));
       if(!logos.length){ grid.closest('section').style.display='none'; return; }
       logos.forEach(f => {
@@ -848,7 +849,15 @@ SCCWest.mountChrome({active:'Events'});
         img.src = '../assets/premier-sponsors/' + encodeURIComponent(f);
         img.alt = f.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
         img.loading = 'lazy';
-        tile.appendChild(img);
+        const href = links[f];
+        if(href){
+          const a = document.createElement('a');
+          a.href = href; a.target = '_blank'; a.rel = 'noopener';
+          a.style.cssText = 'display:flex;align-items:center;justify-content:center;';
+          a.appendChild(img); tile.appendChild(a);
+        } else {
+          tile.appendChild(img);
+        }
         grid.appendChild(tile);
       });
     })
@@ -859,9 +868,10 @@ SCCWest.mountChrome({active:'Events'});
 (function(){
   const grid = document.getElementById('otherSponsorsGrid');
   if(!grid) return;
-  fetch('../assets/sponsors/manifest.json?v=' + Date.now())
-    .then(r => r.json())
-    .then(data => {
+  Promise.all([
+    fetch('../assets/sponsors/manifest.json?v=' + Date.now()).then(r => r.json()),
+    fetch('../assets/sponsors/links.json?v=' + Date.now()).then(r => r.json()).catch(() => ({}))
+  ]).then(([data, links]) => {
       const logos = (data.logos || []).filter(f => /\.(png|jpg|jpeg|webp|svg)$/i.test(f));
       if(!logos.length){ grid.closest('section').style.display='none'; return; }
       logos.forEach(f => {
@@ -872,7 +882,15 @@ SCCWest.mountChrome({active:'Events'});
         img.alt = f.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
         img.loading = 'lazy';
         img.style.cssText = 'height:52px;max-width:160px;object-fit:contain;display:block;';
-        tile.appendChild(img);
+        const href = links[f];
+        if(href){
+          const a = document.createElement('a');
+          a.href = href; a.target = '_blank'; a.rel = 'noopener';
+          a.style.cssText = 'display:flex;align-items:center;justify-content:center;';
+          a.appendChild(img); tile.appendChild(a);
+        } else {
+          tile.appendChild(img);
+        }
         grid.appendChild(tile);
       });
     })
