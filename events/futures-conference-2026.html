@@ -264,6 +264,9 @@
   .ps-tile:hover{box-shadow:0 12px 40px rgba(237,28,36,.12);transform:translateY(-3px)}
   .ps-tile img{height:110px;max-width:300px;object-fit:contain;display:block;}
   html.dark .ps-tile{background:#fff}
+  /* Sponsor logo tiles always stay white — logos need white bg for legibility */
+  .sponsor-logo-tile{background:#fff;border-radius:14px;padding:18px 28px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;height:96px;min-width:180px;}
+  .past-logo-tile{background:#fff;border-radius:8px;padding:8px 14px;border:1px solid #D8D3CE;display:flex;align-items:center;justify-content:center;}
   /* Attendees-from chip — styled text blocks */
   .attendee-chip{background:#fff;border:1.5px solid #D8D3CE;border-radius:10px;padding:12px 20px;font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:.08em;color:var(--ink);display:inline-flex;align-items:center;gap:8px;transition:box-shadow .2s,transform .2s,border-color .2s;line-height:1.1}
   .attendee-chip::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0}
@@ -746,7 +749,7 @@
           <li>10 CPD credits</li>
           <li>Sponsor showcase access</li>
         </ul>
-        <a href="https://abportal.supplychaincanada.com/mpower/event/loadevent.action?e=1710&request_locale=en#home" target="_blank" rel="noopener" class="pill-btn solid" style="background:#fff;color:#000;border-color:#fff">Register Now →</a>
+        <a href="https://abportal.supplychaincanada.com/mpower/event/loadevent.action?e=1710&request_locale=en#home" target="_blank" rel="noopener" class="pill-btn solid-light">Register Now →</a>
       </div>
 
       <div class="price-card">
@@ -852,7 +855,7 @@ SCCWest.mountChrome({active:'Events'});
       if(!logos.length){ grid.parentElement.parentElement.style.display='none'; return; }
       logos.forEach(f => {
         const tile = document.createElement('div');
-        tile.style.cssText = 'background:#fff;border-radius:8px;padding:8px 14px;border:1px solid #D8D3CE;display:flex;align-items:center;justify-content:center;';
+        tile.className = 'past-logo-tile';
         const img = document.createElement('img');
         img.src = '../assets/past-partners/' + encodeURIComponent(f);
         img.alt = f.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
@@ -941,7 +944,7 @@ SCCWest.mountChrome({active:'Events'});
       if(!logos.length){ grid.closest('section').style.display='none'; return; }
       logos.forEach(f => {
         const tile = document.createElement('div');
-        tile.style.cssText = 'background:#fff;border-radius:14px;padding:18px 28px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;height:96px;min-width:180px;';
+        tile.className = 'sponsor-logo-tile';
         const img = document.createElement('img');
         img.src = '../assets/sponsors/' + encodeURIComponent(f);
         img.alt = f.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
