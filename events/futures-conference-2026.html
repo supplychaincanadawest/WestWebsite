@@ -157,7 +157,7 @@
   @keyframes fadeIn{from{opacity:0}to{opacity:1}}
   .modal{background:#fff;border:1px solid var(--line);border-radius:16px;max-width:680px;width:100%;max-height:85vh;overflow:auto;padding:48px;position:relative}
   html.dark .modal{background:#15161A;border-color:rgba(255,255,255,.1);color:#fff}
-  .modal-close{position:absolute;top:18px;right:18px;width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font-size:18px;background:#fff;color:var(--ink);cursor:pointer}
+  .modal-close{position:absolute;top:16px;right:16px;width:44px;height:44px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font-size:18px;background:#fff;color:var(--ink);cursor:pointer}
   html.dark .modal-close{background:#0B0B0E;color:#fff;border-color:rgba(255,255,255,.1)}
   .modal h3{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:38px;line-height:1;margin-bottom:8px;color:var(--ink)}
   html.dark .modal h3{color:#fff}
@@ -310,6 +310,7 @@
 <body>
 
 <!-- HERO with video alongside text -->
+<a id="main-content" tabindex="-1" style="position:absolute;top:0;left:0;width:0;height:0;overflow:hidden" aria-hidden="true"></a>
 <header class="hero" id="top">
   <div class="hero-grid-bg"></div>
   <div class="stars" id="stars"></div>
@@ -666,7 +667,7 @@
 <!-- SPEAKER MODAL -->
 <div class="modal-backdrop" id="modal">
   <div class="modal">
-    <button class="modal-close" id="modalClose">×</button>
+    <button class="modal-close" id="modalClose" aria-label="Close speaker details">×</button>
     <div class="role" id="m-role"></div>
     <h3 id="m-name"></h3>
     <p id="m-bio"></p>
@@ -684,15 +685,18 @@ SCCWest.mountChrome({active:'Events'});
 
 /* ===== Stars ===== */
 const starsEl = document.getElementById('stars');
-for(let i=0;i<10;i++){
-  const s = document.createElement('div');
-  s.className='star';
-  s.textContent='✦';
-  s.style.left = Math.random()*100+'%';
-  s.style.top = (10 + Math.random()*60)+'%';
-  s.style.animationDelay = (Math.random()*4)+'s';
-  s.style.fontSize = (14 + Math.random()*18)+'px';
-  starsEl.appendChild(s);
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!reducedMotion) {
+  for(let i=0;i<10;i++){
+    const s = document.createElement('div');
+    s.className='star';
+    s.textContent='✦';
+    s.style.left = Math.random()*100+'%';
+    s.style.top = (10 + Math.random()*60)+'%';
+    s.style.animationDelay = (Math.random()*4)+'s';
+    s.style.fontSize = (14 + Math.random()*18)+'px';
+    starsEl.appendChild(s);
+  }
 }
 
 /* ===== COUNTDOWN (to event date Oct 2 2026 8 AM MDT) ===== */
@@ -733,6 +737,7 @@ const ioCount = new IntersectionObserver(es => {
       const targetN = +el.dataset.count;
       if(!targetN) { ioCount.unobserve(el); return; }
       const sup = el.querySelector('sup'); const supTxt = sup ? sup.outerHTML : '';
+      if (reducedMotion) { el.innerHTML = targetN + supTxt; ioCount.unobserve(el); return; }
       const dur = 1400, t0 = performance.now();
       const tick = t => {
         const p = Math.min(1, (t-t0)/dur);
@@ -782,6 +787,7 @@ speakers.forEach(s => {
 });
 document.getElementById('modalClose').addEventListener('click', () => document.getElementById('modal').classList.remove('open'));
 document.getElementById('modal').addEventListener('click', e => { if(e.target.id === 'modal') e.currentTarget.classList.remove('open'); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') document.getElementById('modal').classList.remove('open'); });
 
 /* ===== Agenda ===== */
 const agenda = [

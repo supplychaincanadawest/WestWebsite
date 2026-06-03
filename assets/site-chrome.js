@@ -69,7 +69,7 @@ window.SCCWest = (function(){
     const p = pathPrefix();
     return `
     <div class="mobile-drawer" id="mobileDrawer">
-      <button class="close" id="drawerClose">×</button>
+      <button class="close" id="drawerClose" aria-label="Close menu">×</button>
       <nav>
         <a href="${p}index.html">Home <span>→</span></a>
         <a href="${p}about.html">About <span>→</span></a>
@@ -146,7 +146,7 @@ window.SCCWest = (function(){
 
   function mountChrome(opts){
     opts = opts || {};
-    document.body.insertAdjacentHTML('afterbegin', `<div class="scroll-bar" id="__sb"></div>` + topbarHtml(opts) + navHtml(opts.active, opts) + mobileDrawerHtml() + mobileCtaBarHtml());
+    document.body.insertAdjacentHTML('afterbegin', `<a class="skip-link" href="#main-content">Skip to content</a><div class="scroll-bar" id="__sb"></div>` + topbarHtml(opts) + navHtml(opts.active, opts) + mobileDrawerHtml() + mobileCtaBarHtml());
     document.body.insertAdjacentHTML('beforeend', footerHtml());
 
     const nav = document.getElementById('siteNav');
@@ -162,9 +162,10 @@ window.SCCWest = (function(){
     const drawer = document.getElementById('mobileDrawer');
     const closeD = document.getElementById('drawerClose');
     if (burger && drawer){
-      burger.addEventListener('click', ()=>drawer.classList.add('open'));
-      closeD.addEventListener('click', ()=>drawer.classList.remove('open'));
+      burger.addEventListener('click', ()=>{ drawer.classList.add('open'); closeD.focus(); });
+      closeD.addEventListener('click', ()=>{ drawer.classList.remove('open'); burger.focus(); });
       drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>drawer.classList.remove('open')));
+      document.addEventListener('keydown', e=>{ if(e.key==='Escape' && drawer.classList.contains('open')){ drawer.classList.remove('open'); burger.focus(); } });
     }
 
     // mobile bottom-bar countdown (Early Bird May 31, 2026)

@@ -100,7 +100,7 @@ h3{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-sp
 .dropdown a .desc{font-family:var(--body);font-weight:400;font-size:12px;text-transform:none;letter-spacing:0;color:var(--muted);line-height:1.4}
 .nav-cta{display:flex;align-items:center;gap:10px}
 .nav-cta .pill-btn{padding:11px 18px;font-size:12px}
-.theme-toggle{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);display:inline-grid;place-items:center;cursor:pointer;transition:all .25s}
+.theme-toggle{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);display:inline-grid;place-items:center;cursor:pointer;transition:all .25s}
 .theme-toggle:hover{background:var(--soft);border-color:var(--red)}
 .theme-toggle svg{width:18px;height:18px}
 .theme-toggle .moon{display:block}.theme-toggle .sun{display:none}
@@ -157,7 +157,7 @@ footer.site-footer{background:var(--ink);color:#fff;padding:80px 0 36px;border-t
 .foot-bot .swimlane{font-family:var(--body);text-transform:none;letter-spacing:.02em;font-size:12px;color:#a8a3a0}
 @media (max-width:980px){.foot-grid{grid-template-columns:1fr 1fr;gap:30px}}
 
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
 .reveal.in{opacity:1;transform:none}
 .scroll-bar{position:fixed;top:0;left:0;height:2px;background:var(--red);z-index:62;width:0;transition:width .1s linear}
 .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:60px;flex-wrap:wrap}
@@ -166,3 +166,20 @@ footer.site-footer{background:var(--ink);color:#fff;padding:80px 0 36px;border-t
 .block{padding:120px 0;position:relative}
 .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:14px 24px;border-radius:999px;font-family:var(--display);font-weight:600;text-transform:uppercase;font-size:13px;letter-spacing:.12em;opacity:0;pointer-events:none;transition:all .25s ease;z-index:200}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ===== SKIP LINK ===== */
+.skip-link{position:absolute;top:-100%;left:16px;z-index:9999;background:var(--red);color:#fff;padding:12px 20px;border-radius:0 0 8px 8px;font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:13px;letter-spacing:.06em;transition:top .2s}
+.skip-link:focus{top:0}
+
+/* ===== FOCUS VISIBLE ===== */
+:focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:4px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:4px}
+.pill-btn:focus-visible,.btn:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  .reveal{opacity:1;transform:none;transition:none}
+  .marquee-track{animation:none}
+  .scroll-bar{transition:none}
+}
