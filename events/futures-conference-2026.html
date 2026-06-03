@@ -465,7 +465,7 @@
         <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>10 CPD Credits</span>
       </div>
       <div class="hero-cta">
-        <a href="https://abportal.supplychaincanada.com/mpower/event/loadevent.action?e=1710&request_locale=en#home" target="_blank" rel="noopener" class="pill-btn solid">Register Now →</a>
+        <a href="https://abportal.supplychaincanada.com/mpower/event/loadevent.action?e=1710&request_locale=en#home" target="_blank" rel="noopener noreferrer" class="pill-btn solid">Register Now →</a>
         <a href="#recap" class="pill-btn ghost">▶ Watch the Recap</a>
         <button class="pill-btn ghost" id="convinceBtn">✉ Convince Your Boss</button>
       </div>
@@ -735,7 +735,7 @@
           <li>Networking breakfast, lunch, reception</li>
           <li>10 CPD credits</li>
         </ul>
-        <a href="https://abportal.supplychaincanada.com/mpower/event/loadevent.action?e=1710&request_locale=en#home" target="_blank" rel="noopener" class="pill-btn ghost">Register →</a>
+        <a href="https://abportal.supplychaincanada.com/mpower/event/loadevent.action?e=1710&request_locale=en#home" target="_blank" rel="noopener noreferrer" class="pill-btn ghost">Register →</a>
       </div>
 
       <div class="price-card featured">
@@ -749,7 +749,7 @@
           <li>10 CPD credits</li>
           <li>Sponsor showcase access</li>
         </ul>
-        <a href="https://abportal.supplychaincanada.com/mpower/event/loadevent.action?e=1710&request_locale=en#home" target="_blank" rel="noopener" class="pill-btn solid-light">Register Now →</a>
+        <a href="https://abportal.supplychaincanada.com/mpower/event/loadevent.action?e=1710&request_locale=en#home" target="_blank" rel="noopener noreferrer" class="pill-btn solid-light">Register Now →</a>
       </div>
 
       <div class="price-card">
@@ -763,7 +763,7 @@
           <li>Sponsor showcase access</li>
           <li>10 CPD credits</li>
         </ul>
-        <a href="https://abportal.supplychaincanada.com/mpower/event/loadevent.action?e=1710&request_locale=en#home" target="_blank" rel="noopener" class="pill-btn ghost">Register →</a>
+        <a href="https://abportal.supplychaincanada.com/mpower/event/loadevent.action?e=1710&request_locale=en#home" target="_blank" rel="noopener noreferrer" class="pill-btn ghost">Register →</a>
       </div>
     </div>
 
@@ -813,7 +813,7 @@
     <h2>Your seat at Western Canada's table.</h2>
     <p>October 2, 2026. Edmonton. One day of conversations that will shape your year. Register now or stay on the list — either way, we'd love to have you in the room.</p>
     <div class="hero-cta" style="justify-content:center;margin-bottom:30px">
-      <a href="https://abportal.supplychaincanada.com/mpower/event/loadevent.action?e=1710&request_locale=en#home" target="_blank" rel="noopener" class="pill-btn solid-light">Register Now ↗</a>
+      <a href="https://abportal.supplychaincanada.com/mpower/event/loadevent.action?e=1710&request_locale=en#home" target="_blank" rel="noopener noreferrer" class="pill-btn solid-light">Register Now ↗</a>
       <a href="#recap" class="pill-btn ghost-light">▶ Watch the Recap</a>
     </div>
     <div class="lead-wrap">
@@ -967,6 +967,7 @@ SCCWest.mountChrome({active:'Events'});
 
 /* ===== Stars ===== */
 const starsEl = document.getElementById('stars');
+if(starsEl && !starsEl.children.length)
 for(let i=0;i<10;i++){
   const s = document.createElement('div');
   s.className='star';
@@ -975,7 +976,7 @@ for(let i=0;i<10;i++){
   s.style.top = (10 + Math.random()*60)+'%';
   s.style.animationDelay = (Math.random()*4)+'s';
   s.style.fontSize = (14 + Math.random()*18)+'px';
-  starsEl.appendChild(s);
+  starsEl && starsEl.appendChild(s);
 }
 
 /* ===== COUNTDOWN (to event date Oct 2 2026 8 AM MDT) ===== */
@@ -996,6 +997,7 @@ function setupVid(frameId, videoId, ovId){
   const frame = document.getElementById(frameId);
   const video = document.getElementById(videoId);
   const ov = document.getElementById(ovId);
+  if(!frame || !video || !ov) return;
   video.play().catch(()=>{});
   frame.addEventListener('click', () => {
     if (video.muted){
