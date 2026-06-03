@@ -223,8 +223,8 @@
 
 <div class="marquee">
   <div class="marquee-track">
-    <span>West Futures Conference 2026 <i class="dot"></i> Oct 2 · Edmonton <i class="dot"></i> 300+ Practitioners &amp; Executives <i class="dot"></i> 15+ Speakers <i class="dot"></i> 10 CPD Credits <i class="dot"></i> Premier Sponsor: AMCC <i class="dot"></i> Early Bird ends May 31 <i class="dot"></i></span>
-    <span>West Futures Conference 2026 <i class="dot"></i> Oct 2 · Edmonton <i class="dot"></i> 300+ Practitioners &amp; Executives <i class="dot"></i> 15+ Speakers <i class="dot"></i> 10 CPD Credits <i class="dot"></i> Premier Sponsor: AMCC <i class="dot"></i> Early Bird ends May 31 <i class="dot"></i></span>
+    <span>West Futures Conference 2026 <i class="dot"></i> Oct 2 · Edmonton <i class="dot"></i> 300+ Practitioners &amp; Executives <i class="dot"></i> 15+ Speakers <i class="dot"></i> 10 CPD Credits <i class="dot"></i></span>
+    <span>West Futures Conference 2026 <i class="dot"></i> Oct 2 · Edmonton <i class="dot"></i> 300+ Practitioners &amp; Executives <i class="dot"></i> 15+ Speakers <i class="dot"></i> 10 CPD Credits <i class="dot"></i></span>
   </div>
 </div>
 
@@ -383,6 +383,16 @@
   </div>
 </section>
 
+<!-- ATTENDEES CAROUSEL -->
+<section class="cr-carousel" id="attendeesCarousel">
+  <div class="crc-head">
+    <span class="crc-lbl">Where our conference attendees come from</span>
+  </div>
+  <div class="crc-outer">
+    <div class="crc-track" id="attendeesCarouselTrack"></div>
+  </div>
+</section>
+
 <!-- FINAL CTA -->
 <section class="final">
   <div class="wrap">
@@ -487,6 +497,30 @@ SCCWest.mountChrome({active:'Home'});
       render(); render();
     })
     .catch(() => { section.style.display = 'none'; });
+})();
+
+/* ===== Attendees carousel ===== */
+(function(){
+  const track = document.getElementById('attendeesCarouselTrack');
+  if(!track) return;
+  const companies = [
+    'Suncor Energy','Canadian Natural Resources','Cenovus Energy','TC Energy','Enbridge',
+    'Shell Canada','Imperial Oil','ConocoPhillips Canada','Nutrien','Pembina Pipeline',
+    'Syncrude Canada','Halliburton','SLB (Schlumberger)','Fluor Canada','Worley',
+    'Capital Power','Parkland Corporation','MEG Energy','NOVA Chemicals','Precision Drilling',
+    'Government of Alberta','Alberta Health Services','Department of National Defence',
+    'EPCOR','TransAlta','ATCO Group','City of Calgary','ATB Financial','RBC Royal Bank',
+    'Export Development Canada','Deloitte Canada','PCL Construction','Finning International',
+    'Stantec','AtkinsRéalis','TELUS','Accenture','Amazon','Canadian Pacific Railway',
+    'WestJet','Canada Post','University of Alberta','NAIT','SAIT','Walmart Canada'
+  ];
+  const render = () => companies.forEach(name => {
+    const chip = document.createElement('span');
+    chip.style.cssText = 'background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:7px 14px;font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:.06em;color:var(--ink);white-space:nowrap;display:inline-flex;align-items:center;gap:6px;';
+    chip.innerHTML = '<span style="width:5px;height:5px;border-radius:50%;background:var(--red);display:inline-block;flex-shrink:0"></span>' + name;
+    track.appendChild(chip);
+  });
+  render(); render();
 })();
 
 /* Video autoplay muted, tap to unmute */

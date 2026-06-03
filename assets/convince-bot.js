@@ -22,12 +22,12 @@
     },
     {
       keys:['register','registration','sign up','signup','book','buy ticket','purchase'],
-      reply:`You can register directly through the secure Supply Chain Canada portal — every tier links straight to it.\n\nPricing (+tax):\n• **Member** — $649 (reg. $799 after May 31)\n• **Non-Member** — $799 (reg. $999 after May 31)\n• **Student Affiliate** — $399\n\nEarly Bird closes May 31, 2026. Register before May 31 and save up to $200.\n\n[Register now ↗](${REGISTER})`,
+      reply:`You can register directly through the secure Supply Chain Canada portal — every tier links straight to it.\n\nPricing (+tax):\n• **Member** — $799\n• **Non-Member** — $999\n• **Student Affiliate** — $399\n\nGroups of 8+ qualify for special bundle rates — email ${SPONSOR}.\n\n[Register now ↗](${REGISTER})`,
       next:'date'
     },
     {
       keys:['price','pricing','cost','how much','fee','ticket','rate','member rate','student'],
-      reply:`Conference pricing (+tax):\n• **Member** — $649 (Early Bird, reg. $799)\n• **Non-Member** — $799 (Early Bird, reg. $999)\n• **Student Affiliate** — $399\n\n**Early Bird ends May 31, 2026** — save up to $200. Groups of 8+ qualify for special bundle rates — email ${SPONSOR}.\n\n[Register now ↗](${REGISTER})`,
+      reply:`Conference pricing (+tax):\n• **Member** — $799\n• **Non-Member** — $999\n• **Student Affiliate** — $399\n\nGroups of 8+ qualify for special bundle rates — email ${SPONSOR}.\n\n[Register now ↗](${REGISTER})`,
       next:'date'
     },
     {
@@ -117,17 +117,17 @@
     },
     {
       keys:['network','networking','connect','connections','meet people','meet professionals','relationship'],
-      reply:`The Futures Conference is Western Canada's premier supply chain networking event.\n\n• **300+ practitioners and executives** — procurement, logistics, operations, government and tech\n• Structured networking breakfast and a **full evening reception** at River Cree\n• 30+ sponsor organizations — solution providers, consultancies and logistics companies actively looking to meet practitioners\n• Curated peer-table format at lunch — seated by sector so every conversation counts\n\nThe room is small enough to meet everyone. Past attendees consistently report their best regional supply chain connections came from a single Futures Conference day.\n\n[Register before May 31 →](${REGISTER})`,
+      reply:`The Futures Conference is Western Canada's premier supply chain networking event.\n\n• **300+ practitioners and executives** — procurement, logistics, operations, government and tech\n• Structured networking breakfast and a **full evening reception** at River Cree\n• 30+ sponsor organizations — solution providers, consultancies and logistics companies actively looking to meet practitioners\n• Curated peer-table format at lunch — seated by sector so every conversation counts\n\nThe room is small enough to meet everyone. Past attendees consistently report their best regional supply chain connections came from a single Futures Conference day.\n\n[Register now →](${REGISTER})`,
       next:'register'
     },
     {
       keys:['summar','summary','tldr','what is','tell me about','overview'],
-      reply:`**West Futures Conference 2026** — the flagship Western Canada conference of Supply Chain Canada — West.\n\n• **When:** Friday, October 2, 2026\n• **Where:** River Cree Resort, Edmonton (Enoch Cree Nation)\n• **Who:** 300+ practitioners and executives\n• **What:** 15+ speakers across 6 focus areas\n• **Credits:** 10 CPD credits per attendee\n• **From:** $399 Student · $649 Member · $799 Non-Member (Early Bird through May 31)`,
+      reply:`**West Futures Conference 2026** — the flagship Western Canada conference of Supply Chain Canada — West.\n\n• **When:** Friday, October 2, 2026\n• **Where:** River Cree Resort, Edmonton (Enoch Cree Nation)\n• **Who:** 300+ practitioners and executives\n• **What:** 15+ speakers across 6 focus areas\n• **Credits:** 10 CPD credits per attendee\n• **From:** $399 Student · $799 Member · $999 Non-Member`,
       next:'register'
     },
     {
       keys:['tariff','tariffs','trade','trade war','us tariff','customs','duty','duties','import','export'],
-      reply:`Trade disruption and tariff strategy are among the hottest topics in Canadian supply chain right now.\n\nThe **West Futures Conference 2026** (Oct 2, Edmonton) features expert sessions on exactly this — including how Western Canada's energy, agri-food and logistics sectors are responding to shifting trade policy.\n\n300+ senior practitioners in one room = the fastest way to benchmark how peers are adapting.\n\n[Register before May 31 →](${REGISTER})`,
+      reply:`Trade disruption and tariff strategy are among the hottest topics in Canadian supply chain right now.\n\nThe **West Futures Conference 2026** (Oct 2, Edmonton) features expert sessions on exactly this — including how Western Canada's energy, agri-food and logistics sectors are responding to shifting trade policy.\n\n300+ senior practitioners in one room = the fastest way to benchmark how peers are adapting.\n\n[Register now →](${REGISTER})`,
       next:'register'
     },
     {
@@ -142,12 +142,12 @@
     },
     {
       keys:['talent','workforce','hiring','staff','retention','culture','hr','people','leadership','professional development','upskill','training'],
-      reply:`Talent and the Future of the Profession is one of the six focus areas at **West Futures 2026**.\n\nSiobhan Chinnery — Top 100 Most Influential Woman in Canadian Supply Chain — leads the leadership and culture track. Her Bloom Through the Dirt™ framework has helped supply chain leaders at some of Canada's largest organizations build adaptive, high-performing teams.\n\nThe conference also awards **10 CPD credits** — directly applicable to your SCMP designation.\n\n[Register before May 31 →](${REGISTER})`,
+      reply:`Talent and the Future of the Profession is one of the six focus areas at **West Futures 2026**.\n\nSiobhan Chinnery — Top 100 Most Influential Woman in Canadian Supply Chain — leads the leadership and culture track. Her Bloom Through the Dirt™ framework has helped supply chain leaders at some of Canada's largest organizations build adaptive, high-performing teams.\n\nThe conference also awards **10 CPD credits** — directly applicable to your SCMP designation.\n\n[Register now →](${REGISTER})`,
       next:'register'
     },
     {
       keys:['procurement','purchasing','sourcing','category','strategic sourcing','p2p','procure-to-pay'],
-      reply:`Supply Chain Canada — West is the professional home for procurement practitioners in Alberta and BC.\n\nAt **West Futures 2026** (Oct 2, River Cree Resort, Edmonton):\n• Sessions on AI-assisted sourcing, tariff response, ESG/supplier compliance, and category management\n• 300+ procurement leaders from energy, government, retail, agri-food and logistics\n• 10 CPD credits for your SCMP logbook\n\n[Early Bird open until May 31 →](${REGISTER})`,
+      reply:`Supply Chain Canada — West is the professional home for procurement practitioners in Alberta and BC.\n\nAt **West Futures 2026** (Oct 2, River Cree Resort, Edmonton):\n• Sessions on AI-assisted sourcing, tariff response, ESG/supplier compliance, and category management\n• 300+ procurement leaders from energy, government, retail, agri-food and logistics\n• 10 CPD credits for your SCMP logbook\n\n[Register now →](${REGISTER})`,
       next:'register'
     },
     {
@@ -163,9 +163,9 @@
   ];
 
   const NEXT_STEPS = {
-    register: `**Next step →** [Register before May 31](${REGISTER}) and save up to $200.`,
+    register: `**Next step →** [Register now](${REGISTER}) — secure your seat for October 2.`,
     date: `**Next step →** Block **Oct 2, 2026** in your calendar and [grab your seat](${REGISTER}).`,
-    agenda: `**Next step →** [Register](${REGISTER}) before Early Bird closes May 31.`,
+    agenda: `**Next step →** [Register now](${REGISTER}) and secure your seat for October 2.`,
     venue: `**Next step →** Call **1-844-425-2733** to book the $189/night conference rate at River Cree.`,
     travel: `**Next step →** Apply Air Canada code **YQ6XKBC1** at checkout for 15% off flights to YEG.`,
     support: `**Next step →** Email **${SUPPORT}** — we reply within one business day.`,
@@ -195,11 +195,11 @@ Here's why I believe this is a high-ROI investment for the team:
 • **10 CPD credits** — applicable to my SCMP designation logbook. Certificate within 5 business days post-event.
 • **Risk & resilience** — six focus areas covering tariff strategy, ESG/Scope-3 readiness, logistics corridors, and AI/automation — directly relevant to our 2026 procurement plan.
 • **Network ROI** — 30+ sponsor organizations and solution providers attending. I'll bring back a prioritised vendor shortlist for our open initiatives.
-• **Cost-controlled** — Early Bird member price is **$649 + tax** through May 31 (regularly $799). Conference hotel rate is $189/night. Air Canada offers 15% off flights to YEG with our group code.
+• **Cost-controlled** — Member registration is **$799 + tax** (Non-member: $999 + tax). Conference hotel rate is $189/night. Air Canada offers 15% off flights to YEG with our group code.
 
-Total estimated cost: ~$1,100 (registration + 1 night + flight). Detailed agenda and ROI plan available at https://abportal.supplychaincanada.com — happy to walk through this with you.
+Total estimated cost: ~$1,300 (registration + 1 night + flight). Detailed agenda and ROI plan available at https://abportal.supplychaincanada.com — happy to walk through this with you.
 
-Would you approve me registering before Early Bird closes on May 31?
+Would you approve my registration?
 
 Thanks,
 [Your name]
