@@ -29,7 +29,7 @@ window.SCCWest = (function(){
     if (opts && opts.topbar === false) return '';
     const msg = (opts && opts.topbarMsg) || `<strong>Not a member?</strong> Join SCC and save $200 on your West Futures Conference registration — <strong>Members pay $799 vs. $999</strong>`;
     const link = (opts && opts.topbarLink) || 'https://www.supplychaincanada.com/membership';
-    return `<div class="topbar"><a href="${link}" target="_blank" rel="noopener">${msg} →</a></div>`;
+    return `<div class="topbar"><a href="${link}" target="_blank" rel="noopener noreferrer">${msg} →</a></div>`;
   }
 
   function navHtml(active, opts){
@@ -49,7 +49,7 @@ window.SCCWest = (function(){
           ${NAV.map(n=>`
             <div class="item">
               <a href="${p}${n.href}" class="${active===n.label?'active':''}">${n.label} ${n.items?'<span style="opacity:.5">▾</span>':''}</a>
-              ${n.items?`<div class="dropdown">${n.items.map(i=>`<a href="${href(i)}" ${i.ext?'target="_blank" rel="noopener"':''}><span class="lab">${i.star?'<span style="color:var(--red)">★</span> ':''}${i.l}${i.ext?' ↗':''}</span><span class="desc">${i.d}</span></a>`).join('')}</div>`:''}
+              ${n.items?`<div class="dropdown">${n.items.map(i=>`<a href="${href(i)}" ${i.ext?'target="_blank" rel="noopener noreferrer"':''}><span class="lab">${i.star?'<span style="color:var(--red)">★</span> ':''}${i.l}${i.ext?' ↗':''}</span><span class="desc">${i.d}</span></a>`).join('')}</div>`:''}
             </div>`).join('')}
         </div>
         <div class="nav-cta">
@@ -57,8 +57,8 @@ window.SCCWest = (function(){
             <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
           </button>
-          <a href="${L.MEMBERSHIP}" target="_blank" rel="noopener" class="pill-btn ghost">Membership ↗</a>
-          <a href="${L.REGISTER}" target="_blank" rel="noopener" class="pill-btn solid">Register Now →</a>
+          <a href="${L.MEMBERSHIP}" target="_blank" rel="noopener noreferrer" class="pill-btn ghost">Membership ↗</a>
+          <a href="${L.REGISTER}" target="_blank" rel="noopener noreferrer" class="pill-btn solid">Register Now →</a>
           <button class="nav-burger" id="navBurger" aria-label="Open menu">☰</button>
         </div>
       </div>
@@ -75,10 +75,10 @@ window.SCCWest = (function(){
         <a href="${p}about.html">About <span>→</span></a>
         <a href="${p}events.html">Events <span>→</span></a>
         <a href="${p}events/futures-conference-2026.html">Futures Conference 2026 <span>★</span></a>
-        <a href="${L.MEMBERSHIP}" target="_blank" rel="noopener">Membership <span>↗</span></a>
+        <a href="${L.MEMBERSHIP}" target="_blank" rel="noopener noreferrer">Membership <span>↗</span></a>
       </nav>
       <div class="cta-area">
-        <a href="${L.REGISTER}" target="_blank" rel="noopener" class="pill-btn solid" style="width:100%;justify-content:center">Register Now →</a>
+        <a href="${L.REGISTER}" target="_blank" rel="noopener noreferrer" class="pill-btn solid" style="width:100%;justify-content:center">Register Now →</a>
       </div>
     </div>`;
   }
@@ -90,7 +90,7 @@ window.SCCWest = (function(){
         <div class="lbl">Days to Conference</div>
         <div class="v" id="mcbTimer">— <small>d</small></div>
       </div>
-      <a href="${L.REGISTER}" target="_blank" rel="noopener" class="pill-btn solid">Register →</a>
+      <a href="${L.REGISTER}" target="_blank" rel="noopener noreferrer" class="pill-btn solid">Register →</a>
     </div>`;
   }
 
@@ -105,13 +105,13 @@ window.SCCWest = (function(){
               <span class="brand-mark"><img src="${p}assets/scc-west-logo.png" alt="" /></span>
               <span class="lock"><span class="l1">Supply Chain Canada</span><span class="l2">WEST · WESTERN CANADA INSTITUTE</span></span>
             </a>
-            <p style="font-size:13px;color:#a8a3a0;line-height:1.6;max-width:380px;margin-top:18px">Supply Chain Canada — West is the Western Canada institute of <a href="${L.NATIONAL}" target="_blank" rel="noopener" style="color:#fff;border-bottom:1px solid var(--red)">Supply Chain Canada</a>, the national association advancing the supply chain profession since 1919. Serving 2,500+ professionals across Alberta and British Columbia.</p>
+            <p style="font-size:13px;color:#a8a3a0;line-height:1.6;max-width:380px;margin-top:18px">Supply Chain Canada — West is the Western Canada institute of <a href="${L.NATIONAL}" target="_blank" rel="noopener noreferrer" style="color:#fff;border-bottom:1px solid var(--red)">Supply Chain Canada</a>, the national association advancing the supply chain profession since 1919. Serving 2,500+ professionals across Alberta and British Columbia.</p>
           </div>
           <div>
             <h4>Conference</h4>
             <ul>
               <li><a href="${p}events/futures-conference-2026.html">Futures Conference 2026</a></li>
-              <li><a href="${L.REGISTER}" target="_blank" rel="noopener">Register ↗</a></li>
+              <li><a href="${L.REGISTER}" target="_blank" rel="noopener noreferrer">Register ↗</a></li>
               <li><a href="mailto:${L.SPONSOR_EMAIL}?subject=Sponsorship">Sponsorship</a></li>
               <li><a href="mailto:${L.SPONSOR_EMAIL}?subject=Speaking">Speaking Proposal</a></li>
             </ul>
@@ -122,7 +122,7 @@ window.SCCWest = (function(){
               <li><a href="${p}index.html">Home</a></li>
               <li><a href="${p}about.html">About</a></li>
               <li><a href="${p}events.html">Events</a></li>
-              <li><a href="${L.MEMBERSHIP}" target="_blank" rel="noopener">Membership ↗</a></li>
+              <li><a href="${L.MEMBERSHIP}" target="_blank" rel="noopener noreferrer">Membership ↗</a></li>
             </ul>
           </div>
           <div>
@@ -132,13 +132,13 @@ window.SCCWest = (function(){
               <li>(780) 944-0355</li>
               <li>Toll-Free: 1-866-610-4089</li>
               <li>P.O. Box 66005 Heritage<br/>Edmonton, AB T6J 6T4</li>
-              <li><a href="${L.NATIONAL}" target="_blank" rel="noopener">National Association ↗</a></li>
+              <li><a href="${L.NATIONAL}" target="_blank" rel="noopener noreferrer">National Association ↗</a></li>
             </ul>
           </div>
         </div>
         <div class="foot-bot">
           <div>© 2026 Supply Chain Canada — West Institute · All rights reserved</div>
-          <div class="swimlane">An institute of <a href="${L.NATIONAL}" target="_blank" rel="noopener" style="color:#fff;border-bottom:1px solid var(--red)">Supply Chain Canada</a> — proudly serving Western Canada</div>
+          <div class="swimlane">An institute of <a href="${L.NATIONAL}" target="_blank" rel="noopener noreferrer" style="color:#fff;border-bottom:1px solid var(--red)">Supply Chain Canada</a> — proudly serving Western Canada</div>
         </div>
       </div>
     </footer>`;

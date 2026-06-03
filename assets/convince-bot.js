@@ -361,7 +361,7 @@ PS — If you can share your boss's name or your latest job description / resume
   }
   function inlineMd(s){
     s = escapeHtml(s);
-    s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+    s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
     s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
     s = s.replace(/\n/g, '<br/>');
     return s;
