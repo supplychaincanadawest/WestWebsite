@@ -430,6 +430,15 @@
   html.dark .agenda-row .ti h4{color:var(--ink)}
   html.dark .group-strip .l .t{color:var(--ink)}
   html.dark .thuy-card .info h3{color:var(--ink)}
+  /* Sponsor tier section backgrounds — dark mode overrides */
+  .sec-sponsors-other{background:#F7F4F0}
+  .sec-past-partners{background:#EDE7DE}
+  .sec-attendees{background:#FFFFFF}
+  html.dark .sec-sponsors-other{background:#15161A}
+  html.dark .sec-past-partners{background:#1A1B1F}
+  html.dark .sec-attendees{background:#0B0B0E}
+  html.dark .sec-past-partners h2,html.dark .sec-past-partners p,
+  html.dark .sec-attendees h2,html.dark .sec-attendees p{color:var(--ink)}
   html.dark .faq-section .faq-list{border-top-color:var(--line)}
   html.dark .faq-item{border-bottom-color:var(--line)}
   html.dark .venue-card .pic{opacity:.85}
@@ -598,8 +607,8 @@
   </div>
 </section>
 
-<!-- 2026 CONFIRMED SPONSORS — Premier (pure white bg, very large) -->
-<section style="background:#FFFFFF;padding:80px 0 60px">
+<!-- 2026 CONFIRMED SPONSORS — Premier (white bg, very large) -->
+<section style="background:var(--white);padding:80px 0 60px">
   <div class="wrap">
     <div class="reveal" style="margin-bottom:48px;text-align:center">
       <span style="font-family:var(--mono);color:var(--red);font-size:12px;letter-spacing:.2em;text-transform:uppercase">2026 Confirmed Sponsors</span>
@@ -608,15 +617,15 @@
   </div>
 </section>
 
-<!-- OTHER SPONSORS — Supporting (beige #F7F4F0, medium tiles) -->
-<section style="background:#F7F4F0;padding:48px 0 72px">
+<!-- OTHER SPONSORS — Supporting (beige, medium tiles) -->
+<section class="sec-sponsors-other" style="padding:48px 0 72px">
   <div class="wrap">
     <div id="otherSponsorsGrid" style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;max-width:1100px;margin:0 auto" class="reveal"></div>
   </div>
 </section>
 
-<!-- PAST PARTNERS — (deeper beige #EDE7DE, smaller tiles) -->
-<section style="background:#EDE7DE;padding:80px 0" id="pastPartners">
+<!-- PAST PARTNERS — (deeper beige, smaller tiles) -->
+<section class="sec-past-partners" style="padding:80px 0" id="pastPartners">
   <div class="wrap">
     <div class="reveal" style="margin-bottom:40px;text-align:center">
       <span style="font-family:var(--mono);color:var(--red);font-size:12px;letter-spacing:.2em;text-transform:uppercase">Our Network</span>
@@ -628,7 +637,7 @@
 </section>
 
 <!-- WHERE ATTENDEES COME FROM — (white bg, chip carousel) -->
-<section style="background:#FFFFFF;padding:80px 0" id="attendees">
+<section class="sec-attendees" style="padding:80px 0" id="attendees">
   <div class="wrap">
     <div class="reveal" style="margin-bottom:48px;text-align:center">
       <span style="font-family:var(--mono);color:var(--red);font-size:12px;letter-spacing:.2em;text-transform:uppercase">Community Reach</span>
