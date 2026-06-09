@@ -84,11 +84,15 @@
     .hero p.sub{font-size:16px}
     .mandate,.leaders,.contact{padding:60px 0}
   }
-  /* Board of Directors image */
+  /* Board of Directors / Staff images */
   .bod-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:40px;border-radius:16px}
   .bod-wrap img{display:block;height:auto;border-radius:16px;box-shadow:0 8px 32px rgba(10,11,12,.1)}
   @media (min-width:881px){.bod-wrap img{width:100%;max-width:1100px;margin:0 auto}}
   @media (max-width:880px){.bod-wrap img{min-width:760px;width:760px}}
+  /* Operations Team section */
+  .ops-team{background:var(--soft);padding:120px 0}
+  @media (max-width:768px){.ops-team{padding:80px 0}}
+  @media (max-width:520px){.ops-team{padding:60px 0}}
 </style>
     <!-- Vercel Web Analytics -->
     <script defer src="/_vercel/insights/script.js"></script>
@@ -135,7 +139,16 @@
     <div class="bod-wrap reveal">
       <img src="assets/Board of Directors - SCC West.png" alt="SCC West Board of Directors" loading="lazy" />
     </div>
-    <div class="bod-wrap reveal" style="margin-top:32px">
+  </div>
+</section>
+
+<section class="ops-team" id="operations-team">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><span class="num">03 / Operations Team</span><h2 class="section-title">The team<br/>behind the scenes.</h2></div>
+      <p class="lead">Our West Operations Team handles the day-to-day work that keeps programming, membership and events running across the region.</p>
+    </div>
+    <div class="bod-wrap reveal">
       <img src="assets/SCCW Staff Headshot.png" alt="SCC West Operations Team" loading="lazy" />
     </div>
   </div>
@@ -144,7 +157,7 @@
 <section class="contact" id="contact">
   <div class="wrap">
     <div class="section-head reveal">
-      <div><span class="num">03 / Contact</span><h2 class="section-title">Talk to us.</h2></div>
+      <div><span class="num">04 / Contact</span><h2 class="section-title">Talk to us.</h2></div>
       <p class="lead">We respond to most member and prospective-member inquiries within one business day.</p>
     </div>
     <div class="ctc-grid reveal">
