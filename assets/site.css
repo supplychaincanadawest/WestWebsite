@@ -402,3 +402,166 @@ html.dark .modal-close{background:#0B0B0E !important;color:#fff !important;borde
 /* Venue card body text */
 html.dark .venue-card .body h3{color:var(--ink) !important}
 html.dark .venue-card .body .phone{color:var(--ink) !important}
+
+/* ═══════════════════════════════════════════════════════════
+   POLISH v3 — FAANG-level refinements (append-only)
+   ═══════════════════════════════════════════════════════════ */
+
+/* Better font rendering */
+body{text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;font-feature-settings:'kern' 1,'liga' 1}
+
+/* Staggered reveal delays for grid children */
+.rev-s1{transition-delay:.07s!important}
+.rev-s2{transition-delay:.14s!important}
+.rev-s3{transition-delay:.21s!important}
+.rev-s4{transition-delay:.28s!important}
+.rev-s5{transition-delay:.35s!important}
+.rev-s6{transition-delay:.42s!important}
+
+/* Carousel edge fade — apply to the overflow wrapper */
+.c-fade{
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 7%,#000 93%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0%,#000 7%,#000 93%,transparent 100%);
+}
+
+/* Smooth dropdown enter animation */
+@keyframes dropIn{
+  from{opacity:0;transform:translateY(-8px) scale(.984)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+.nav-links>.item:hover .dropdown{animation:dropIn .22s cubic-bezier(.22,1,.36,1) forwards!important}
+
+/* Solid button — shimmer sweep on hover */
+.pill-btn.solid{overflow:hidden}
+.pill-btn.solid::before{
+  content:'';position:absolute;top:0;left:-115%;width:70%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.17),transparent);
+  transform:skewX(-14deg);transition:left .52s ease;pointer-pointer:none;pointer-events:none;
+}
+.pill-btn.solid:hover::before{left:135%}
+
+/* Grain / noise texture — premium surface feel */
+.has-grain{position:relative}
+.has-grain::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)' opacity='.055'/%3E%3C/svg%3E");
+  background-repeat:repeat;background-size:120px 120px;
+  mix-blend-mode:soft-light;opacity:.55;z-index:1;border-radius:inherit;
+}
+
+/* Testimonial — quote mark */
+.t-qmark{
+  font-family:Georgia,serif;font-size:60px;line-height:.6;
+  color:var(--red);opacity:.12;display:block;margin-bottom:2px;
+  font-weight:900;user-select:none;letter-spacing:0;
+}
+/* Testimonial — 5-star row */
+.t-stars{display:flex;gap:3px;margin-bottom:12px}
+.t-stars i{font-style:normal;color:#F0B429;font-size:13px;line-height:1}
+
+/* Why-card — large watermark digit */
+.why-card .wm{
+  position:absolute;bottom:-16px;right:18px;
+  font-family:var(--display);font-weight:900;font-size:108px;
+  line-height:1;letter-spacing:-.03em;
+  color:var(--ink);opacity:.033;
+  user-select:none;pointer-events:none;text-transform:uppercase;
+}
+html.dark .why-card .wm{opacity:.065}
+
+/* Hero ambient gradient blobs */
+.hero-ambient{
+  position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 65% 55% at 88% 12%,rgba(237,28,36,.07) 0%,transparent 65%),
+    radial-gradient(ellipse 45% 35% at 12% 88%,rgba(244,122,32,.05) 0%,transparent 65%);
+}
+html.dark .hero-ambient{
+  background:
+    radial-gradient(ellipse 65% 55% at 88% 12%,rgba(237,28,36,.14) 0%,transparent 65%),
+    radial-gradient(ellipse 45% 35% at 12% 88%,rgba(244,122,32,.09) 0%,transparent 65%);
+}
+
+/* Hero wrap above ambient layer */
+.hero>.wrap{position:relative;z-index:1}
+
+/* Section accent line (gradient rule before headings) */
+.acc-line{
+  display:block;width:34px;height:3px;
+  background:linear-gradient(90deg,var(--red),var(--orange));
+  border-radius:2px;margin-bottom:14px;
+}
+
+/* Gradient divider between sections */
+.section-divider{
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--line) 20%,var(--line) 80%,transparent);
+  border:0;margin:0;
+}
+
+/* Floating label / eyebrow pill (consistent across pages) */
+.pill-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(237,28,36,.07);color:var(--red);
+  border:1.5px solid rgba(237,28,36,.18);
+  padding:7px 16px;border-radius:999px;
+  font-family:var(--display);font-weight:700;
+  text-transform:uppercase;font-size:11px;letter-spacing:.14em;margin-bottom:26px;
+}
+.pill-eyebrow .live-dot{
+  width:7px;height:7px;border-radius:50%;background:var(--red);
+  animation:pulse 2s infinite;flex-shrink:0;
+}
+html.dark .pill-eyebrow{background:rgba(237,28,36,.15);border-color:rgba(237,28,36,.35)}
+
+/* Spot-video ambient glow */
+.spot-video{box-shadow:0 30px 80px rgba(237,28,36,.2),0 0 0 1px rgba(237,28,36,.06)!important}
+html.dark .spot-video{box-shadow:0 30px 80px rgba(237,28,36,.3),0 0 0 1px rgba(237,28,36,.12)!important}
+
+/* Improved testimonial card */
+.t-card{transition:box-shadow .25s,transform .25s}
+.t-card:hover{box-shadow:0 14px 40px rgba(10,11,12,.07);transform:translateY(-3px)}
+html.dark .t-card:hover{box-shadow:0 14px 40px rgba(0,0,0,.3)}
+
+/* Why-card hover glow (dark mode) */
+html.dark .why-card:hover{border-color:rgba(237,28,36,.28)!important;box-shadow:0 0 28px rgba(237,28,36,.07)!important}
+
+/* Nav brand mark — tighter glow */
+.brand-mark{box-shadow:0 3px 12px rgba(237,28,36,.3),0 0 0 1px rgba(237,28,36,.08)!important}
+.brand:hover .brand-mark{box-shadow:0 5px 18px rgba(237,28,36,.42),0 0 0 1px rgba(237,28,36,.15)!important}
+
+/* Marquee gold dots pulse in sync */
+.marquee-track .dot{animation:dotPop 2.4s ease-in-out infinite}
+@keyframes dotPop{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.7}}
+
+/* Scroll-progress bar — thicker + rounder cap */
+.scroll-bar{height:3px;border-radius:0 3px 3px 0}
+
+/* Footer — top gradient glow */
+footer.site-footer{box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 -1px 0 rgba(237,28,36,.08)}
+
+/* Better mobile drawer animation */
+.mobile-drawer.open{animation:drawerSlide .28s cubic-bezier(.22,1,.36,1)}
+@keyframes drawerSlide{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:none}}
+
+/* Theme toggle — subtler hover */
+.theme-toggle{transition:all .2s cubic-bezier(.22,1,.36,1)}
+
+/* Selection uses brand gradient tint */
+::selection{background:rgba(237,28,36,.18);color:var(--ink)}
+html.dark ::selection{background:rgba(237,28,36,.3);color:#fff}
+
+/* Link underline hover — global polish */
+footer.site-footer a:hover{color:var(--red);transition:color .15s}
+
+/* Pill-btn focus glow */
+.pill-btn:focus-visible,.btn:focus-visible{outline:2px solid var(--red);outline-offset:4px;box-shadow:0 0 0 5px rgba(237,28,36,.15)}
+
+/* Logo carousel cards — subtle hover lift */
+.lc-logo{transition:box-shadow .25s,transform .25s;cursor:default}
+.lc-logo:hover{box-shadow:0 6px 20px rgba(10,11,12,.1);transform:translateY(-2px)}
+html.dark .lc-logo{background:#1A1B1F;border-color:rgba(255,255,255,.08)}
+html.dark .lc-logo:hover{box-shadow:0 6px 20px rgba(0,0,0,.4)}
+
+/* ── DARK MODE grain tint ── */
+html.dark .has-grain::after{opacity:.75}
