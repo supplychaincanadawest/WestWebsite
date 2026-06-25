@@ -1048,7 +1048,9 @@ function imgProxy(src, w, q){
   try{
     const abs = new URL(src, window.location.href).href;
     const cb  = Math.floor(Date.now()/86400000);
-    return 'https://images.weserv.nl/?url='+encodeURIComponent(abs)+'&w='+(w||600)+'&output=webp&q='+(q||82)+'&il&cb='+cb;
+    /* decodeURIComponent prevents double-encoding: new URL() encodes spaces→%20,
+       then encodeURIComponent would encode % → %25, giving wsrv.nl %2520. */
+    return 'https://images.weserv.nl/?url='+encodeURIComponent(decodeURIComponent(abs))+'&w='+(w||600)+'&output=webp&q='+(q||82)+'&il&cb='+cb;
   }catch(e){ return src; }
 }
 
@@ -1108,6 +1110,11 @@ const speakers = [
     n:'Ken Sandmoen', role:'VP, Major Projects Canada', org:'BrandSafway', topic:'Building a Stronger Maintenance Sector Through Collaboration',
     photo:'../assets/speakers/Ken-Sandmoen.jpg',
     bio:'Ken Sandmoen is a solutions-driven leader with more than 20 years of experience in industrial maintenance across Canada. Throughout a progressive career with BrandSafway, he has earned a reputation for bringing teams together, solving complex workforce and operational challenges, and helping major facilities run safely and reliably. As a founding member and current Board Chair of AMCC, Ken plays a key role in strengthening communication and coordination across Canada\'s maintenance sector. Known for his pragmatic leadership style and collaborative approach, he is driven by a genuine belief that the industry is stronger when it works together.'
+  },
+  {
+    n:'Alexander (Sasha) Sergeev MBA, FCIPS, SCMP', role:'Director, Procurement', org:'Borouge International', topic:'Procurement Transformation & Digital Supply Chains',
+    photo:'../assets/speakers/Sasha-Sergeev.jpg',
+    bio:'Alexander (Sasha) Sergeev is Director, Procurement at Borouge International, one of the world\'s largest polyolefins and petrochemicals companies. A senior procurement and supply chain executive with more than 25 years of international experience, he has led procurement, contracting, supply chain, warehousing, and business transformation programs across the energy and petrochemical sectors. Throughout his career, Sasha has held leadership roles at Borouge International, NOVA Chemicals, Cenovus Energy, Husky Energy, and Shell, managing multi-billion-dollar spend portfolios and complex global supply chains. He is recognized for driving procurement transformation, digital enablement, supplier partnerships, and significant value creation. Sasha holds an MBA from the University of Calgary, is a Fellow of the Chartered Institute of Procurement & Supply (FCIPS), and holds the SCMP designation. He served on the Board of Supply Chain Canada West and is a passionate advocate for the profession and a frequent speaker on procurement transformation and the future of digital supply chains.'
   },
   {placeholder:true, n:'More Speakers', sub:'Announcing Soon'},
   {placeholder:true, n:'Keynote Speaker', sub:'Announcing Soon'},
