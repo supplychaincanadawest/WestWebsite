@@ -862,7 +862,7 @@ SCCWest.mountChrome({active:'Events'});
         const tile = document.createElement('div');
         tile.className = 'past-logo-tile';
         const img = document.createElement('img');
-        img.src = imgProxy('../assets/past-partners/' + f, 110);
+        img.src = '../assets/past-partners/' + encodeURIComponent(f);
         img.alt = f.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
         img.loading = 'lazy';
         img.decoding = 'async';
