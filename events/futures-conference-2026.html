@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
 <title>West Futures Conference 2026 · Supply Chain Conference Edmonton, Alberta — October 2</title>
 <meta name="description" content="West Futures Conference 2026 — the premier supply chain conference in Edmonton, Alberta. October 2, River Cree Resort. 300+ procurement, logistics and operations leaders. 15+ speakers, 10 CPD credits." />
 <meta name="keywords" content="supply chain conference Edmonton 2026, supply chain conference Alberta, supply chain conference Calgary, West Futures Conference 2026, supply chain Edmonton, procurement conference Alberta, logistics conference Edmonton, supply chain Canada West conference, SCMP CPD credits Alberta, supply chain leadership Western Canada, River Cree conference Edmonton, SCC West conference, supply chain professional development Alberta" />
@@ -859,9 +862,10 @@ SCCWest.mountChrome({active:'Events'});
         const tile = document.createElement('div');
         tile.className = 'past-logo-tile';
         const img = document.createElement('img');
-        img.src = '../assets/past-partners/' + encodeURIComponent(f);
+        img.src = imgProxy('../assets/past-partners/' + f, 110);
         img.alt = f.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
         img.loading = 'lazy';
+        img.decoding = 'async';
         img.style.cssText = 'height:32px;max-width:110px;object-fit:contain;display:block;';
         tile.appendChild(img);
         grid.appendChild(tile);
@@ -916,9 +920,10 @@ SCCWest.mountChrome({active:'Events'});
         const tile = document.createElement('div');
         tile.className = 'ps-tile';
         const img = document.createElement('img');
-        img.src = '../assets/premier-sponsors/' + encodeURIComponent(f);
+        img.src = imgProxy('../assets/premier-sponsors/' + f, 220);
         img.alt = f.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
         img.loading = 'lazy';
+        img.decoding = 'async';
         const href = links[f];
         if(href){
           const a = document.createElement('a');
@@ -948,9 +953,10 @@ SCCWest.mountChrome({active:'Events'});
         const tile = document.createElement('div');
         tile.className = 'sponsor-logo-tile';
         const img = document.createElement('img');
-        img.src = '../assets/sponsors/' + encodeURIComponent(f);
+        img.src = imgProxy('../assets/sponsors/' + f, 200);
         img.alt = f.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
         img.loading = 'lazy';
+        img.decoding = 'async';
         img.style.cssText = 'height:62px;max-width:200px;object-fit:contain;display:block;';
         const href = links[f];
         if(href){
@@ -1034,6 +1040,18 @@ const ioCount = new IntersectionObserver(es => {
 }, {threshold:.4});
 document.querySelectorAll('[data-count]').forEach(c => ioCount.observe(c));
 
+/* ===== Image optimisation via images.weserv.nl (free, no-signup CDN proxy) =====
+   Converts any raster image to WebP, resizes it, and compresses it on the fly.
+   The ?cb= param changes daily so wsrv.nl re-fetches updated images within 24 h. */
+function imgProxy(src, w, q){
+  if(/\.svg$/i.test(src)) return src;
+  try{
+    const abs = new URL(src, window.location.href).href;
+    const cb  = Math.floor(Date.now()/86400000);
+    return 'https://images.weserv.nl/?url='+encodeURIComponent(abs)+'&w='+(w||600)+'&output=webp&q='+(q||82)+'&il&cb='+cb;
+  }catch(e){ return src; }
+}
+
 /* ===== Speakers ===== */
 const speakers = [
   {
@@ -1111,7 +1129,7 @@ speakers.forEach(s => {
     el.innerHTML = `${ringsSVG}<div class="plus">+</div><div class="tag tba">Coming Soon</div><div class="info"><div class="name">${s.n}</div><div class="role">${s.sub}</div></div>`;
   } else {
     el.className = 'speaker-flip';
-    el.innerHTML = `<div class="sf-inner"><div class="sf-front"><img src="${s.photo}" alt="${s.n}" loading="lazy"/><div class="tag">Confirmed</div><div class="flip-cue">▸ Bio</div><div class="info"><div class="name">${s.n}</div><div class="role">${s.role}</div><div class="org">${s.org}</div></div></div><div class="sf-back"><div class="name">${s.n}</div><div class="role-org">${s.role} · ${s.org}</div><p class="bio">${s.bio}</p><div class="topic">↗ ${s.topic}</div></div></div>`;
+    el.innerHTML = `<div class="sf-inner"><div class="sf-front"><img src="${imgProxy(s.photo,600)}" alt="${s.n}" loading="lazy" decoding="async"/><div class="tag">Confirmed</div><div class="flip-cue">▸ Bio</div><div class="info"><div class="name">${s.n}</div><div class="role">${s.role}</div><div class="org">${s.org}</div></div></div><div class="sf-back"><div class="name">${s.n}</div><div class="role-org">${s.role} · ${s.org}</div><p class="bio">${s.bio}</p><div class="topic">↗ ${s.topic}</div></div></div>`;
     const bioEl = el.querySelector('.bio');
     let scrollTimer = null;
     function startAutoScroll(){

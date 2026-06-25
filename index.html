@@ -440,6 +440,16 @@ SCCWest.mountChrome({active:'Home'});
   grid.addEventListener('touchend', ()=>{ setTimeout(()=>{ active = true; }, 2500); }, {passive:true});
 })();
 
+/* ===== Image optimisation proxy (images.weserv.nl) ===== */
+function imgProxy(src,w,q){
+  if(/\.svg$/i.test(src)) return src;
+  try{
+    const abs=new URL(src,window.location.href).href;
+    const cb=Math.floor(Date.now()/86400000);
+    return 'https://images.weserv.nl/?url='+encodeURIComponent(abs)+'&w='+(w||300)+'&output=webp&q='+(q||82)+'&il&cb='+cb;
+  }catch(e){return src;}
+}
+
 /* ===== Sponsor logo carousel ===== */
 (function(){
   const track = document.getElementById('sponsorTrack');
@@ -456,9 +466,10 @@ SCCWest.mountChrome({active:'Home'});
         const wrap = document.createElement('div');
         wrap.className = 'lc-logo';
         const img = document.createElement('img');
-        img.src = 'assets/sponsors/' + encodeURIComponent(f);
+        img.src = imgProxy('assets/sponsors/' + f, 200);
         img.alt = f.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
         img.loading = 'lazy';
+        img.decoding = 'async';
         if(href && href !== '#'){
           const a = document.createElement('a');
           a.href = href; a.target = '_blank'; a.rel = 'noopener';
@@ -488,9 +499,10 @@ SCCWest.mountChrome({active:'Home'});
         const wrap = document.createElement('div');
         wrap.className = 'lc-logo';
         const img = document.createElement('img');
-        img.src = 'assets/past-partners/' + encodeURIComponent(f);
+        img.src = imgProxy('assets/past-partners/' + f, 200);
         img.alt = f.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
         img.loading = 'lazy';
+        img.decoding = 'async';
         wrap.appendChild(img);
         track.appendChild(wrap);
       });
