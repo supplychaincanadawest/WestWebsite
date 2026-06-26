@@ -6,5 +6,5 @@
   "display":"standalone",
   "background_color":"#0B0B0C",
   "theme_color":"#ED1C24",
-  "icons":[{"src":"assets/scc-logo.png","sizes":"192x192","type":"image/png"},{"src":"assets/scc-logo.png","sizes":"512x512","type":"image/png"}]
+  "icons":[{"src":"assets/scc-west-logo.png","sizes":"192x192","type":"image/png"},{"src":"assets/scc-west-logo.png","sizes":"512x512","type":"image/png"}]
 }
