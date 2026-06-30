@@ -226,19 +226,108 @@
   .agenda-section h2{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(38px,4.5vw,64px);line-height:.95;color:var(--ink);max-width:840px;margin:16px auto 16px;letter-spacing:-.005em}
   .agenda-section .lbl{font-family:var(--mono);color:var(--red);font-size:12px;letter-spacing:.2em;text-transform:uppercase}
   .agenda-section .sub{color:var(--muted);max-width:580px;margin:0 auto;line-height:1.6}
-  .agenda-list{max-width:1100px;margin:0 auto;border-top:1px solid var(--line)}
-  .agenda-row{display:grid;grid-template-columns:120px 1fr 130px;gap:24px;padding:22px 4px;border-bottom:1px solid var(--line);align-items:center;transition:background .2s}
-  .agenda-row:hover{background:var(--soft);padding-left:14px}
-  .agenda-row .time{font-family:var(--display);font-weight:800;font-size:22px;color:var(--ink);letter-spacing:.005em}
-  .agenda-row .ti h4{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:18px;line-height:1.1;color:var(--ink)}
-  .agenda-row .ti p{color:var(--muted);font-size:13px;margin-top:5px;line-height:1.5}
-  .agenda-row .speaker{font-size:13px;color:var(--muted)}
-  .agenda-row .speaker strong{color:var(--ink);display:block;font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:12px;letter-spacing:.04em}
-  .agenda-row .tag{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--red);text-transform:uppercase;text-align:right}
-  .agenda-row.tba .ti h4{color:#A9A3A1}
-  .agenda-row.tba .ti h4::after{content:" — TBA";color:var(--red);font-size:.65em;letter-spacing:.18em;font-weight:600;margin-left:8px}
-  .agenda-note{max-width:1100px;margin:24px auto 0;text-align:center;font-size:13px;color:var(--muted);font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
-  @media (max-width:880px){.agenda-row{grid-template-columns:1fr;gap:8px;padding:22px 0}.agenda-row .tag{text-align:left}}
+  .agenda-note{max-width:1080px;margin:30px auto 0;text-align:center;font-size:13px;color:var(--muted);font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+  /* ===== Two-Day Interactive Schedule ===== */
+  .sched{max-width:1080px;margin:0 auto}
+  .sched-tabs{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .sched-tab{cursor:pointer;background:var(--white);border:1.5px solid var(--line);border-radius:14px;padding:14px 24px;text-align:left;transition:transform .2s,border-color .2s,background .2s;min-width:236px;font-family:inherit}
+  .sched-tab:hover{border-color:var(--ink);transform:translateY(-2px)}
+  .sched-tab.active{background:var(--red);border-color:var(--red);box-shadow:0 14px 34px rgba(237,28,36,.28)}
+  .sched-tab .d-lbl{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);display:block}
+  .sched-tab.active .d-lbl{color:rgba(255,255,255,.85)}
+  .sched-tab .d-name{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:21px;line-height:1.02;color:var(--ink);margin-top:3px}
+  .sched-tab.active .d-name{color:#fff}
+  .sched-tab .d-date{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:3px;letter-spacing:.03em}
+  .sched-tab.active .d-date{color:rgba(255,255,255,.75)}
+  .sched-legend{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:26px 0 6px}
+  .lg-pill{cursor:pointer;display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--line);background:var(--white);border-radius:999px;padding:6px 15px;font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:12px;letter-spacing:.03em;color:var(--muted);transition:all .18s;user-select:none}
+  .lg-pill:hover{border-color:var(--ink);color:var(--ink)}
+  .lg-pill .swatch{width:9px;height:9px;border-radius:50%;background:var(--tk,var(--muted));flex-shrink:0}
+  .lg-pill.active{background:var(--tk);border-color:var(--tk);color:#fff}
+  .lg-pill.active .swatch{background:#fff}
+  .sched-day{display:none}
+  .sched-day.active{display:block;animation:schedFade .45s ease}
+  @keyframes schedFade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .sched-banner{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;background:#101013;color:#fff;padding:16px 22px;border-radius:14px;margin:22px 0 30px;position:relative;overflow:hidden;text-align:center}
+  .sched-banner::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 46% 130% at 0% 50%,rgba(237,28,36,.30),transparent 60%);pointer-events:none}
+  .sched-banner .bn-t{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:19px;letter-spacing:.02em;position:relative;z-index:1}
+  .sched-banner .bn-s{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.66);position:relative;z-index:1}
+  .sched-banner .bn-dot{width:5px;height:5px;border-radius:50%;background:var(--red);position:relative;z-index:1}
+  /* timeline block */
+  .tl-block{display:grid;grid-template-columns:88px 1fr;gap:20px}
+  .tl-time{text-align:right;padding-top:5px}
+  .tl-time .h{font-family:var(--display);font-weight:800;font-size:20px;color:var(--ink);line-height:1;letter-spacing:.01em}
+  .tl-time .ap{font-family:var(--mono);font-size:10px;color:var(--red);letter-spacing:.12em;display:block;margin-top:3px}
+  .tl-content{border-left:2px solid var(--line);padding:0 0 24px 26px;position:relative}
+  .tl-content::before{content:"";position:absolute;left:-7px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--white);border:2.5px solid var(--red)}
+  .tl-content.is-bar::before{border-color:var(--muted);width:9px;height:9px;left:-5.5px;top:16px}
+  .tl-block:last-child .tl-content{padding-bottom:0}
+  /* logistics / break / meal bars */
+  .tl-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:13px 20px;border-radius:12px;background:var(--soft);border:1px solid var(--line)}
+  .tl-bar .b-t{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:15px;letter-spacing:.04em;color:var(--ink)}
+  .tl-bar .b-s{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.05em}
+  .tl-bar.v-break{background:#FFF7ED;border-color:#FED7AA}
+  .tl-bar.v-break .b-t{color:#B45309}
+  .tl-bar.v-meal{background:#FEFCE8;border-color:#FDE68A}
+  .tl-bar.v-meal .b-t{color:#A16207}
+  /* full-width feature (plenary) card */
+  .tl-plenary{--tk:var(--red);position:relative;background:var(--white);border:1px solid var(--line);border-left:5px solid var(--tk);border-radius:14px;padding:20px 24px;cursor:pointer;transition:transform .18s,box-shadow .18s,opacity .25s}
+  .tl-plenary:hover{transform:translateY(-2px);box-shadow:0 16px 38px rgba(0,0,0,.09)}
+  .tl-plenary .p-track{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--tk);margin-bottom:8px;display:flex;align-items:center;flex-wrap:wrap}
+  .tl-plenary .p-title{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:25px;line-height:1.03;color:var(--ink);letter-spacing:-.006em}
+  .tl-plenary .p-sub{font-family:var(--display);font-weight:600;font-size:15px;color:var(--muted);margin-top:6px;line-height:1.25}
+  .tl-plenary .p-spk{margin-top:9px;font-family:var(--display);font-weight:700;font-size:16px;color:var(--ink)}
+  .tl-plenary .p-spk span{color:var(--muted);font-weight:600}
+  .tl-plenary .p-note{margin-top:7px;font-family:var(--mono);font-size:11px;color:var(--tk);letter-spacing:.06em;text-transform:uppercase}
+  .tl-plenary .p-meta{margin-top:12px;display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+  .tl-plenary .p-meta b{color:var(--tk);font-weight:500}
+  .p-flag{margin-left:10px;background:var(--tk);color:#fff;padding:2px 9px;border-radius:999px;font-size:9px;letter-spacing:.1em}
+  .p-invite{display:inline-block;margin-top:12px;font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:12.5px;color:var(--tk);letter-spacing:.04em;border-bottom:1.5px solid var(--tk);padding-bottom:1px}
+  /* concurrent "choose one" band */
+  .tl-cc{background:linear-gradient(180deg,var(--soft),transparent);border:1px dashed var(--line);border-radius:16px;padding:16px}
+  .cc-head{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin:2px 4px 15px}
+  .cc-head .cc-ic{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800}
+  .cc-head .cc-t{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:15px;letter-spacing:.05em;color:var(--ink)}
+  .cc-head .cc-s{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .cc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+  /* session card */
+  .sess{--tk:var(--muted);position:relative;background:var(--white);border:1px solid var(--line);border-top:4px solid var(--tk);border-radius:12px;padding:15px 16px 13px;cursor:pointer;transition:transform .18s,box-shadow .18s,opacity .25s;display:flex;flex-direction:column}
+  .sess:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(0,0,0,.1)}
+  .sess-room{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--tk);margin-bottom:7px;display:flex;align-items:center;gap:6px}
+  .sess-room::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--tk);flex-shrink:0}
+  .sess-title{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:17px;line-height:1.13;color:var(--ink);letter-spacing:-.003em}
+  .sess-sub{font-size:12.5px;color:var(--muted);line-height:1.42;margin-top:5px}
+  .sess-spk{margin-top:8px;font-family:var(--display);font-weight:700;font-size:14px;color:var(--ink);line-height:1.25}
+  .sess-spk span{display:block;font-family:var(--mono);font-weight:400;font-size:10px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-top:2px}
+  .sess-soon{margin-top:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .sess-foot{margin-top:auto;padding-top:13px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .sess-fmt{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+  .sess-more{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--tk);font-weight:500;white-space:nowrap}
+  .sess-more::after{content:" +"}
+  .sess.open .sess-more::after{content:" –"}
+  .sess-detail,.tl-plenary .sess-detail{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .sess.open .sess-detail,.tl-plenary.open .sess-detail{max-height:300px}
+  .sess-detail .inner{padding-top:12px;margin-top:12px;border-top:1px solid var(--line)}
+  .sess-detail p{font-size:13px;color:var(--muted);line-height:1.55}
+  .sess.is-open{cursor:default;border-top-style:dashed;border-top-color:var(--line);background:var(--soft)}
+  .sess.is-open .sess-title{color:var(--muted)}
+  .sess.is-open:hover{transform:none;box-shadow:none}
+  .sess.dim,.tl-plenary.dim{opacity:.14;filter:saturate(.45)}
+  /* track colours */
+  .sess[data-track="plenary"],.tl-plenary[data-track="plenary"]{--tk:#ED1C24}
+  .sess[data-track="economic"],.tl-plenary[data-track="economic"]{--tk:#1565C0}
+  .sess[data-track="procurement"],.tl-plenary[data-track="procurement"]{--tk:#0E7490}
+  .sess[data-track="leadership"],.tl-plenary[data-track="leadership"]{--tk:#15803D}
+  .sess[data-track="innovation"],.tl-plenary[data-track="innovation"]{--tk:#7C3AED}
+  .sess[data-track="community"],.tl-plenary[data-track="community"]{--tk:#B45309}
+  @media (max-width:680px){
+    .tl-block{grid-template-columns:58px 1fr;gap:12px}
+    .tl-content{padding-left:20px}
+    .tl-time .h{font-size:16px}
+    .tl-plenary .p-title{font-size:21px}
+    .cc-grid{grid-template-columns:1fr}
+    .sched-tab{min-width:0;flex:1 1 100%}
+  }
 
   /* ============ SPONSORS (dark per inspiration) ============ */
   .sponsors-section{background:#0B0B0E;padding:120px 0;color:#fff;position:relative;overflow:hidden}
@@ -399,9 +488,6 @@
     .about-grid{grid-template-columns:1fr;gap:40px}
     .themes-grid{grid-template-columns:1fr 1fr}
     .speaker-grid{grid-template-columns:repeat(2,1fr)}
-    .agenda-row{grid-template-columns:1fr;gap:6px;padding:18px 0}
-    .agenda-row .time{font-size:18px}
-    .agenda-row .tag{text-align:left}
     .pricing-grid{grid-template-columns:1fr}
     .venue-grid,.venue-extras{grid-template-columns:1fr}
     .thuy-card{grid-template-columns:1fr;text-align:center;padding:28px 24px}
@@ -430,10 +516,16 @@
   html.dark .recap-frame{box-shadow:0 30px 70px rgba(237,28,36,.2)}
   html.dark .theme-card{background:var(--soft) !important;border-color:var(--line) !important}
   html.dark .theme-card:hover{background:var(--paper) !important;border-color:var(--red) !important}
-  html.dark .agenda-list{border-top-color:var(--line)}
-  html.dark .agenda-row{border-bottom-color:var(--line)}
-  html.dark .agenda-row .time{color:var(--ink)}
-  html.dark .agenda-row .ti h4{color:var(--ink)}
+  html.dark .sched-tab{background:var(--paper)}
+  html.dark .sched-tab.active{background:var(--red)}
+  html.dark .lg-pill{background:var(--paper)}
+  html.dark .sess,html.dark .tl-plenary{background:var(--paper)}
+  html.dark .sess.is-open{background:var(--soft)}
+  html.dark .tl-content::before{background:var(--paper)}
+  html.dark .tl-bar.v-break{background:#2A1A06;border-color:#5C3A12}
+  html.dark .tl-bar.v-break .b-t{color:#FBBF24}
+  html.dark .tl-bar.v-meal{background:#2A2606;border-color:#5C5212}
+  html.dark .tl-bar.v-meal .b-t{color:#FCD34D}
   html.dark .group-strip .l .t{color:var(--ink)}
   html.dark .thuy-card .info h3{color:var(--ink)}
   /* Sponsor tier section backgrounds — dark mode overrides */
@@ -604,12 +696,12 @@
 <section class="agenda-section" id="agenda">
   <div class="wrap">
     <div class="head-c reveal">
-      <span class="lbl">— Agenda At A Glance</span>
-      <h2>One day. Built for impact.</h2>
-      <p class="sub">From morning keynotes to evening networking, every minute is engineered to send you home with insight, contacts, and ideas worth acting on.</p>
+      <span class="lbl">— Full Agenda</span>
+      <h2>Two days. Built for impact.</h2>
+      <p class="sub">A pre-conference workshop day and a full main-stage programme. When sessions run in parallel, pick the room that fits your priorities — every track is built to send you home with something worth acting on.</p>
     </div>
-    <div class="agenda-list reveal" id="agendaTable"></div>
-    <div class="agenda-note">Detailed agenda updated as confirmed · Final schedule announced with full speaker line-up</div>
+    <div class="sched reveal" id="agendaTable"></div>
+    <div class="agenda-note">Programme subject to change as speakers confirm · Select sessions are add-ons or invitation-only</div>
   </div>
 </section>
 
@@ -1165,24 +1257,139 @@ speakers.forEach(s => {
 document.getElementById('modalClose').addEventListener('click', () => document.getElementById('modal').classList.remove('open'));
 document.getElementById('modal').addEventListener('click', e => { if(e.target.id === 'modal') e.currentTarget.classList.remove('open'); });
 
-/* ===== Agenda ===== */
-const agenda = [
-  {time:'7:30 AM', title:'Registration & Networking Breakfast', desc:'Coffee, conversation, and your first meaningful connection of the day.', speaker:{n:'Open Networking',d:''}, tag:'Networking'},
-  {time:'8:30 AM', title:'Opening Keynote', desc:'Setting the tone. The forces shaping supply chain in 2026 and beyond.', speaker:{n:'TBA',d:'Featured Voice'}, tag:'Keynote', tba:true},
-  {time:'10:00 AM', title:'Panel · Resilience & Risk', desc:'How leading organizations are scaling out, fragility every aware.', speaker:{n:'Panel',d:'Industry Voices'}, tag:'Panel'},
-  {time:'11:30 AM', title:'Breakout Sessions', desc:'Choose your track: Digital, Sustainability, Talent or Logistics.', speaker:{n:'Multiple Tracks',d:''}, tag:'Workshops'},
-  {time:'12:30 PM', title:'Lunch & Sponsor Showcase', desc:'Hosted lunch with curated demo space and the sponsor expo room.', speaker:{n:'AMCC Hosted',d:''}, tag:'Networking'},
-  {time:'2:00 PM', title:'Executive Fireside', desc:'A candid conversation with a senior executive shaping Western Canada\'s supply chain agenda.', speaker:{n:'TBA',d:'Executive Voice'}, tag:'Fireside', tba:true},
-  {time:'3:30 PM', title:'Closing Panel · Future of the Profession', desc:'Talent, technology, and the next decade of leadership.', speaker:{n:'Panel',d:'Confirmed Speakers'}, tag:'Panel'},
-  {time:'5:00 PM', title:'Networking Reception', desc:'An evening reception in Western Canada\'s buzziest community at River Cree.', speaker:{n:'River Cree Ballroom',d:''}, tag:'Reception'},
-];
-const at = document.getElementById('agendaTable');
-agenda.forEach(a => {
-  const r = document.createElement('div');
-  r.className = 'agenda-row' + (a.tba ? ' tba' : '');
-  r.innerHTML = `<div class="time">${a.time}</div><div class="ti"><h4>${a.title}</h4><p>${a.desc}</p></div><div class="tag">${a.tag}</div>`;
-  at.appendChild(r);
-});
+/* ===== Two-Day Interactive Schedule ===== */
+(function(){
+  const TRACKS = {
+    plenary:    {name:'Plenary',                c:'#ED1C24'},
+    economic:   {name:'Economic & Markets',     c:'#1565C0'},
+    procurement:{name:'Procurement & Policy',   c:'#0E7490'},
+    leadership: {name:'Leadership & Profession', c:'#15803D'},
+    innovation: {name:'Innovation & AI',        c:'#7C3AED'},
+    community:  {name:'Community & Networking',  c:'#B45309'},
+  };
+
+  // k: bar | feature | cc   ·   descriptions are placeholders until speakers confirm
+  const DAYS = [
+    { id:'day1', lbl:'Day 1', name:'Pre-Conference Workshops', date:'Thursday, October 1, 2026', venue:'River Cree Resort · Optional Add-On Day',
+      blocks:[
+        {k:'feature', track:'procurement', t0:'9:00', ap:'AM', t:'Pre-Conference Workshop', sub:'Competition Bureau & Office of the Procurement Ombudsman', room:'River Cree 1', time:'9:00 AM – 12:00 PM', fmt:'Workshop · Add-on'},
+        {k:'feature', track:'innovation', t0:'1:00', ap:'PM', t:'AI for Supply Chain Productivity', sub:'A hands-on pre-conference workshop', spk:'Ian Gonzalez', room:'River Cree 1', time:'1:00 – 4:00 PM', fmt:'Workshop · Add-on'},
+        {k:'feature', track:'leadership', t0:'5:30', ap:'PM', t:'Executive Round Table', sub:'An intimate forum for senior supply chain leaders', note:'Thought Partner: Vallen', room:'River Cree 2', time:'5:30 – 9:00 PM', fmt:'Invitation Only', flag:'invite'},
+      ]},
+    { id:'day2', lbl:'Day 2', name:'Main Conference', date:'Friday, October 2, 2026', venue:'River Cree Resort · Enoch Cree Nation',
+      blocks:[
+        {k:'bar', v:'reg', t0:'6:45', ap:'AM', t:'Registration & Badge Pick-Up', s:'6:45 – 8:00 AM'},
+        {k:'bar', v:'logistics', t0:'7:00', ap:'AM', t:'Vendor Pathway Open', s:'7:00 – 8:00 AM'},
+        {k:'cc', t0:'7:00', ap:'AM', time:'7:00 – 8:00 AM', sessions:[
+          {track:'community', room:'Main Ballroom & Enoch E/F', t:'Breakfast', fmt:'Open to all attendees'},
+          {track:'community', room:'River Cree 1 & 2', t:'VIP Networking Breakfast', fmt:'Add-on experience'},
+        ]},
+        {k:'feature', track:'plenary', t0:'8:00', ap:'AM', t:'Opening Remarks', room:'Main Ballroom', time:'8:00 – 8:20 AM', fmt:'Plenary'},
+        {k:'feature', track:'plenary', t0:'8:20', ap:'AM', t:'CPO Fireside Chat', room:'Main Ballroom', time:'8:20 – 9:00 AM', fmt:'Fireside'},
+        {k:'feature', track:'economic', t0:'9:00', ap:'AM', t:'Economic Update', spk:'Mark Parsons', org:'Chief Economist, ATB', room:'Main Ballroom', time:'9:00 – 10:00 AM', fmt:'Keynote'},
+        {k:'bar', v:'break', t0:'10:00', ap:'AM', t:'Networking & Snack Break', s:'10:00 – 10:30 AM'},
+        {k:'cc', t0:'10:30', ap:'AM', time:'10:30 – 11:45 AM', sessions:[
+          {track:'procurement', room:'Main Ballroom', t:'Purchase with Purpose', sub:'How Edmonton’s Procurement Strategy is Building a More Affordable, Prosperous, and Innovative City', spk:'City of Edmonton', fmt:'Breakout'},
+          {track:null, room:'Enoch E/F', t:'Breakout Session', status:'soon', fmt:'Breakout'},
+          {track:'leadership', room:'River Cree 1 & 2', t:'Beyond the Bid', sub:'Contracting 2.0 in an Era of Supply Chain Uncertainty', fmt:'Panel'},
+        ]},
+        {k:'bar', v:'meal', t0:'11:45', ap:'AM', t:'Lunch', s:'11:45 AM – 12:45 PM'},
+        {k:'bar', v:'logistics', t0:'11:45', ap:'AM', t:'Vendor Pathway Open', s:'11:45 AM – 1:00 PM'},
+        {k:'cc', t0:'1:00', ap:'PM', time:'1:00 – 2:00 PM', sessions:[
+          {track:'leadership', room:'Main Ballroom', t:'Featured Presentation', spk:'Minto Roy', fmt:'Presentation'},
+          {track:'innovation', room:'Enoch E/F', t:'Solution Room', fmt:'Sponsor Showcase'},
+          {track:'leadership', room:'River Cree 1 & 2', t:'Building Internal Support', sub:'The Supply Chain Value Proposition', spk:'Siobhan Chinnery', fmt:'Panel'},
+        ]},
+        {k:'bar', v:'break', t0:'2:00', ap:'PM', t:'Networking & Snack Break', s:'2:00 – 2:30 PM'},
+        {k:'cc', t0:'2:30', ap:'PM', time:'2:30 – 3:30 PM', sessions:[
+          {track:'innovation', room:'Main Ballroom', t:'The Intelligent Supply Chain', sub:'Reimagining Strategic Sourcing with AI', spk:'Ian Gonzalez', fmt:'Breakout'},
+          {track:'community', room:'Enoch E/F', t:'Indigenous Perspectives in Supply Chain', spk:'Phil Ducharme & Drew LaFond', org:'MLT Aikins', fmt:'Breakout'},
+          {track:'procurement', room:'River Cree 1 & 2', t:'Office of the Procurement Ombudsman & Competition Bureau', spk:'Amy Hill', org:'Competition Bureau', fmt:'Breakout'},
+        ]},
+        {k:'bar', v:'logistics', t0:'3:30', ap:'PM', t:'Vendor Pathway & Networking', s:'3:30 – 5:00 PM'},
+        {k:'feature', track:'community', t0:'5:00', ap:'PM', t:'Evening Reception & Dinner', room:'Main Ballroom', time:'5:00 – 8:00 PM', fmt:'Networking'},
+      ]},
+  ];
+
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const railHTML = b => `<div class="tl-time"><span class="h">${b.t0}</span><span class="ap">${b.ap}</span></div>`;
+  const PLACEHOLDER = 'Full session details and speaker description coming soon — check back as our 2026 programme is confirmed.';
+
+  function sessHTML(s){
+    const tk = s.track && TRACKS[s.track] ? s.track : '';
+    const isOpen = s.status === 'soon';
+    const detail = `<div class="sess-detail"><div class="inner"><p>${esc(s.desc || PLACEHOLDER)}</p></div></div>`;
+    return `<div class="sess${isOpen?' is-open':''}" data-track="${tk}">
+      ${s.room ? `<div class="sess-room">${esc(s.room)}</div>` : ''}
+      <div class="sess-title">${esc(s.t)}</div>
+      ${s.sub ? `<div class="sess-sub">${esc(s.sub)}</div>` : ''}
+      ${s.spk ? `<div class="sess-spk">${esc(s.spk)}${s.org?`<span>${esc(s.org)}</span>`:''}</div>` : (isOpen?`<div class="sess-soon">Programming to be announced</div>`:'')}
+      <div class="sess-foot"><span class="sess-fmt">${esc(s.fmt||'')}</span>${isOpen?'':'<span class="sess-more">Details</span>'}</div>
+      ${isOpen?'':detail}
+    </div>`;
+  }
+
+  function featureHTML(b){
+    const tk = b.track && TRACKS[b.track] ? b.track : 'plenary';
+    const flag = b.flag==='invite' ? `<span class="p-flag">Invitation Only</span>` : '';
+    const desc = b.desc || (b.flag==='invite'
+      ? 'A private, invitation-only forum for senior leaders. Interested in attending? Email our team to request an invitation.'
+      : PLACEHOLDER);
+    const cta = b.flag==='invite'
+      ? `<a class="p-invite" href="mailto:thoang@supplychaincanada.com?subject=Executive%20Round%20Table%20%E2%80%94%20Request%20an%20Invitation">Request an invitation →</a>` : '';
+    return `<div class="tl-block">${railHTML(b)}<div class="tl-content"><div class="tl-plenary" data-track="${tk}">
+      <div class="p-track">${TRACKS[tk].name}${flag}</div>
+      <div class="p-title">${esc(b.t)}</div>
+      ${b.sub?`<div class="p-sub">${esc(b.sub)}</div>`:''}
+      ${b.spk?`<div class="p-spk">${esc(b.spk)}${b.org?` <span>· ${esc(b.org)}</span>`:''}</div>`:''}
+      ${b.note?`<div class="p-note">${esc(b.note)}</div>`:''}
+      <div class="p-meta"><span><b>${esc(b.room)}</b></span><span>${esc(b.time)}</span>${b.fmt?`<span>${esc(b.fmt)}</span>`:''}</div>
+      <div class="sess-detail"><div class="inner"><p>${esc(desc)}</p>${cta}</div></div>
+    </div></div></div>`;
+  }
+
+  function barHTML(b){
+    return `<div class="tl-block">${railHTML(b)}<div class="tl-content is-bar"><div class="tl-bar v-${b.v}"><span class="b-t">${esc(b.t)}</span><span class="b-s">${esc(b.s)}</span></div></div></div>`;
+  }
+
+  function ccHTML(b){
+    return `<div class="tl-block">${railHTML(b)}<div class="tl-content"><div class="tl-cc">
+      <div class="cc-head"><span class="cc-ic">⇄</span><span class="cc-t">Concurrent Sessions</span><span class="cc-s">Choose one · ${esc(b.time)}</span></div>
+      <div class="cc-grid">${b.sessions.map(sessHTML).join('')}</div>
+    </div></div></div>`;
+  }
+
+  const blockHTML = b => b.k==='bar'?barHTML(b) : b.k==='feature'?featureHTML(b) : ccHTML(b);
+  const dayHTML = d => `<div class="sched-day" data-day="${d.id}">
+    <div class="sched-banner"><span class="bn-dot"></span><span class="bn-t">${esc(d.name)}</span><span class="bn-s">${esc(d.date)} · ${esc(d.venue)}</span><span class="bn-dot"></span></div>
+    <div class="sched-blocks">${d.blocks.map(blockHTML).join('')}</div>
+  </div>`;
+
+  const tabs = DAYS.map(d => `<button class="sched-tab" data-day="${d.id}"><span class="d-lbl">${d.lbl} · ${d.date.split(',')[1].trim()}</span><span class="d-name">${esc(d.name)}</span><span class="d-date">${esc(d.venue)}</span></button>`).join('');
+  const legend = `<button class="lg-pill active" data-track="all" style="--tk:#ED1C24"><span class="swatch"></span>All Tracks</button>` +
+    Object.entries(TRACKS).map(([k,v]) => `<button class="lg-pill" data-track="${k}" style="--tk:${v.c}"><span class="swatch"></span>${v.name}</button>`).join('');
+
+  const mount = document.getElementById('agendaTable');
+  mount.innerHTML = `<div class="sched-tabs" role="tablist">${tabs}</div><div class="sched-legend">${legend}</div>${DAYS.map(dayHTML).join('')}`;
+
+  function setDay(id){
+    mount.querySelectorAll('.sched-tab').forEach(t => t.classList.toggle('active', t.dataset.day===id));
+    mount.querySelectorAll('.sched-day').forEach(p => p.classList.toggle('active', p.dataset.day===id));
+  }
+  function setFilter(f){
+    mount.querySelectorAll('.lg-pill').forEach(p => p.classList.toggle('active', p.dataset.track===f));
+    mount.querySelectorAll('.sess,.tl-plenary').forEach(c => c.classList.toggle('dim', f!=='all' && (c.dataset.track||'')!==f));
+  }
+  setDay('day2'); // default to the main conference day
+
+  mount.addEventListener('click', e => {
+    const tab = e.target.closest('.sched-tab');   if(tab){ setDay(tab.dataset.day); return; }
+    const pill = e.target.closest('.lg-pill');    if(pill){ setFilter(pill.dataset.track); return; }
+    if(e.target.closest('a')) return;
+    const card = e.target.closest('.sess,.tl-plenary');
+    if(card && !card.classList.contains('is-open')) card.classList.toggle('open');
+  });
+})();
 
 /* ===== FAQ ===== */
 const faqs = [
