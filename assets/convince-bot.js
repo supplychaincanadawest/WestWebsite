@@ -1,5 +1,7 @@
-/* SCC West "West" Concierge — fully offline rules engine.
- * Works without any API. Scans the page text + a built-in knowledge base.
+/* SCC West "West" Concierge — hybrid AI + offline rules engine.
+ * Tries the first-party /api/ask LLM endpoint first, then falls back to a
+ * built-in knowledge base if the API is unavailable for ANY reason. Always
+ * answers, and always routes the conversation back to the Futures Conference.
  * Quick chips always visible above input. Mobile + desktop friendly.
  * Drop in: <script src="assets/convince-bot.js" defer></script>
  */
@@ -41,13 +43,18 @@
       next:'register'
     },
     {
-      keys:['date','when','what day','schedule','time'],
-      reply:`**Friday, October 2, 2026** — starting 7:30 AM MDT.\n\nRegistration & networking breakfast from 7:30. Opening keynote at 8:30. Programming runs through 5:00 PM, followed by the Networking Reception at 5:00 PM at River Cree.`,
+      keys:['date','when','what day','time','dates'],
+      reply:`**Two days at River Cree Resort, Edmonton:**\n• **Thursday, October 1, 2026** — Pre-Conference Workshops (optional add-on)\n• **Friday, October 2, 2026** — Main Conference\n\nOn the main day: registration & breakfast from 6:45 AM, opening remarks at 8:00, programming through the afternoon, and the Evening Reception & Dinner from 5:00 PM.`,
       next:'agenda'
     },
     {
-      keys:['agenda','schedule','program','what happens','timeline'],
-      reply:`**At-a-glance:**\n• 7:30 AM — Registration & Networking Breakfast\n• 8:30 AM — Opening Keynote\n• 10:00 AM — Panel · Resilience & Risk\n• 11:30 AM — Breakout Sessions\n• 12:30 PM — Lunch & Sponsor Showcase\n• 2:00 PM — Executive Fireside\n• 3:30 PM — Closing Panel · Future of the Profession\n• 5:00 PM — Networking Reception\n\nFull lineup announced through 2026.`,
+      keys:['agenda','schedule','program','what happens','timeline','day two','day 2'],
+      reply:`The West Futures Conference 2026 runs **two days at River Cree Resort**:\n\n**Day 1 — Oct 1 · Pre-Conference Workshops** (optional add-on)\n• Competition Bureau & Procurement Ombudsman workshop (9 AM–12 PM)\n• AI for Supply Chain Productivity with Ian Gonzalez (1–4 PM)\n• Invitation-only Executive Round Table (evening)\n\n**Day 2 — Oct 2 · Main Conference**\n• Opening Remarks & CPO Fireside (8 AM)\n• Economic Update — Mark Parsons, ATB (9 AM)\n• Morning & afternoon concurrent breakouts — Purchase with Purpose (City of Edmonton), AI & Strategic Sourcing, Indigenous Perspectives, the Procurement Ombudsman & Competition Bureau, and more\n• Evening Reception & Dinner (5 PM)\n\nWhen sessions run in parallel, you choose the room that fits you. Full session details are firming up now.`,
+      next:'register'
+    },
+    {
+      keys:['pre-conference','preconference','pre conference','workshop','workshops','add-on','add on','october 1','oct 1','day one','day 1'],
+      reply:`**Day 1 — Thursday, October 1** offers optional **pre-conference workshops** at River Cree (an add-on to the main conference):\n• **Competition Bureau & Procurement Ombudsman** workshop — 9 AM–12 PM\n• **AI for Supply Chain Productivity** with Ian Gonzalez — 1–4 PM\n• **Executive Round Table** (evening) — invitation-only; email ${SPONSOR} to request an invite\n\nWorkshop pricing: **$100 member / $200 non-member** (+GST).`,
       next:'register'
     },
     {
@@ -61,8 +68,8 @@
       next:'venue'
     },
     {
-      keys:['speaker','speakers','keynote','presenter','who is speaking'],
-      reply:`**Confirmed 2026 speakers:**\n• **Mark Parsons** — VP & Chief Economist, ATB Financial — Alberta Economic Outlook\n• **Ian Gonzalez** — Advisor, SC&P Analytics — AI in Procurement\n• **Siobhan Chinnery** — Principal, Bee Grateful Mgmt — Leadership & Culture\n\nMore speakers, keynote and fireside guests announced through 2026. Want to speak? Email ${SPONSOR}.`,
+      keys:['speaker','speakers','keynote','presenter','who is speaking','lineup','line up'],
+      reply:`**Confirmed 2026 voices include:**\n• **Mark Parsons** — Chief Economist, ATB — Economic Update\n• **Sohrab Sohrabi** — CPO, City of Edmonton — Purchase with Purpose\n• **Ian Gonzalez** — AI & Strategic Sourcing\n• **Siobhan Chinnery** — The Supply Chain Value Proposition\n• **Amy Hill** — Competition Bureau\n• **Phil Ducharme & Drew LaFond** (MLT Aikins) — Indigenous Perspectives\n• **Minto Roy** — Featured Presentation\n\nMore speakers are announced on a rolling basis. Want to speak? Email ${SPONSOR}.`,
       next:'agenda'
     },
     {
@@ -317,7 +324,7 @@ PS — If you can share your boss's name or your latest job description / resume
       <textarea rows="1" placeholder="Ask me anything…" aria-label="Message"></textarea>
       <button class="sccbot-send">Send</button>
     </div>
-    <div class="sccbot-foot">Always available · no API · <a href="mailto:${SUPPORT}">${SUPPORT}</a></div>
+    <div class="sccbot-foot">AI-assisted · always available · <a href="mailto:${SUPPORT}">${SUPPORT}</a></div>
   `;
   document.body.appendChild(fab);
   document.body.appendChild(panel);
@@ -393,15 +400,43 @@ PS — If you can share your boss's name or your latest job description / resume
     return el;
   }
 
+  // Optional LLM layer — tries the first-party /api/ask endpoint, and falls back
+  // to the offline rules engine on ANY failure (no key, 4xx/5xx, network, timeout).
+  async function llmAnswer(text){
+    try{
+      const ctrl = new AbortController();
+      const to = setTimeout(()=>ctrl.abort(), 13000);
+      const r = await fetch('/api/ask', {
+        method:'POST',
+        headers:{'content-type':'application/json'},
+        body: JSON.stringify({ question:text, page:(document.title||'').split('·')[0].trim() }),
+        signal: ctrl.signal
+      });
+      clearTimeout(to);
+      if(!r.ok) return null;
+      const data = await r.json().catch(()=>null);
+      const a = data && typeof data.answer === 'string' ? data.answer.trim() : '';
+      return a || null;
+    }catch(e){ return null; }
+  }
+
   async function ask(text){
     if (busy || !text.trim()) return;
     busy = true; sendBtn.disabled = true;
-    addUser(text.trim());
+    const q = text.trim();
+    addUser(q);
     ta.value = '';
     const t = showTyping();
-    // Brief "thinking" delay for natural feel
-    await new Promise(r => setTimeout(r, 350 + Math.random()*250));
-    const reply = buildReply(text);
+    let reply;
+    const m = findMatch(q);
+    if (m && m.kind === 'email'){
+      // "Convince my boss" stays a deterministic template — better than free-form.
+      await new Promise(r => setTimeout(r, 350 + Math.random()*250));
+      reply = buildReply(q);
+    } else {
+      reply = await llmAnswer(q);         // try the AI layer first…
+      if (!reply) reply = buildReply(q);  // …fall back to the offline engine.
+    }
     t.remove();
     addBot(reply);
     busy = false; sendBtn.disabled = false; ta.focus();
