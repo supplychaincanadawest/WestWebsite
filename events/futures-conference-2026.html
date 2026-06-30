@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://www.supplychainprograms.ca/assets/site.css?v=2" />
+<link rel="stylesheet" href="../assets/site.css?v=5" />
 <script>try{if(localStorage.getItem('scc-theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}</script>
 
 <script type="application/ld+json">
@@ -229,16 +229,13 @@
   .agenda-note{max-width:1080px;margin:30px auto 0;text-align:center;font-size:13px;color:var(--muted);font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
   /* ===== Two-Day Interactive Schedule ===== */
   .sched{max-width:1080px;margin:0 auto}
-  .sched-tabs{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-  .sched-tab{cursor:pointer;background:var(--white);border:1.5px solid var(--line);border-radius:14px;padding:14px 24px;text-align:left;transition:transform .2s,border-color .2s,background .2s;min-width:236px;font-family:inherit}
-  .sched-tab:hover{border-color:var(--ink);transform:translateY(-2px)}
-  .sched-tab.active{background:var(--red);border-color:var(--red);box-shadow:0 14px 34px rgba(237,28,36,.28)}
-  .sched-tab .d-lbl{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);display:block}
-  .sched-tab.active .d-lbl{color:rgba(255,255,255,.85)}
-  .sched-tab .d-name{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:21px;line-height:1.02;color:var(--ink);margin-top:3px}
-  .sched-tab.active .d-name{color:#fff}
-  .sched-tab .d-date{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:3px;letter-spacing:.03em}
-  .sched-tab.active .d-date{color:rgba(255,255,255,.75)}
+  .sched-seg-wrap{display:flex;justify-content:center}
+  .sched-seg{display:inline-flex;gap:5px;padding:6px;background:var(--soft);border:1px solid var(--line);border-radius:16px;flex-wrap:wrap;justify-content:center}
+  .sched-seg button{cursor:pointer;border:0;background:transparent;border-radius:11px;padding:12px 26px;font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:16px;letter-spacing:.03em;color:var(--muted);transition:background .18s,color .18s,box-shadow .18s;line-height:1.05;display:flex;flex-direction:column;align-items:center;gap:3px}
+  .sched-seg button .sg-sub{font-family:var(--mono);font-size:9px;letter-spacing:.12em;font-weight:400;opacity:.8;text-transform:uppercase}
+  .sched-seg button:hover{color:var(--ink)}
+  .sched-seg button.active{background:var(--red);color:#fff;box-shadow:0 10px 26px rgba(237,28,36,.28)}
+  .sched-day.active + .sched-day.active{margin-top:48px;padding-top:48px;border-top:1px solid var(--line)}
   .sched-legend{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:26px 0 6px}
   .lg-pill{cursor:pointer;display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--line);background:var(--white);border-radius:999px;padding:6px 15px;font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:12px;letter-spacing:.03em;color:var(--muted);transition:all .18s;user-select:none}
   .lg-pill:hover{border-color:var(--ink);color:var(--ink)}
@@ -357,7 +354,7 @@
   .ps-tile img{height:110px;max-width:300px;object-fit:contain;display:block;}
   html.dark .ps-tile{background:#fff}
   /* Sponsor logo tiles always stay white — logos need white bg for legibility */
-  .sponsor-logo-tile{background:#fff;border-radius:14px;padding:18px 28px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;height:96px;min-width:180px;}
+  .sponsor-logo-tile{background:#fff;border-radius:14px;padding:20px 32px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;height:100px;min-width:190px;}
   .past-logo-tile{background:#fff;border-radius:8px;padding:8px 14px;border:1px solid #D8D3CE;display:flex;align-items:center;justify-content:center;}
   /* Attendees-from chip — styled text blocks */
   .attendee-chip{background:#fff;border:1.5px solid #D8D3CE;border-radius:10px;padding:12px 20px;font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:.08em;color:var(--ink);display:inline-flex;align-items:center;gap:8px;transition:box-shadow .2s,transform .2s,border-color .2s;line-height:1.1}
@@ -516,8 +513,7 @@
   html.dark .recap-frame{box-shadow:0 30px 70px rgba(237,28,36,.2)}
   html.dark .theme-card{background:var(--soft) !important;border-color:var(--line) !important}
   html.dark .theme-card:hover{background:var(--paper) !important;border-color:var(--red) !important}
-  html.dark .sched-tab{background:var(--paper)}
-  html.dark .sched-tab.active{background:var(--red)}
+  html.dark .sched-seg{background:var(--paper)}
   html.dark .lg-pill{background:var(--paper)}
   html.dark .sess,html.dark .tl-plenary{background:var(--paper)}
   html.dark .sess.is-open{background:var(--soft)}
@@ -935,9 +931,9 @@
 
 <div class="toast" id="toast">Copied to clipboard</div>
 
-<script src="../assets/site-chrome.js?v=2"></script>
-<script src="../assets/convince-bot.js?v=2" defer></script>
-<script src="../assets/lead-form.js?v=2" defer></script>
+<script src="../assets/site-chrome.js?v=3"></script>
+<script src="../assets/convince-bot.js?v=3" defer></script>
+<script src="../assets/lead-form.js?v=3" defer></script>
 <script>
 SCCWest.mountChrome({active:'Events'});
 
@@ -1049,7 +1045,7 @@ SCCWest.mountChrome({active:'Events'});
         img.alt = f.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
         img.loading = 'lazy';
         img.decoding = 'async';
-        img.style.cssText = 'height:62px;max-width:200px;object-fit:contain;display:block;';
+        img.style.cssText = 'max-height:56px;max-width:168px;object-fit:contain;display:block;';
         const href = links[f];
         if(href){
           const a = document.createElement('a');
@@ -1365,25 +1361,28 @@ document.getElementById('modal').addEventListener('click', e => { if(e.target.id
     <div class="sched-blocks">${d.blocks.map(blockHTML).join('')}</div>
   </div>`;
 
-  const tabs = DAYS.map(d => `<button class="sched-tab" data-day="${d.id}"><span class="d-lbl">${d.lbl} · ${d.date.split(',')[1].trim()}</span><span class="d-name">${esc(d.name)}</span><span class="d-date">${esc(d.venue)}</span></button>`).join('');
+  const seg = `<div class="sched-seg-wrap"><div class="sched-seg" role="tablist">` +
+    `<button data-day="all" class="active">Both Days<span class="sg-sub">Oct 1 + Oct 2</span></button>` +
+    DAYS.map(d => `<button data-day="${d.id}">${esc(d.lbl)}<span class="sg-sub">${esc(d.date.split(',')[1].trim())} · ${d.id==='day1'?'Pre-Conf':'Main'}</span></button>`).join('') +
+    `</div></div>`;
   const legend = `<button class="lg-pill active" data-track="all" style="--tk:#ED1C24"><span class="swatch"></span>All Tracks</button>` +
     Object.entries(TRACKS).map(([k,v]) => `<button class="lg-pill" data-track="${k}" style="--tk:${v.c}"><span class="swatch"></span>${v.name}</button>`).join('');
 
   const mount = document.getElementById('agendaTable');
-  mount.innerHTML = `<div class="sched-tabs" role="tablist">${tabs}</div><div class="sched-legend">${legend}</div>${DAYS.map(dayHTML).join('')}`;
+  mount.innerHTML = `${seg}<div class="sched-legend">${legend}</div>${DAYS.map(dayHTML).join('')}`;
 
   function setDay(id){
-    mount.querySelectorAll('.sched-tab').forEach(t => t.classList.toggle('active', t.dataset.day===id));
-    mount.querySelectorAll('.sched-day').forEach(p => p.classList.toggle('active', p.dataset.day===id));
+    mount.querySelectorAll('.sched-seg button').forEach(t => t.classList.toggle('active', t.dataset.day===id));
+    mount.querySelectorAll('.sched-day').forEach(p => p.classList.toggle('active', id==='all' || p.dataset.day===id));
   }
   function setFilter(f){
     mount.querySelectorAll('.lg-pill').forEach(p => p.classList.toggle('active', p.dataset.track===f));
     mount.querySelectorAll('.sess,.tl-plenary').forEach(c => c.classList.toggle('dim', f!=='all' && (c.dataset.track||'')!==f));
   }
-  setDay('day2'); // default to the main conference day
+  setDay('all'); // default: show BOTH days
 
   mount.addEventListener('click', e => {
-    const tab = e.target.closest('.sched-tab');   if(tab){ setDay(tab.dataset.day); return; }
+    const seg = e.target.closest('.sched-seg button'); if(seg){ setDay(seg.dataset.day); return; }
     const pill = e.target.closest('.lg-pill');    if(pill){ setFilter(pill.dataset.track); return; }
     if(e.target.closest('a')) return;
     const card = e.target.closest('.sess,.tl-plenary');
