@@ -3,6 +3,9 @@
             "outputDirectory": ".",
         "cleanUrls": true,
         "trailingSlash": false,
+        "redirects": [
+                    { "source": "/((?!404).*)", "destination": "/404", "permanent": false }
+        ],
         "headers": [
                     {
                                     "source": "/(.*)\\.html",
